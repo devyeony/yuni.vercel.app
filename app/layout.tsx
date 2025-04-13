@@ -1,21 +1,23 @@
-import "../global.css";
+import "../styles/global.css";
 import { Inter } from "next/font/google";
 import LocalFont from "next/font/local";
 import { Metadata } from "next";
-import { Analytics } from "./components/analytics";
+import { Analytics } from "../components/analytics";
+import { Header } from "../components/header";
+import { Footer } from "../components/footer";
+import SpaceBackground from "../components/space-background";
 
 export const metadata: Metadata = {
   title: {
-    default: "devyeony.github.io",
-    template: "%s | devyeony.github.io",
+    default: "Yeonhee Kim | Software Engineer",
+    template: "%s | Yeonhee Kim | Software Engineer",
   },
-  description: "Co-founder of unkey.dev and founder of planetfall.io",
+  description: "Building software with a love for cats and the cosmos",
   openGraph: {
-    title: "devyeony.github.io",
-    description:
-      "Co-founder of unkey.dev and founder of planetfall.io",
+    title: "Yeonhee Kim | Software Engineer",
+    description: "Building software with a love for cats and the cosmos",
     url: "devyeony.github.io",
-    siteName: "devyeony.github.io",
+    siteName: "Yeonhee Kim | Software Engineer",
     images: [
       {
         url: "https://chronark.com/og.png",
@@ -38,7 +40,7 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: "Yeonhee Kim",
+    title: "Yeonhee Kim | Software Engineer",
     card: "summary_large_image",
   },
   icons: {
@@ -66,10 +68,25 @@ export default function RootLayout({
         <Analytics />
       </head>
       <body
-        className={`bg-black ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined
-          }`}
+        className={`bg-black ${
+          process.env.NODE_ENV === "development" ? "debug-screens" : undefined
+        }`}
+        style={{ height: "100%" }} // body에 height 100% 설정
       >
-        {children}
+        <SpaceBackground className="fixed inset-0 -z-10 min-h-screen" quantity={100} />
+  
+  {/* 전체 페이지를 flex column으로 구성 */}
+  <div className="flex flex-col min-h-screen">
+    <Header />
+
+    {/* 메인 콘텐츠는 중간 공간을 차지 */}
+    <main className="flex-grow flex flex-col items-center justify-center">
+      {children}
+    </main>
+
+    {/* 푸터는 항상 하단에 고정 */}
+    <Footer />
+  </div>
       </body>
     </html>
   );

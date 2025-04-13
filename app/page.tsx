@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import Universe from "./components/universe";
+import { Github, LinkedinIcon, PenLine } from "lucide-react";
 
 const navigation = [
   { name: "Projects", href: "/projects" },
@@ -12,24 +12,8 @@ const navigation = [
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden">
-      <nav className="my-16">
-        <ul className="flex items-center justify-center gap-4">
-          {navigation.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm duration-500 text-zinc-500 hover:text-zinc-300"
-            >
-              {item.name}
-            </Link>
-          ))}
-        </ul>
-      </nav>
-
-      <Universe className="fixed inset-0 -z-10 min-h-screen" quantity={100} />
-
-      <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mb-1">
+    <div>
+      <div className="relative flex justify-center items-center w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mb-1 mx-auto">
         <Image
           src="/images/astronaut-cat.png"
           alt="Astronaut Cat Icon"
@@ -40,23 +24,43 @@ export default function Home() {
         />
       </div>
 
-      <h1 className="py-3.5 px-0.5 z-10 text-2xl text-white duration-1000 cursor-default text-edge-outline font-mono sm:text-4xl md:text-5xl whitespace-nowrap font-bold">
+      <h1 className="py-3.5 px-0.5 z-10 text-4xl text-white duration-1000 cursor-default text-edge-outline font-mono md:text-5xl whitespace-nowrap font-bold text-center">
         Yeonhee Kim
         <span className="cursor-blink">|</span>
       </h1>
 
-      <div className="my-16 text-center">
-        <h2 className="text-sm text-zinc-500 ">
-          I'm building{" "}
-          <Link
-            target="_blank"
-            href="https://unkey.dev"
-            className="underline duration-500 hover:text-zinc-300"
-          >
-            unkey.dev
-          </Link>{" "}
-          to solve API authentication and authorization for developers.
-        </h2>
+      <div className="text-center mt-0">
+        <p className="text-xl text-zinc-400 font-mono sm:text-2xl md:text-xl font-bold">
+          Building software
+        </p>
+        <p className="text-md text-zinc-400 font-mono sm:text-lg md:text-md">
+          with a love for cats and the cosmos
+        </p>
+      </div>
+
+      <div className="my-8 text-center bg-zinc-800 p-2 rounded">
+        <p className="text-center text-sm text-zinc-500 italic font-mono tracking-wide">
+          “We will find a way. We always have.”
+          <br />
+          <span className="text-zinc-500">
+            — Cooper, <i>Interstellar (2014)</i>
+          </span>
+        </p>
+      </div>
+
+      <div className="flex items-center justify-center gap-2">
+        <Link
+          href="https://www.linkedin.com/in/yeonhee-hayden-kim/"
+          target="_blank"
+        >
+          <LinkedinIcon size={40} />
+        </Link>
+        <Link href="https://github.com/devyeony" target="_blank">
+          <Github size={40} />
+        </Link>
+        <Link href="https://medium.com/@devyeony" target="_blank">
+          <PenLine size={40} />
+        </Link>
       </div>
 
       <style jsx>{`

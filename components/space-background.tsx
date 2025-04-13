@@ -2,15 +2,15 @@
 
 import React, { useRef, useEffect } from "react";
 
-interface ParticlesProps {
+interface SpaceBackgroundProps {
   className?: string;
   quantity?: number;
 }
 
-export default function Universe({
+export default function SpaceBackground({
   className = "",
   quantity = 150,
-}: ParticlesProps) {
+}: SpaceBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const context = useRef<CanvasRenderingContext2D | null>(null);
   const stars = useRef<any[]>([]);
@@ -51,7 +51,7 @@ export default function Universe({
     return Array.from({ length: count }).map(() => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      radius: Math.random() * 1 + 0.5,
+      radius: Math.random() * 1 + 0.8,
       speedX: Math.random() * 0.2 - 0.1,
       speedY: Math.random() * 0.2 - 0.1,
       baseOpacity: Math.random() * 0.5 + 0.5,
@@ -60,16 +60,26 @@ export default function Universe({
   };
 
   const drawStars = () => {
+    const ctx = context.current!;
     stars.current.forEach((star) => {
       star.baseOpacity += 0.005 * star.opacityDirection;
       if (star.baseOpacity >= 1 || star.baseOpacity <= 0.4) {
         star.opacityDirection *= -1;
       }
 
-      context.current!.beginPath();
-      context.current!.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-      context.current!.fillStyle = `rgba(255, 255, 180, ${star.baseOpacity})`;
-      context.current!.fill();
+      ctx.save(); // 상태 저장
+
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+
+      // 별의 광채 효과
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = `rgba(255, 255, 180, ${star.baseOpacity})`;
+
+      ctx.fillStyle = `rgba(255, 255, 180, ${star.baseOpacity})`;
+      ctx.fill();
+
+      ctx.restore(); // 상태 복원
     });
   };
 
