@@ -7,7 +7,7 @@ const nextConfig = {
 		mdxRs: true,
 	},
 	output: "export",
-	distDir: "dist",
+	distDir: "out",
 	images: {
 		unoptimized: true,
 	},
