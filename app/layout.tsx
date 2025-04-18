@@ -71,22 +71,20 @@ export default function RootLayout({
         className={`bg-black ${
           process.env.NODE_ENV === "development" ? "debug-screens" : undefined
         }`}
-        style={{ height: "100%" }} // body에 height 100% 설정
       >
-        <SpaceBackground className="fixed inset-0 -z-10 min-h-screen" quantity={100} />
-  
-  {/* 전체 페이지를 flex column으로 구성 */}
-  <div className="flex flex-col min-h-screen">
-    <Header />
+        <SpaceBackground
+          className="fixed inset-0 -z-10 min-h-screen"
+          quantity={100}
+        />
 
-    {/* 메인 콘텐츠는 중간 공간을 차지 */}
-    <main className="flex-grow flex flex-col items-center justify-center">
-      {children}
-    </main>
+        <div className="flex flex-col min-h-screen">  
+          <Header />
+          <main className="flex-grow flex flex-col items-center justify-center">
+            {children}
+          </main>
+          <Footer className="mt-6 mb-6" />
+        </div>
 
-    {/* 푸터는 항상 하단에 고정 */}
-    <Footer />
-  </div>
       </body>
     </html>
   );
