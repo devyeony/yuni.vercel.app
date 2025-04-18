@@ -3,6 +3,14 @@
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 
+const navigation = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Blog", href: "/blog" },
+  { name: "Projects", href: "/projects" },
+  { name: "Contact", href: "/contact" },
+];
+
 export const Header = () => {
   const ref = useRef<HTMLElement>(null);
   const [isIntersecting, setIntersecting] = useState(true);
@@ -28,24 +36,15 @@ export const Header = () => {
       >
         <div className="container flex flex-row-reverse items-center justify-between p-6 mx-auto">
           <div className="flex justify-between gap-8">
-		  <Link
-              href="/"
-              className="relative duration-200 text-zinc-300 hover:text-zinc-100 after:content-[''] after:absolute after:left-[-4px] after:right-[-4px] after:bottom-[-6px] after:h-1 after:w-0 after:bg-green-300 after:rounded-full after:transition-all after:duration-300 hover:after:w-[calc(100%+8px)]"
-            >
-              Home
-            </Link>
-            <Link
-              href="/projects"
-              className="relative duration-200 text-zinc-300 hover:text-zinc-100 after:content-[''] after:absolute after:left-[-4px] after:right-[-4px] after:bottom-[-6px] after:h-1 after:w-0 after:bg-green-300 after:rounded-full after:transition-all after:duration-300 hover:after:w-[calc(100%+8px)]"
-            >
-              Projects
-            </Link>
-            <Link
-              href="/contact"
-              className="relative duration-200 text-zinc-300 hover:text-zinc-100 after:content-[''] after:absolute after:left-[-4px] after:right-[-4px] after:bottom-[-6px] after:h-1 after:w-0 after:bg-green-300 after:rounded-full after:transition-all after:duration-300 hover:after:w-[calc(100%+8px)]"
-            >
-              Contact
-            </Link>
+            {navigation.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="relative duration-200 text-zinc-300 hover:text-zinc-100 after:content-[''] after:absolute after:left-[-4px] after:right-[-4px] after:bottom-[-6px] after:h-1 after:w-0 after:bg-green-300 after:rounded-full after:transition-all after:duration-300 hover:after:w-[calc(100%+8px)]"
+              >
+                {item.name}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

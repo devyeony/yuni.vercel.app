@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 import { allProjects } from "contentlayer/generated";
-import Universe from "../../components/space-background";
-import { Header } from "../../components/header";
-import { Card } from "../../components/card";
+import SpaceBackground from "@/components/space-background";
+import { Header } from "@/components/header";
+import { Card } from "@/components/card";
 import { Article } from "./article";
 
 export const revalidate = 60;
@@ -28,7 +28,7 @@ export default async function ProjectsPage() {
 
   return (
     <div className="relative pb-16">
-      <Universe className="fixed inset-0 -z-10 min-h-screen" quantity={100} />
+      <SpaceBackground className="fixed inset-0 -z-10 min-h-screen" quantity={100} />
 
       <Header />
 

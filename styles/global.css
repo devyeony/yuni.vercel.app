@@ -7,3 +7,17 @@
     -webkit-text-stroke: 1px rgba(255,255,255,0.3);
   }
 } 
+
+.cursor-blink {
+  display: inline-block;
+  width: 1px;
+  height: 1.2em; /* Adjust height based on font size */
+  background-color: white;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

@@ -1,14 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
-import { Github, LinkedinIcon, PenLine } from "lucide-react";
-
-const navigation = [
-  { name: "Projects", href: "/projects" },
-  { name: "Contact", href: "/contact" },
-];
+import { SocialLink } from "@/components/social-links";
 
 export default function Home() {
   return (
@@ -48,36 +42,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="flex items-center justify-center gap-2">
-        <Link
-          href="https://www.linkedin.com/in/yeonhee-hayden-kim/"
-          target="_blank"
-        >
-          <LinkedinIcon size={40} />
-        </Link>
-        <Link href="https://github.com/devyeony" target="_blank">
-          <Github size={40} />
-        </Link>
-        <Link href="https://medium.com/@devyeony" target="_blank">
-          <PenLine size={40} />
-        </Link>
-      </div>
-
-      <style jsx>{`
-        .cursor-blink {
-          display: inline-block;
-          width: 1px;
-          height: 1.2em; /* Adjust height based on font size */
-          background-color: white;
-          animation: blink 1s step-end infinite;
-        }
-
-        @keyframes blink {
-          50% {
-            opacity: 0;
-          }
-        }
-      `}</style>
+      <SocialLink />
     </div>
   );
 }

@@ -1,11 +1,11 @@
-import "../styles/global.css";
+import "@/styles/global.css";
 import { Inter } from "next/font/google";
 import LocalFont from "next/font/local";
 import { Metadata } from "next";
-import { Analytics } from "../components/analytics";
-import { Header } from "../components/header";
-import { Footer } from "../components/footer";
-import SpaceBackground from "../components/space-background";
+import { Analytics } from "@/components/analytics";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import SpaceBackground from "@/components/space-background";
 
 export const metadata: Metadata = {
   title: {
@@ -67,16 +67,11 @@ export default function RootLayout({
       <head>
         <Analytics />
       </head>
-      <body
-        className={`bg-black ${
-          process.env.NODE_ENV === "development" ? "debug-screens" : undefined
-        }`}
-      >
+      <body>
         <SpaceBackground
           className="fixed inset-0 -z-10 min-h-screen"
           quantity={100}
         />
-
         <div className="flex flex-col min-h-screen">  
           <Header />
           <main className="flex-grow flex flex-col items-center justify-center">
@@ -84,7 +79,6 @@ export default function RootLayout({
           </main>
           <Footer className="mt-6 mb-6" />
         </div>
-
       </body>
     </html>
   );
