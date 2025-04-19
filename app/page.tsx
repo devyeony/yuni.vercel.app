@@ -18,7 +18,7 @@ export default function Home() {
         />
       </div>
 
-      <h1 className="py-3.5 px-0.5 z-10 text-4xl text-white duration-1000 cursor-default text-edge-outline font-mono md:text-5xl whitespace-nowrap font-bold text-center">
+      <h1 className="py-3.5 px-0.5 z-10 text-4xl text-zinc-100 duration-1000 cursor-default text-edge-outline font-mono md:text-5xl whitespace-nowrap font-bold text-center">
         Yeonhee Kim
         <span className="cursor-blink">|</span>
       </h1>

@@ -47,6 +47,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon.png",
   },
 };
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -73,11 +74,11 @@ export default function RootLayout({
           quantity={100}
         />
         <div className="flex flex-col min-h-screen">  
-          <Header />
+          <Header className="my-10" />
           <main className="flex-grow flex flex-col items-center justify-center">
             {children}
           </main>
-          <Footer className="mt-6 mb-6" />
+          <Footer className="my-6" />
         </div>
       </body>
     </html>

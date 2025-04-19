@@ -3,15 +3,19 @@
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 
+interface HeaderProps {
+  className?: string;
+}
+
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Blog", href: "/blog" },
   { name: "Projects", href: "/projects" },
+  { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
 ];
 
-export const Header = () => {
+export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
   const ref = useRef<HTMLElement>(null);
   const [isIntersecting, setIntersecting] = useState(true);
 
@@ -26,7 +30,7 @@ export const Header = () => {
   }, []);
 
   return (
-    <header ref={ref}>
+    <header ref={ref} className={className}>
       <div
         className={`fixed inset-x-0 top-0 z-50 backdrop-blur  duration-200 border-b  ${
           isIntersecting
