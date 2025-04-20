@@ -7,7 +7,7 @@ import { SocialLink } from "@/components/social-links";
 export default function Home() {
   return (
     <div>
-      <div className="relative flex justify-center items-center w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mb-1 mx-auto">
+      <div className="relative flex justify-center items-center w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto">
         <Image
           src="/images/astronaut-cat.png"
           alt="Astronaut Cat Icon"
@@ -18,13 +18,13 @@ export default function Home() {
         />
       </div>
 
-      <h1 className="py-3.5 px-0.5 z-10 text-4xl text-zinc-100 duration-1000 cursor-default text-edge-outline font-mono md:text-5xl whitespace-nowrap font-bold text-center">
+      <h1 className="py-2 px-0.5 z-10 text-3xl text-zinc-100 duration-1000 cursor-default text-edge-outline font-mono md:text-4xl whitespace-nowrap font-bold text-center">
         Yeonhee Kim
         <span className="cursor-blink">|</span>
       </h1>
 
       <div className="text-center mt-0">
-        <p className="text-xl text-zinc-400 font-mono sm:text-2xl md:text-xl font-bold">
+        <p className="text-xl text-zinc-400 font-mono sm:text-xl md:text-lg font-bold">
           Building software
         </p>
         <p className="text-md text-zinc-400 font-mono sm:text-lg md:text-md">
