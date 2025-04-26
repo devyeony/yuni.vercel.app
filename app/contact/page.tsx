@@ -3,56 +3,110 @@
 import { useState } from "react";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    // API 호출
+  };
+
   return (
-    <div className="bg-gradient-to-tl from-zinc-900/0 to-zinc-900/0">
-      <div className="container flex items-center justify-center min-h-screen px-4 mx-auto">
-        <section className="bg-white dark:bg-gray-900">
-          <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-            <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
-              Contact Us
-            </h2>
-            <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
-              Got a technical issue? Want to send feedback about a beta feature?
-              Need details about our Business plan? Let us know.
-            </p>
-            <form action="#" className="space-y-8">
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >
-                  Your email
-                </label>
-                {/* <input type="email" id="email" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="name@flowbite.com" required> */}
-              </div>
-              <div>
-                <label
-                  htmlFor="subject"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >
-                  Subject
-                </label>
-                {/* <input type="text" id="subject" className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="Let us know how we can help you" required> */}
-              </div>
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="message"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
-                >
-                  Your message
-                </label>
-                {/* <textarea id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Leave a comment..."></textarea> */}
-              </div>
-              <button
-                type="submit"
-                className="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-              >
-                Send message
-              </button>
-            </form>
-          </div>
-        </section>
-      </div>
+    <div className="w-full p-4 mx-auto max-w-lg sm:max-w-xl md:max-w-2xl">
+      <h1 className="text-4xl text-zinc-100 font-mono font-bold text-center">
+        Contact Me
+      </h1>
+      <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+        <div>
+          <label
+            className="block text-lg text-zinc-400 font-mono font-bold mb-2"
+            htmlFor="name"
+          >
+            Name
+          </label>
+          <input
+            className="w-full rounded-lg py-3 px-4 text-slate-900 text-sm outline-none border-4 focus:border-purple-300"
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter Name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div>
+          <label
+            className="block text-lg text-zinc-400 font-mono font-bold mb-2"
+            htmlFor="email"
+          >
+            Email
+          </label>
+          <input
+            className="w-full rounded-lg py-3 px-4 text-slate-900 text-sm outline-none border-4 focus:border-purple-300"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div>
+          <label
+            className="block text-lg text-zinc-400 font-mono font-bold mb-2"
+            htmlFor="message"
+          >
+            Message
+          </label>
+          <textarea
+            className="w-full rounded-lg py-3 px-4 text-slate-900 text-sm outline-none border-4 focus:border-purple-300"
+            id="message"
+            name="message"
+            placeholder="Enter Message"
+            rows={6}
+            value={formData.message}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="text-lg text-zinc-100 font-mono bg-black tracking-wide rounded-lg px-4 py-3 flex items-center justify-center w-full !mt-6 transition-all duration-200 hover:bg-purple-200 hover:text-black"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16px"
+            height="16px"
+            fill="currentColor"
+            className="mr-2"
+            viewBox="0 0 548.244 548.244"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M392.19 156.054 211.268 281.667 22.032 218.58C8.823 214.168-.076 201.775 0 187.852c.077-13.923 9.078-26.24 22.338-30.498L506.15 1.549c11.5-3.697 24.123-.663 32.666 7.88 8.542 8.543 11.577 21.165 7.879 32.666L390.89 525.906c-4.258 13.26-16.575 22.261-30.498 22.338-13.923.076-26.316-8.823-30.728-22.032l-63.393-190.153z"
+              clip-rule="evenodd"
+              data-original="#000000"
+            />
+          </svg>
+          Send Message
+        </button>
+      </form>
     </div>
   );
 }
