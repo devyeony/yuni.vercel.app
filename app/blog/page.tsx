@@ -47,13 +47,12 @@ const BlogPage = async () => {
 
   return (
     <div className="p-6">
-      <h1 className="text-3xl text-zinc-100 font-mono font-bold inline-flex items-center gap-2">
+      <h1 className="text-4xl text-zinc-100 font-mono font-bold inline-flex items-center gap-2">
         Latest Blog Posts
       </h1>
 
-      <p className="max-w-3xl mt-2 mb-10 text-base text-zinc-400 font-mono items-center gap-2">
-        Discover my recent technical insights and tutorials, featuring the five
-        latest posts from{" "}
+      <p className="max-w-3xl mt-3 mb-10 text-base text-zinc-400 font-mono items-center gap-2">
+        Discover my recent technical insights and tutorials, featuring the five latest posts from{" "}
         <a
           href={socialInfo.medium.link}
           target="_blank"

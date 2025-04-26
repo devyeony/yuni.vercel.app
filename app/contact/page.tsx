@@ -24,13 +24,16 @@ export default function Contact() {
 
   return (
     <div className="w-full p-4 mx-auto max-w-lg sm:max-w-xl md:max-w-2xl">
-      <h1 className="text-4xl text-zinc-100 font-mono font-bold text-center">
+      <h1 className="text-4xl text-zinc-100 font-mono font-bold inline-flex items-center gap-2">
         Contact Me
       </h1>
+      <p className="max-w-3xl mt-3 mb-10 text-base text-zinc-400 font-mono items-center gap-2">
+        I’m always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+      </p>
       <form onSubmit={handleSubmit} className="mt-8 space-y-5">
         <div>
           <label
-            className="block text-lg text-zinc-400 font-mono font-bold mb-2"
+            className="block text-lg text-zinc-100 font-mono font-bold mb-2"
             htmlFor="name"
           >
             Name
@@ -49,7 +52,7 @@ export default function Contact() {
 
         <div>
           <label
-            className="block text-lg text-zinc-400 font-mono font-bold mb-2"
+            className="block text-lg text-zinc-100 font-mono font-bold mb-2"
             htmlFor="email"
           >
             Email
@@ -68,7 +71,7 @@ export default function Contact() {
 
         <div>
           <label
-            className="block text-lg text-zinc-400 font-mono font-bold mb-2"
+            className="block text-lg text-zinc-100 font-mono font-bold mb-2"
             htmlFor="message"
           >
             Message
