@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: "Yeonhee Kim | Software Engineer",
     images: [
       {
-        url: "/images/thumbnail.png",
+        url: "https://yuni.vercel.app/images/thumbnail.png",
         width: 1920,
         height: 1080,
       },
