@@ -33,7 +33,14 @@ export const Project = defineDocumentType(() => ({
 			type: "string",
 			required: true,
 		},
-		date: {
+		thumbnail: {
+			type: "string",
+		},
+		startDate: {
+			type: "date",
+			required: true,
+		},
+		endDate: {
 			type: "date",
 		},
 		url: {
@@ -41,6 +48,10 @@ export const Project = defineDocumentType(() => ({
 		},
 		repository: {
 			type: "string",
+		},
+		tags: { 
+			type: 'list', 
+			of: { type: 'string' } 
 		},
 	},
 	computedFields,

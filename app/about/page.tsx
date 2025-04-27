@@ -9,7 +9,7 @@ export default function About() {
             <div className="img-box relative w-full h-[500px]">
               <Image
                 src="/images/my-character.png"
-                alt="About Us tailwind page"
+                alt="My Character Icon"
                 className="max-lg:mx-auto object-contain"
 								fill
               />

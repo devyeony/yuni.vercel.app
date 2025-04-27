@@ -23,7 +23,7 @@ const formatDate = (dateString: string) => {
   });
 };
 
-export const ProjectArticle: React.FC<Props> = ({ project }) => {
+export const Article: React.FC<Props> = ({ project }) => {
   const tags = project.tags ?? [];
 
   return (

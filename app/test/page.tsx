@@ -1,6 +1,6 @@
 import React from "react";
 import { allProjects } from "contentlayer/generated";
-import { ProjectArticle } from "./article";
+import { Article } from "./article";
 
 const compareDates = (dateA?: string, dateB?: string): number => {
   const aDate = dateA ? new Date(dateA) : new Date(0);
@@ -41,7 +41,7 @@ export default async function ProjectsPage() {
       </p>
       <article className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-2 justify-items-center justify-center gap-y-10 gap-x-10 mt-10 mb-5">
         {sorted.map((project, index) => (
-          <ProjectArticle key={index} project={project} />
+          <Article key={index} project={project} />
         ))}
       </article>
     </div>

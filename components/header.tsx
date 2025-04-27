@@ -39,13 +39,13 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
             : "bg-zinc-900/500  border-zinc-800 "
         }`}
       >
-        <div className="container flex flex-row-reverse items-center justify-between p-6 mx-auto">
-          <div className="flex justify-between gap-4">
+        <div className="container flex flex-row-reverse items-center justify-end p-6 mx-auto">
+          <div className="flex gap-8">
             {navigation.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="group relative duration-200 text-zinc-300 hover:text-purple-300"
+                className="relative duration-200 text-zinc-300 hover:text-purple-300"
               >
                 {item.name === "Home" ? (
                   <Home
