@@ -1,26 +1,10 @@
 import type { Project } from "@/.contentlayer/generated";
+import { getProjectPeriod } from "@/utils/dateutils";
 import Link from "next/link";
 import Image from "next/image";
 
 type Props = {
   project: Project;
-};
-
-const getProjectPeriod = (startDateString?: string, endDateString?: string) => {
-  if (!startDateString) return "";
-
-  const startDate = formatDate(startDateString);
-  const endDate = endDateString ? formatDate(endDateString) : "Now";
-
-  return `${startDate} - ${endDate}`;
-};
-
-const formatDate = (dateString: string) => {
-  const date = new Date(dateString);
-  return date.toLocaleDateString("en-GB", {
-    month: "short",
-    year: "numeric",
-  });
 };
 
 export const ProjectArticle: React.FC<Props> = ({ project }) => {
