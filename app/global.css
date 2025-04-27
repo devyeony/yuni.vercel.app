@@ -11,7 +11,7 @@
 .cursor-blink {
   display: inline-block;
   width: 1px;
-  height: 1.2em; /* Adjust height based on font size */
+  height: 1.2em; 
   background-color: white;
   animation: blink 1s step-end infinite;
 }
@@ -20,4 +20,24 @@
   50% {
     opacity: 0;
   }
+}
+
+.prose img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.prose pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.prose code {
+  background-color: #f7f7f7;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }

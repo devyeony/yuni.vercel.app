@@ -7,11 +7,13 @@ import { ArrowLeft } from "lucide-react";
 
 type Props = {
   project: {
-    url?: string;
     title: string;
     description: string;
     startDate?: string;
     endDate?: string;
+    url?: string;
+    demo?: string;
+    presentation?: string;
     repository?: string;
     thumbnail?: string;
   };
@@ -32,6 +34,18 @@ export const Header: React.FC<Props> = ({ project }) => {
     links.push({
       label: "Website",
       href: project.url,
+    });
+  }
+  if (project.demo) {
+    links.push({
+      label: "Demo",
+      href: project.demo,
+    });
+  }
+  if (project.presentation) {
+    links.push({
+      label: "Presentation",
+      href: project.presentation,
     });
   }
 
@@ -86,7 +100,7 @@ export const Header: React.FC<Props> = ({ project }) => {
                 {getProjectPeriod(project.startDate, project.endDate)}
               </span>
             </div>
-            <p className="mt-4 text-lg leading-8 text-zinc-300">
+            <p className="mt-4 text-lg leading-8 text-zinc-300 break-words text-center px-6">
               <span
                 style={{
                   textShadow: `2px 2px 0 rgba(0, 0, 0, 0.7), -1px -1px 0 rgba(0, 0, 0, 0.7), 1px -1px 0 rgba(0, 0, 0, 0.7), -1px 1px 0 rgba(0, 0, 0, 0.7), 1px 1px 0 rgba(0, 0, 0, 0.7)`,
