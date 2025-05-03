@@ -2,6 +2,7 @@ import Link from "next/link";
 import Parser from "rss-parser";
 import { JSDOM } from "jsdom";
 import { socialInfo } from "@/constants/social-info";
+import { formatFullDate } from "@/utils/date-utils";
 
 type Post = {
   title: string;
@@ -33,15 +34,6 @@ const getPosts = async (): Promise<Post[]> => {
   );
 };
 
-const formatDate = (dateString: string) => {
-  const date = new Date(dateString);
-  return date.toLocaleDateString("en-GB", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  });
-};
-
 const BlogPage = async () => {
   const posts = await getPosts();
 
@@ -69,7 +61,7 @@ const BlogPage = async () => {
             <div className="mb-10 bg-zinc-100 border-2 border-zinc-300 rounded-lg shadow-sm transition-all duration-200 hover:border-zinc-100 hover:bg-cyan-100 hover:scale-105">
               <div className="mx-3 mb-0 border-b border-slate-300 pt-3 pb-2 px-1">
                 <span className="px-2 py-1 text-sm font-medium bg-purple-200">
-                  {formatDate(post.pubDate)}
+                  {formatFullDate(post.pubDate)}
                 </span>
               </div>
               <img className="mt-3 px-3 rounded-t-lg" src={post.thumbnail} />

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
-import { getProjectPeriod } from "@/utils/dateutils";
+import { formatDateRange } from "@/utils/date-utils";
 import { ArrowLeft } from "lucide-react";
 
 type Props = {
@@ -97,7 +97,7 @@ export const Header: React.FC<Props> = ({ project }) => {
             </h1>
             <div className="text-xl font-bold mt-10">
               <span className="bg-white/70 px-1">
-                {getProjectPeriod(project.startDate, project.endDate)}
+                {formatDateRange(project.startDate, project.endDate)}
               </span>
             </div>
             <p className="mt-4 text-lg leading-8 text-zinc-300 break-words text-center px-6">
