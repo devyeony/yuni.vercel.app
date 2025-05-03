@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { sendEmail } from "@/lib/emailjs-client";
+import Recaptcha from "@/components/recaptcha";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -9,6 +11,8 @@ export default function Contact() {
     message: "",
   });
 
+  const [captchaValue, setCaptchaValue] = useState<string | null>(null);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -16,10 +20,32 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleCaptchaChange = (value: string | null) => {
+    setCaptchaValue(value);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!formData.name || !formData.email || !formData.message || !captchaValue) {
+      alert("Please fill in all fields and complete the CAPTCHA.");
+      return;
+    }
+
+    const confirmSend = window.confirm("Ready to send your message?");
+    if (confirmSend) {
+      const emailSent = await sendEmail(formData, "");
+
+      if (emailSent) {
+        alert("Message sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+        setCaptchaValue(null);
+      } else {
+        alert("Failed to send message. Please try again.");
+      }
+    }
+
     console.log("Form submitted:", formData);
-    // API 호출
   };
 
   return (
@@ -28,7 +54,8 @@ export default function Contact() {
         Contact Me
       </h1>
       <p className="max-w-3xl mt-3 mb-10 text-base text-zinc-400 font-mono items-center gap-2">
-        I’m always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+        I’m always open to discussing new projects, creative ideas, or
+        opportunities to be part of your vision.
       </p>
       <form onSubmit={handleSubmit} className="mt-8 space-y-5">
         <div>
@@ -87,6 +114,8 @@ export default function Contact() {
             required
           />
         </div>
+
+        <Recaptcha onChange={handleCaptchaChange} />
 
         <button
           type="submit"
