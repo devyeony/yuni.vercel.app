@@ -33,14 +33,14 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
   return (
     <header ref={ref} className={className}>
       <div
-        className={`fixed inset-x-0 top-0 z-50 backdrop-blur duration-200 border-b  ${
+        className={`fixed inset-x-0 top-0 z-50 backdrop-blur duration-200 border-b ${
           isIntersecting
             ? "bg-zinc-900/0 border-transparent"
-            : "bg-zinc-900/500  border-zinc-800 "
+            : "bg-zinc-900/500 border-zinc-800"
         }`}
       >
-        <div className="container flex flex-row-reverse items-center justify-end p-6 mx-auto">
-          <div className="flex gap-8">
+        <div className="container flex items-center justify-center p-6 mx-auto">
+          <div className="flex gap-6">
             {navigation.map((item) => (
               <Link
                 key={item.href}
@@ -48,10 +48,7 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
                 className="relative duration-200 text-zinc-300 hover:text-purple-300"
               >
                 {item.name === "Home" ? (
-                  <Home
-                    size={25}
-                    className="duration-200 text-inherit"
-                  />
+                  <Home size={25} className="duration-200 text-inherit" />
                 ) : (
                   <span className="duration-200 text-inherit">
                     {item.name}
