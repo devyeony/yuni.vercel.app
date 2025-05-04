@@ -1,7 +1,7 @@
 import { externalApiInfo } from "@/constants/external-api-info";
 import { NextRequest, NextResponse } from "next/server";
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 const verifyCaptcha = async (token: string): Promise<{ data: any }> => {
   const secret = process.env.GOOGLE_RECAPTCHA_SECRET_KEY;
