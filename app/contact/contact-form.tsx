@@ -30,18 +30,18 @@ export default function ContactForm() {
 
     if (isSubmitting) return;
 
-    if (!executeRecaptcha) {
-      alert("reCAPTCHA is not ready. Please try again later.");
-      return;
-    }
+    // if (!executeRecaptcha) {
+    //   alert("reCAPTCHA is not ready. Please try again later.");
+    //   return;
+    // }
 
-    const token = await executeRecaptcha("contact_form");
-    const isHuman = await verifyCaptcha(token);
+    // const token = await executeRecaptcha("contact_form");
+    // const isHuman = await verifyCaptcha(token);
 
-    if (!isHuman) {
-      alert("reCAPTCHA verification failed. Please try again.");
-      return;
-    }
+    // if (!isHuman) {
+    //   alert("reCAPTCHA verification failed. Please try again.");
+    //   return;
+    // }
 
     const confirmSend = window.confirm("Ready to send your message?");
     if (!confirmSend) return;
