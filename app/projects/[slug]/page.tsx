@@ -4,8 +4,6 @@ import { Mdx } from "@/components/mdx";
 import { Header } from "./header";
 import "./mdx.css";
 
-export const revalidate = 60;
-
 type Props = {
   params: {
     slug: string;

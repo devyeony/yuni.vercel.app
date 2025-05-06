@@ -30,21 +30,21 @@ export default function ContactForm() {
 
     if (isSubmitting) return;
 
-    // if (!executeRecaptcha) {
-    //   alert("reCAPTCHA is not ready. Please try again later.");
-    //   return;
-    // }
-
-    // const token = await executeRecaptcha("contact_form");
-    // const isHuman = await verifyCaptcha(token);
-
-    // if (!isHuman) {
-    //   alert("reCAPTCHA verification failed. Please try again.");
-    //   return;
-    // }
-
     const confirmSend = window.confirm("Ready to send your message?");
     if (!confirmSend) return;
+
+    if (!executeRecaptcha) {
+      alert("reCAPTCHA is not ready. Please try again later.");
+      return;
+    }
+
+    const token = await executeRecaptcha("contact_form");
+    const isHuman = await verifyCaptcha(token);
+
+    if (!isHuman) {
+      alert("reCAPTCHA verification failed. Please try again.");
+      return;
+    }
 
     setIsSubmitting(true);
 
@@ -66,7 +66,6 @@ export default function ContactForm() {
   };
 
   return (
-    
       <div className="w-full p-4 mx-auto max-w-lg sm:max-w-xl md:max-w-2xl">
         <h1 className="text-4xl text-zinc-100 font-mono font-bold inline-flex items-center gap-2">
           Contact Me
