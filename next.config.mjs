@@ -12,7 +12,6 @@ const nextConfig = {
 		unoptimized: true,
     minimumCacheTTL: 2592000,
   },
-	//output: "export",
 };
 
 export default withContentlayer(nextConfig);

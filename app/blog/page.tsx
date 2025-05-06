@@ -1,41 +1,12 @@
 import Link from "next/link";
-import Parser from "rss-parser";
-import { JSDOM } from "jsdom";
+import { getMediumPosts } from "@/services/medium-service";
 import { socialInfo } from "@/constants/social-info";
 import { formatFullDate } from "@/utils/date-utils";
 
-type Post = {
-  title: string;
-  link: string;
-  subtitle: string;
-  pubDate: string;
-  thumbnail: string;
-};
-
-const getPosts = async (): Promise<Post[]> => {
-  const parser = new Parser();
-  const feed = await parser.parseURL(socialInfo.medium.rss);
-
-  return (
-    feed.items?.slice(0, 5).map((item) => {
-      const contentHtml = item["content:encoded"] ?? "";
-      const dom = new JSDOM(contentHtml);
-      const subtitle = dom.window.document.querySelector("h4")?.textContent;
-      const thumbnail = dom.window.document.querySelector("img")?.src;
-
-      return {
-        title: item.title ?? "",
-        link: item.link ?? "",
-        subtitle: subtitle ?? "",
-        pubDate: item.pubDate ?? "",
-        thumbnail: thumbnail ?? "",
-      };
-    }) || []
-  );
-};
+export const revalidate = 3600;
 
 const BlogPage = async () => {
-  const posts = await getPosts();
+  const posts = await getMediumPosts();
 
   return (
     <div className="p-6">
