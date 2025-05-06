@@ -6,11 +6,13 @@ const nextConfig = {
 	experimental: {
 		mdxRs: true,
 	},
-	output: "export",
-	distDir: "out",
-	images: {
+	reactStrictMode: true,
+  swcMinify: true,
+  images: {
 		unoptimized: true,
-	},
+    minimumCacheTTL: 2592000,
+  },
+	//output: "export",
 };
 
 export default withContentlayer(nextConfig);

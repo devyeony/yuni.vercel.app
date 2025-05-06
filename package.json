@@ -10,21 +10,24 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
-    "@next/mdx": "^13.5.11",
     "contentlayer": "^0.3.4",
     "framer-motion": "^10.18.0",
     "jsdom": "^26.1.0",
     "lucide-react": "^0.284.0",
     "markdown-wasm": "^1.2.0",
-    "next": "^13.5.11",
+    "next": "14.1.0",
     "next-contentlayer": "^0.3.4",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "next-themes": "^0.2.1",
+    "postcss": "^8",
+    "react": "^18",
+    "react-dom": "^18",
     "react-google-recaptcha-v3": "^1.10.1",
     "react-spinners": "^0.17.0",
     "react-wrap-balancer": "^1.1.1",
+    "rehype": "^13.0.1",
     "rehype-autolink-headings": "^7.1.0",
-    "rehype-pretty-code": "^0.10.2",
+    "rehype-code-titles": "^1.2.0",
+    "rehype-pretty-code": "^0.13.0",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "3.0.1",
     "rss-parser": "^3.13.0",
@@ -48,6 +51,7 @@
   },
   "pnpm": {
     "overrides": {
+      "next": "14.1.0",
       "@opentelemetry/api": "1.4.1",
       "@opentelemetry/core": "1.13.0",
       "@opentelemetry/exporter-trace-otlp-grpc": "0.39.1",
@@ -61,6 +65,7 @@
       "contentlayer",
       "esbuild",
       "protobufjs",
+      "rehype-code-titles",
       "rome"
     ]
   }

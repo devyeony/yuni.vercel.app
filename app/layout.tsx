@@ -1,52 +1,13 @@
 import "@/styles/global.css";
 import { Inter } from "next/font/google";
 import LocalFont from "next/font/local";
-import { Metadata } from "next";
 import { Analytics } from "@/components/analytics";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import SpaceBackground from "@/components/space-background";
+import { metadata } from "@/utils/metadata";
 
-export const metadata: Metadata = {
-  title: {
-    default: "Yeonhee Kim | Software Engineer",
-    template: "%s | Yeonhee Kim | Software Engineer",
-  },
-  description: "Building software with a love for cats and the cosmos",
-  openGraph: {
-    title: "Yeonhee Kim | Software Engineer",
-    description: "Building software with a love for cats and the cosmos",
-    url: "devyeony.github.io",
-    siteName: "Yeonhee Kim | Software Engineer",
-    images: [
-      {
-        url: "https://yuni.vercel.app/images/thumbnail.png",
-        width: 1920,
-        height: 1080,
-      },
-    ],
-    locale: "en-US",
-    type: "website",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  twitter: {
-    title: "Yeonhee Kim | Software Engineer",
-    card: "summary_large_image",
-  },
-  icons: {
-    shortcut: "/favicon.png",
-  },
-};
+export { metadata };
 
 const inter = Inter({
   subsets: ["latin"],
