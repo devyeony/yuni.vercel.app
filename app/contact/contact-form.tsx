@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { ClipLoader } from "react-spinners";
 import InputField from "@/components/input-field";
-import { verifyCaptcha } from "@/services/verify-captcha";
-import { sendEmail } from "@/services/send-email";
+import { verifyCaptcha } from "@/services/captcha-service";
+import { sendEmail } from "@/services/email-service";
 
 export default function ContactForm() {
   const { executeRecaptcha } = useGoogleReCaptcha();
