@@ -1,20 +1,13 @@
 "use client";
 
-import Link from "next/link";
+import { Link as I18nLink } from "@/i18n/routing";
 import React, { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { Home } from "lucide-react";
 
 interface HeaderProps {
   className?: string;
 }
-
-const navigation = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Projects", href: "/projects" },
-  { name: "Blog", href: "/blog" },
-  { name: "Contact", href: "/contact" },
-];
 
 export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
   const ref = useRef<HTMLElement>(null);
@@ -30,6 +23,8 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
     return () => observer.disconnect();
   }, []);
 
+  const t = useTranslations("Header");
+
   return (
     <header ref={ref} className={className}>
       <div
@@ -41,21 +36,36 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
       >
         <div className="container flex items-center justify-center p-6 mx-auto">
           <div className="flex gap-6">
-            {navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="relative duration-200 text-zinc-300 hover:text-purple-300"
-              >
-                {item.name === "Home" ? (
-                  <Home size={25} className="duration-200 text-inherit" />
-                ) : (
-                  <span className="duration-200 text-inherit">
-                    {item.name}
-                  </span>
-                )}
-              </Link>
-            ))}
+            <I18nLink
+              href="/"
+              className="relative duration-200 text-zinc-300 hover:text-purple-300"
+            >
+              <Home size={25} />
+            </I18nLink>
+            <I18nLink
+              href="/about"
+              className="relative duration-200 text-zinc-300 hover:text-purple-300"
+            >
+              {t("about")}
+            </I18nLink>
+            <I18nLink
+              href="/projects"
+              className="relative duration-200 text-zinc-300 hover:text-purple-300"
+            >
+              {t("projects")}
+            </I18nLink>
+            <I18nLink
+              href="/blog"
+              className="relative duration-200 text-zinc-300 hover:text-purple-300"
+            >
+              {t("blog")}
+            </I18nLink>
+            <I18nLink
+              href="/contact"
+              className="relative duration-200 text-zinc-300 hover:text-purple-300"
+            >
+              {t("contact")}
+            </I18nLink>
           </div>
         </div>
       </div>

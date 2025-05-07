@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { getMediumPosts } from "@/services/medium-service";
 import { socialInfo } from "@/constants/social-info";
 import { formatFullDate } from "@/utils/date-utils";
@@ -6,23 +7,25 @@ import { formatFullDate } from "@/utils/date-utils";
 export const revalidate = 3600;
 
 const BlogPage = async () => {
+  const t = await getTranslations("Blog");
   const posts = await getMediumPosts();
 
   return (
     <div className="p-6">
       <h1 className="text-4xl text-zinc-100 font-mono font-bold inline-flex items-center gap-2">
-        Latest Blog Posts
+        {t("title")}
       </h1>
 
       <p className="max-w-3xl mt-3 mb-10 text-base text-zinc-400 font-mono items-center gap-2">
-        Discover my recent technical insights and tutorials, featuring the five latest posts from{" "}
-        <a
+        Discover my recent technical insights and tutorials, featuring the five
+        latest posts from{" "}
+        <Link
           href={socialInfo.medium.link}
           target="_blank"
           className="underline underline-offset-4 hover:text-white transition-colors duration-200"
         >
           my blog
-        </a>
+        </Link>
         .
       </p>
 
@@ -48,13 +51,13 @@ const BlogPage = async () => {
 
         {posts.length === 5 && (
           <div className="mt-12 mb-6 text-center">
-            <a
+            <Link
               href={socialInfo.medium.link}
               target="_blank"
               className="text-2xl text-zinc-100 font-mono bg-black rounded-lg px-20 py-4 transition-all duration-200 hover:bg-purple-200 hover:text-black"
             >
               See more →
-            </a>
+            </Link>
           </div>
         )}
       </div>

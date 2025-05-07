@@ -1,0 +1,29 @@
+{
+  "Header": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "Home": {
+    "title": "Yeonhee Kim",
+    "description": ""
+  },
+  "About": {
+    "title": "About Me",
+    "description": ""
+  },
+  "Projects": {
+    "title": "Projects",
+    "description": "Explore my projects, where I've applied my skills to solve meaningful challenges."
+  },
+  "Blog": {
+    "title": "Latest Blog Posts",
+    "description": "Discover my recent technical insights and tutorials, featuring the five latest posts from my blog."
+  },
+  "Contact": {
+    "title": "Contact Me",
+    "description": "I’m always open to discussing new projects, creative ideas, or opportunities to be part of your vision."
+  }
+}

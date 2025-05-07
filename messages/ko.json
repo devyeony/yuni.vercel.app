@@ -1,0 +1,29 @@
+{
+  "Header": {
+    "home": "홈",
+    "about": "소개",
+    "projects": "프로젝트",
+    "blog": "블로그",
+    "contact": "연락"
+  },
+  "Home": {
+    "title": "김연희",
+    "description": ""
+  },
+  "About": {
+    "title": "자기소개",
+    "description": ""
+  },
+  "Projects": {
+    "title": "프로젝트",
+    "description": ""
+  },
+  "Blog": {
+    "title": "블로그 최신 글",
+    "description": ""
+  },
+  "Contact": {
+    "title": "편하게 연락 주세요",
+    "description": "새로운 프로젝트나 멋진 아이디어, 귀하의 비전에 함께할 수 있는 기회에 대해 언제든 편하게 이야기 나누고 싶어요."
+  }
+}
