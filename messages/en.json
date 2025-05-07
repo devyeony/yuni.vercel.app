@@ -8,7 +8,14 @@
   },
   "Home": {
     "title": "Yeonhee Kim",
-    "description": ""
+    "description": {
+      "line1": "<b>Building software</b>",
+      "line2": "with a love for cats and the cosmos"
+    },
+    "quote": {
+      "text": "“We will find a way. We always have.”",
+      "source": "— Joseph Cooper, <i>Interstellar (2014)</i>"
+    }
   },
   "About": {
     "title": "About Me",
@@ -20,10 +27,27 @@
   },
   "Blog": {
     "title": "Latest Blog Posts",
-    "description": "Discover my recent technical insights and tutorials, featuring the five latest posts from my blog."
+    "description": "Check out my latest thoughts on programming through the five most recent posts.",
+    "guide": "Explore my blog",
+    "more": "See more"
   },
   "Contact": {
     "title": "Contact Me",
-    "description": "I’m always open to discussing new projects, creative ideas, or opportunities to be part of your vision."
+    "description": "I’m always open to discussing new projects, creative ideas, or opportunities to be part of your vision.",
+    "input": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Enter your name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your email"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Enter your message"
+      }
+    },
+    "button": "Send Message"
   }
 }

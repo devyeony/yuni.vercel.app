@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { useLocale } from "next-intl";
 import { Link as I18nLink } from '@/i18n/routing';
 import React, { useEffect, useRef, useState } from "react";
-import { formatDateRange } from "@/utils/date-utils";
+import { formatDateRange } from "@/utils/date-util";
 import { ArrowLeft } from "lucide-react";
 
 type Props = {
@@ -69,6 +70,8 @@ export const Header: React.FC<Props> = ({ project }) => {
     : {
         background: "linear-gradient(to top left, black, #333, black)",
       };
+  
+  const locale = useLocale();
 
   return (
     <header
@@ -98,7 +101,7 @@ export const Header: React.FC<Props> = ({ project }) => {
             </h1>
             <div className="text-xl font-bold mt-10">
               <span className="bg-white/70 px-1">
-                {formatDateRange(project.startDate, project.endDate)}
+                {formatDateRange(project.startDate, project.endDate, locale)}
               </span>
             </div>
             <p className="mt-4 text-lg leading-8 text-zinc-300 break-words text-center px-6">

@@ -1,7 +1,7 @@
 "use client";
 
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
-import ContactForm from "./contact-form";
+import ContactForm from "./form";
 
 export default function Contact() {
   return (

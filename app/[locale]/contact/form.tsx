@@ -8,15 +8,13 @@ import InputField from "@/components/input-field";
 import { verifyCaptcha } from "@/services/captcha-service";
 import { sendEmail } from "@/services/email-service";
 
-export default function ContactForm() {
+const useContactForm = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
-
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (
@@ -66,7 +64,17 @@ export default function ContactForm() {
     }
   };
 
+  return {
+    formData,
+    isSubmitting,
+    handleChange,
+    handleSubmit,
+  };
+};
+
+export default function ContactForm() {
   const t = useTranslations("Contact");
+  const { formData, isSubmitting, handleChange, handleSubmit } = useContactForm();
 
   return (
     <div className="w-full p-4 mx-auto max-w-lg sm:max-w-xl md:max-w-2xl">
@@ -78,33 +86,33 @@ export default function ContactForm() {
       </p>
       <form onSubmit={handleSubmit} className="mt-8 space-y-5">
         <InputField
-          label="Name"
+          label={t("input.name.label")}
           id="name"
           name="name"
           type="text"
-          placeholder="Enter Name"
+          placeholder={t("input.name.placeholder")}
           value={formData.name}
           onChange={handleChange}
           required
         />
 
         <InputField
-          label="Email"
+          label={t("input.email.label")}
           id="email"
           name="email"
           type="email"
-          placeholder="Enter Email"
+          placeholder={t("input.email.placeholder")}
           value={formData.email}
           onChange={handleChange}
           required
         />
 
         <InputField
-          label="Message"
+          label={t("input.message.label")}
           id="message"
           name="message"
           as="textarea"
-          placeholder="Enter Message"
+          placeholder={t("input.message.placeholder")}
           rows={6}
           value={formData.message}
           onChange={handleChange}
@@ -134,7 +142,7 @@ export default function ContactForm() {
                   clipRule="evenodd"
                 />
               </svg>
-              Send Message
+              {t("button")}
             </>
           )}
         </button>

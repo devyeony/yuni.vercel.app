@@ -8,7 +8,14 @@
   },
   "Home": {
     "title": "김연희",
-    "description": ""
+    "description": {
+      "line1": "고양이와 우주를 사랑하며",
+      "line2": "<b>소프트웨어를 개발합니다</b>"
+    },
+    "quote": {
+      "text": "“우린 답을 찾을 것이다. 늘 그랬듯이.”",
+      "source": "— 조셉 쿠퍼, <i>인터스텔라 (2014)</i>"
+    }
   },
   "About": {
     "title": "자기소개",
@@ -16,14 +23,31 @@
   },
   "Projects": {
     "title": "프로젝트",
-    "description": ""
+    "description": "토이 프로젝트부터 실무 경험까지, 다양한 문제를 해결하기 위한 시도들을 소개합니다."
   },
   "Blog": {
     "title": "블로그 최신 글",
-    "description": ""
+    "description": "프로그래밍에 대한 제 생각이 담긴, 최근 5개의 블로그 포스트를 확인해 보세요.",
+    "guide": "블로그로 가기",
+    "more": "더 보기"
   },
   "Contact": {
     "title": "편하게 연락 주세요",
-    "description": "새로운 프로젝트나 멋진 아이디어, 귀하의 비전에 함께할 수 있는 기회에 대해 언제든 편하게 이야기 나누고 싶어요."
+    "description": "새로운 프로젝트나 멋진 아이디어, 귀하의 비전에 함께할 수 있는 기회에 대해 언제든 편하게 이야기 나누고 싶어요.",
+    "input": {
+      "name": {
+        "label": "이름",
+        "placeholder": "이름을 입력하세요"
+      },
+      "email": {
+        "label": "이메일",
+        "placeholder": "이메일을 입력하세요"
+      },
+      "message": {
+        "label": "메세지",
+        "placeholder": "메세지를 입력하세요"
+      }
+    },
+    "button": "메세지 전송"
   }
 }
