@@ -1,10 +1,12 @@
 {
   "Header": {
-    "home": "Home",
-    "about": "About",
-    "projects": "Projects",
-    "blog": "Blog",
-    "contact": "Contact"
+    "menu": {
+      "home": "Home",
+      "about": "About",
+      "projects": "Projects",
+      "blog": "Blog",
+      "contact": "Contact"
+    }
   },
   "Home": {
     "title": "Yeonhee Kim",

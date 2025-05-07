@@ -1,10 +1,12 @@
 {
   "Header": {
-    "home": "홈",
-    "about": "소개",
-    "projects": "프로젝트",
-    "blog": "블로그",
-    "contact": "연락"
+    "menu": {
+      "home": "홈",
+      "about": "소개",
+      "projects": "프로젝트",
+      "blog": "블로그",
+      "contact": "연락"
+    }
   },
   "Home": {
     "title": "김연희",
