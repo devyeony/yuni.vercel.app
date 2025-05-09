@@ -1,21 +1,23 @@
-import type { Project } from "@/.contentlayer/generated";
-import { formatDateRange } from "@/utils/date-utils";
-import Link from "next/link";
 import Image from "next/image";
+import { useLocale } from "next-intl";
+import type { Project } from "@/.contentlayer/generated";
+import { formatDateRange } from "@/utils/date-util";
+import { Link as I18nLink } from '@/i18n/routing';
 
 type Props = {
   project: Project;
 };
 
 export const ProjectArticle: React.FC<Props> = ({ project }) => {
+  const locale = useLocale();
   const tags = project.tags ?? [];
 
   return (
-    <Link href={`/projects/${project.slug}`}>
+    <I18nLink href={`/projects/${project.slug}`}>
       <div className="w-full sm:w-80 md:w-96 lg:w-108 border-2 border-zinc-300 bg-zinc-100 shadow-md rounded-lg duration-500 hover:scale-105 hover:shadow-xl hover:bg-cyan-100">
         <div className="mx-3 mb-3 border-b border-slate-300 pt-3 pb-2 px-1">
           <span className="px-2 py-1 text-sm font-medium bg-purple-200">
-            {formatDateRange(project.startDate, project.endDate)}
+            {formatDateRange(project.startDate, project.endDate, locale)}
           </span>
         </div>
         <div className="max-w-4xl mx-3">
@@ -54,6 +56,6 @@ export const ProjectArticle: React.FC<Props> = ({ project }) => {
           </div>
         </div>
       </div>
-    </Link>
+    </I18nLink>
   );
 };

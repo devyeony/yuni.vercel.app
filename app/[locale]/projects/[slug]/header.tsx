@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { useLocale } from "next-intl";
+import { Link as I18nLink } from '@/i18n/routing';
 import React, { useEffect, useRef, useState } from "react";
-import { formatDateRange } from "@/utils/date-utils";
+import { formatDateRange } from "@/utils/date-util";
 import { ArrowLeft } from "lucide-react";
 
 type Props = {
@@ -68,6 +70,8 @@ export const Header: React.FC<Props> = ({ project }) => {
     : {
         background: "linear-gradient(to top left, black, #333, black)",
       };
+  
+  const locale = useLocale();
 
   return (
     <header
@@ -76,7 +80,7 @@ export const Header: React.FC<Props> = ({ project }) => {
       style={backgroundStyle}
     >
       <div className="absolute top-6 left-6 z-10">
-        <Link
+        <I18nLink
           href="/projects"
           className={`flex items-center justify-center rounded-full border-2 border-white p-2 duration-200 hover:scale-110 ${
             isIntersecting
@@ -85,7 +89,7 @@ export const Header: React.FC<Props> = ({ project }) => {
           }`}
         >
           <ArrowLeft size={40} strokeWidth={3} />
-        </Link>
+        </I18nLink>
       </div>
       <div className="container mx-auto relative isolate overflow-hidden py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center flex flex-col items-center">
@@ -97,7 +101,7 @@ export const Header: React.FC<Props> = ({ project }) => {
             </h1>
             <div className="text-xl font-bold mt-10">
               <span className="bg-white/70 px-1">
-                {formatDateRange(project.startDate, project.endDate)}
+                {formatDateRange(project.startDate, project.endDate, locale)}
               </span>
             </div>
             <p className="mt-4 text-lg leading-8 text-zinc-300 break-words text-center px-6">

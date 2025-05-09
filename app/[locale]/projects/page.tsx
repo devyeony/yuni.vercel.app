@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { useTranslations } from "next-intl";
 import { allProjects } from "contentlayer/generated";
 import { ProjectArticle } from "./article";
 
@@ -30,14 +33,15 @@ const sorted = allProjects
   });
 
 export default async function ProjectsPage() {
+  const t = useTranslations("Projects");
+
   return (
     <div className="p-6">
       <h1 className="text-4xl text-zinc-100 font-mono font-bold inline-flex items-center gap-2">
-        Projects
+        {t("title")}
       </h1>
-      <p className="max-w-3xl sm:max-w-4xl md:max-w-5xl mt-3 mb-14 text-base text-zinc-400 font-mono items-center gap-2">
-        Explore my projects, where I've applied my skills to solve meaningful
-        challenges.
+      <p className="max-w-3xl sm:max-w-4xl md:max-w-5xl mt-3 mb-10 text-base text-zinc-400 font-mono items-center gap-2">
+        {t("description")}
       </p>
       <article className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-2 justify-items-center justify-center gap-y-10 gap-x-10 mt-10 mb-5">
         {sorted.map((project, index) => (
