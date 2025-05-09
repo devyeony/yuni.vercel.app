@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { getLocale } from "next-intl/server";
 import { allProjects } from "contentlayer/generated";
 import { Mdx } from "@/components/mdx";
 import { Header } from "./header";
@@ -6,7 +7,7 @@ import "./mdx.css";
 
 type Props = {
   params: {
-    slug: string;
+    slug: string
   };
 };
 
@@ -14,14 +15,15 @@ export async function generateStaticParams(): Promise<Props["params"][]> {
   return allProjects
     .filter((p) => p.published)
     .map((p) => ({
-      slug: p.slug,
+      slug: p.slug
     }));
 }
 
 export default async function PostPage({ params }: Props) {
-  const slug = params?.slug;
-  const project = allProjects.find((project) => project.slug === slug);
+  const { slug } = params;
+  const locale = await getLocale();
 
+  const project = allProjects.find((project) => project.slug === slug && project.locale === locale);
   if (!project) {
     notFound();
   }

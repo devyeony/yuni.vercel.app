@@ -1,39 +1,40 @@
 "use client";
 
 import React from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { allProjects } from "contentlayer/generated";
 import { ProjectArticle } from "./article";
 
-const compareDates = (dateA?: string, dateB?: string): number => {
-  const aDate = dateA ? new Date(dateA) : new Date(0);
-  const bDate = dateB ? new Date(dateB) : new Date(0);
-  return bDate.getTime() - aDate.getTime();
-};
-
-const sorted = allProjects
-  .filter((p) => p.published)
-  .sort((a, b) => {
-    if (!a.endDate || !b.endDate) {
-      return !a.endDate
-        ? -1
-        : !b.endDate
-        ? 1
-        : compareDates(a.startDate, b.startDate) ||
-          b.title.localeCompare(a.title);
-    }
-
-    const endDateComparison = compareDates(a.endDate, b.endDate);
-    if (endDateComparison !== 0) return endDateComparison;
-
-    const startDateComparison = compareDates(a.startDate, b.startDate);
-    return startDateComparison !== 0
-      ? startDateComparison
-      : b.title.localeCompare(a.title);
-  });
-
-export default async function ProjectsPage() {
+export default function ProjectsPage() {
+  const currentLocale = useLocale();
   const t = useTranslations("Projects");
+
+  const compareDates = (dateA?: string, dateB?: string): number => {
+    const aDate = dateA ? new Date(dateA) : new Date(0);
+    const bDate = dateB ? new Date(dateB) : new Date(0);
+    return bDate.getTime() - aDate.getTime();
+  };
+
+  const sorted = allProjects
+    .filter((p) => p.locale === currentLocale && p.published)
+    .sort((a, b) => {
+      if (!a.endDate || !b.endDate) {
+        return !a.endDate
+          ? -1
+          : !b.endDate
+          ? 1
+          : compareDates(a.startDate, b.startDate) ||
+            b.title.localeCompare(a.title);
+      }
+
+      const endDateComparison = compareDates(a.endDate, b.endDate);
+      if (endDateComparison !== 0) return endDateComparison;
+
+      const startDateComparison = compareDates(a.startDate, b.startDate);
+      return startDateComparison !== 0
+        ? startDateComparison
+        : b.title.localeCompare(a.title);
+    });
 
   return (
     <div className="p-6">
