@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
-import { getMediumPosts } from "@/services/medium-service";
+import { getMediumPosts, getTistoryPosts } from "@/services/rss-service";
 import { socialInfo } from "@/constants/social-info";
 import { formatFullDate } from "@/utils/date-util";
 
@@ -9,56 +9,78 @@ export const revalidate = 3600;
 const BlogPage = async () => {
   const locale = await getLocale();
   const t = await getTranslations("Blog");
-  const posts = await getMediumPosts();
+
+  const posts = locale === "en" ? await getMediumPosts() : await getTistoryPosts();
+  const blogLink = locale === "en" ? socialInfo.medium.link : socialInfo.tistory.link;
 
   return (
-    <div className="p-6">
-      <h1 className="text-4xl text-zinc-100 font-mono font-bold inline-flex items-center gap-2">
-        {t("title")}
-      </h1>
+    <div className="w-full flex justify-center px-4 py-6">
+      <div className="w-full max-w-4xl">
+        <h1 className="text-4xl text-zinc-100 font-mono font-bold inline-flex items-center gap-2">
+          {t("title")}
+        </h1>
 
-      <p className="max-w-3xl mt-3 mb-10 text-base text-zinc-400 font-mono items-center gap-2">
-        {t("description")} {" "}
-        <Link
-          href={socialInfo.medium.link}
-          target="_blank"
-          className="underline underline-offset-4 hover:text-white transition-colors duration-200"
-        >
-          {t("guide")}
-        </Link>
-      </p>
-
-      <div className="max-w-3xl">
-        {posts.map((post, idx) => (
-          <Link key={idx} href={post.link} target="_blank" className="block">
-            <div className="mb-10 bg-zinc-100 border-2 border-zinc-300 rounded-lg shadow-sm transition-all duration-200 hover:border-zinc-100 hover:bg-cyan-100 hover:scale-105">
-              <div className="mx-3 mb-0 border-b border-slate-300 pt-3 pb-2 px-1">
-                <span className="px-2 py-1 text-sm font-medium bg-purple-200">
-                  {formatFullDate(post.pubDate, locale)}
-                </span>
-              </div>
-              <img className="mt-3 px-3 rounded-t-lg" src={post.thumbnail} />
-              <div className="p-5">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight">
-                  {post.title}
-                </h5>
-                <p className="mb-3 font-normal">{post.subtitle}</p>
-              </div>
-            </div>
+        <p className="mt-3 mb-10 text-base text-zinc-400 font-mono">
+          {t("description")}{" "}
+          <Link
+            href={blogLink}
+            target="_blank"
+            className="underline underline-offset-4 hover:text-white transition-colors duration-200"
+          >
+            {t("guide")}
           </Link>
-        ))}
+        </p>
 
-        {posts.length === 5 && (
-          <div className="mt-12 mb-6 text-center">
-            <Link
-              href={socialInfo.medium.link}
-              target="_blank"
-              className="text-2xl text-zinc-100 font-mono bg-black rounded-lg px-20 py-4 transition-all duration-200 hover:bg-purple-200 hover:text-black"
-            >
-              {t("more")} →
+        <div className="grid gap-10">
+          {posts.map((post, idx) => (
+            <Link key={idx} href={post.link} target="_blank" className="block">
+              <div className="bg-zinc-100 border-2 border-zinc-300 rounded-lg shadow-sm transition-all duration-200 hover:border-zinc-100 hover:bg-cyan-100 hover:scale-105">
+                <div className="mx-3 mb-0 border-b border-slate-300 pt-3 pb-2 px-1">
+                  <span className="px-2 py-1 text-sm font-medium bg-purple-200">
+                    {formatFullDate(post.pubDate, locale)}
+                  </span>
+                </div>
+
+                {post.thumbnail ? (
+                  <div className="relative w-full h-0 pb-[56.25%]">
+                    <img
+                      className="absolute top-0 left-0 w-full h-full object-cover rounded-t-lg"
+                      src={post.thumbnail}
+                      alt={post.title}
+                    />
+                  </div>
+                ) : (
+                  <div className="relative w-full h-0 pb-[56.25%] bg-black flex items-center justify-center rounded-t-lg">
+                    <h5 className="text-white text-2xl font-bold text-center absolute inset-0 flex items-center justify-center">
+                      {post.title}
+                    </h5>
+                  </div>
+                )}
+
+                <div className="p-5">
+                  <h5 className="mb-1 text-2xl font-bold tracking-tight">
+                    {post.title}
+                  </h5>
+                  {post.subtitle && (
+                    <p className="mb-1 font-normal">{post.subtitle}</p>
+                  )}
+                </div>
+              </div>
             </Link>
-          </div>
-        )}
+          ))}
+
+          {posts.length === 5 && (
+            <div className="text-center mt-12 mb-6">
+              <Link
+                href={blogLink}
+                target="_blank"
+                className="text-2xl text-zinc-100 font-mono bg-black rounded-lg px-20 py-4 transition-all duration-200 hover:bg-purple-200 hover:text-black"
+              >
+                {t("more")} →
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
