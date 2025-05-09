@@ -51,5 +51,22 @@
       }
     },
     "button": "메세지 전송"
+  },
+  "Messages": {
+    "alert": {
+      "messageSentSuccessfully": "메시지가 성공적으로 전송되었습니다!"
+    },
+    "confirm": {
+      "readyToSendMessage": "메시지를 전송할 준비가 되셨나요?"
+    },
+    "form": {
+      "fillOutThisField": "이 필드를 작성해 주세요."
+    },
+    "error": {
+      "unknown": "예기치 않은 오류가 발생했습니다. 나중에 다시 시도해 주세요.",
+      "failedToSendMessage": "메시지 전송에 실패했습니다. 다시 시도해 주세요.",
+      "captchaInvalid": "캡차 인증에 실패했습니다. 다시 시도해 주세요.",
+      "requestTooManyAttempts": "요청이 너무 많습니다. 나중에 다시 시도해 주세요."
+    }
   }
 }

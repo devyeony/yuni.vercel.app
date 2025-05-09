@@ -51,5 +51,22 @@
       }
     },
     "button": "Send Message"
+  },
+  "Messages": {
+    "alert": {
+      "messageSentSuccessfully": "Message sent successfully!"
+    },
+    "confirm": {
+      "readyToSendMessage": "Ready to send your message?"
+    },
+    "form": {
+      "fillOutThisField": "Fill out this field."
+    },
+    "error": {
+      "unknown": "Unexpected error occurred. Please try again later.",
+      "failedToSendMessage": "Failed to send message. Please try again.",
+      "captchaInvalid": "Captcha verification failed. Please try again.",
+      "requestTooManyAttempts": "Too many requests. Please try again later."
+    }
   }
 }

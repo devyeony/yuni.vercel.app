@@ -1,7 +1,17 @@
 import emailjs from '@emailjs/browser';
 import { EmailData } from '@/types/email';
 
-export const sendEmail = async (emailData: EmailData): Promise<boolean> => {
+export const sendEmail = async (
+  emailData: EmailData,
+  messages: {
+    successMessage: string;
+    errorMessage: string;
+    unknownMessage: string;
+  }
+): Promise<{ success: boolean; message: string }> => {
+  let success = false;
+  let message = messages.unknownMessage;
+
   try {
     const res = await emailjs.send(
       process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
@@ -9,20 +19,23 @@ export const sendEmail = async (emailData: EmailData): Promise<boolean> => {
       {
         name: emailData.name,
         email: emailData.email,
-        message: emailData.message
+        message: emailData.message,
       },
       process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
     );
 
     if (res.status === 200) {
-      console.log("Email sent successfully");
-      return true;
+      success = true;
+      message = messages.successMessage;
     } else {
-      console.error("Error sending email");
-      return false;
+      message = messages.errorMessage;
     }
   } catch (error) {
-    console.error("External API Server Error", error);
-    return false;
+    message = messages.unknownMessage;
   }
+
+  return {
+    success,
+    message,
+  };
 };

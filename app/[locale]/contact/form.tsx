@@ -2,19 +2,27 @@
 
 import { useState } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { ClipLoader } from "react-spinners";
 import InputField from "@/components/input-field";
-import { verifyCaptcha } from "@/services/captcha-service";
+import { verifyHuman } from "@/services/verification-service";
 import { sendEmail } from "@/services/email-service";
 
 const useContactForm = () => {
+  const locale = useLocale();
+
+  const alertT = useTranslations("Messages.alert");
+  const confirmT = useTranslations("Messages.confirm");
+  const errorT = useTranslations("Messages.error");
+
   const { executeRecaptcha } = useGoogleReCaptcha();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (
@@ -29,39 +37,36 @@ const useContactForm = () => {
 
     if (isSubmitting) return;
 
-    const confirmSend = window.confirm("Ready to send your message?");
+    const confirmSend = window.confirm(confirmT("readyToSendMessage"));
     if (!confirmSend) return;
 
     if (!executeRecaptcha) {
-      alert("reCAPTCHA is not ready. Please try again later.");
+      alert(errorT("captchaInvalid"));
       return;
     }
 
     const token = await executeRecaptcha("contact_form");
-    const isHuman = await verifyCaptcha(token);
 
-    if (!isHuman) {
-      alert("reCAPTCHA verification failed. Please try again.");
+    const verifiedResult = await verifyHuman(token, locale);
+    if (!verifiedResult.success) {
+      alert(verifiedResult.message);
       return;
     }
 
     setIsSubmitting(true);
 
-    try {
-      const emailSent = await sendEmail(formData);
+    const emailResult = await sendEmail(formData, {
+      successMessage: alertT("messageSentSuccessfully"),
+      errorMessage: errorT("failedToSendMessage"),
+      unknownMessage: errorT("unknown"),
+    });
 
-      if (emailSent) {
-        alert("Message sent successfully!");
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        alert("Failed to send message. Please try again.");
-      }
-    } catch (error) {
-      console.error(error);
-      alert("Unexpected error occurred. Please try again later.");
-    } finally {
-      setIsSubmitting(false);
+    if (emailResult.success) {
+      setFormData({ name: "", email: "", message: "" });
     }
+
+    alert(emailResult.message);
+    setIsSubmitting(false);
   };
 
   return {
