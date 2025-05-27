@@ -1,4 +1,4 @@
-export const socialInfo = {
+export const contactInfo = {
   linkedin: {
     link: "https://www.linkedin.com/in/yeonhee-hayden-kim/",
   },

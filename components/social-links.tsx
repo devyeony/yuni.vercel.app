@@ -1,25 +1,27 @@
 import Link from "next/link";
-import { Github, LinkedinIcon, PenLine } from "lucide-react";
-import { socialInfo } from "@/constants/social-info";
+import { useContactInfo } from "@/hooks/useContactInfo";
 
 interface SocialLinkProps {
   className?: string;
 }
 
 export const SocialLink: React.FC<SocialLinkProps> = ({ className = "" }) => {
+  const contactInfo = useContactInfo();
+
+  const LinkedinIcon = contactInfo.linkedin.icon;
+  const GithubIcon = contactInfo.github.icon;
+  const BlogIcon = contactInfo.blog.icon;
+
   return (
     <div className={`flex items-center justify-center gap-2 ${className}`}>
-      <Link
-        href={socialInfo.linkedin.link}
-        target="_blank"
-      >
+      <Link href={contactInfo.linkedin.url} target="_blank" rel="noopener noreferrer">
         <LinkedinIcon size={40} />
       </Link>
-      <Link href={socialInfo.github.link} target="_blank">
-        <Github size={40} />
+      <Link href={contactInfo.github.url} target="_blank" rel="noopener noreferrer">
+        <GithubIcon size={40} />
       </Link>
-      <Link href={socialInfo.medium.link} target="_blank">
-        <PenLine size={40} />
+      <Link href={contactInfo.blog.url} target="_blank" rel="noopener noreferrer">
+        <BlogIcon size={40} />
       </Link>
     </div>
   );

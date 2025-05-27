@@ -1,7 +1,7 @@
 import Parser from "rss-parser";
 import { JSDOM } from "jsdom";
 import { Post } from "@/types/post";
-import { socialInfo } from "@/constants/social-info";
+import { contactInfo } from "@/constants/contact-info";
 
 const getRssFeed = async (rssUrl: string) => {
   const parser = new Parser({ 
@@ -14,7 +14,7 @@ const getRssFeed = async (rssUrl: string) => {
 };
 
 export const getMediumPosts = async (limit = 5): Promise<Post[]> => {
-  const feed = await getRssFeed(socialInfo.medium.rss);
+  const feed = await getRssFeed(contactInfo.medium.rss);
   
   return (
     feed.items?.slice(0, limit).map((item) => {
@@ -35,7 +35,7 @@ export const getMediumPosts = async (limit = 5): Promise<Post[]> => {
 };
 
 export const getTistoryPosts = async (limit = 5): Promise<Post[]> => {
-  const feed = await getRssFeed(socialInfo.tistory.rss);
+  const feed = await getRssFeed(contactInfo.tistory.rss);
 
   const filteredItems = feed.items?.filter((item) => {
     const pubDate = item.pubDate ? new Date(item.pubDate) : null;

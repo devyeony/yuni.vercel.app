@@ -21,7 +21,16 @@
   },
   "About": {
     "title": "About Me",
-    "description": ""
+    "headline": "With footsteps as gentle as a kitten’s and curiosity as vast as the universe.",
+    "description": "I’m a software engineer who approaches challenges with calm determination and relentless focus. I believe great code is built not only with logic, but with patience, empathy, and a deep desire to understand what truly matters.",
+    "contact": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "blog": "Blog"
+    },
+    "body": {
+
+    }
   },
   "Projects": {
     "title": "Projects",

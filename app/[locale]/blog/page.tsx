@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 import { getMediumPosts, getTistoryPosts } from "@/services/rss-service";
-import { socialInfo } from "@/constants/social-info";
+import { getBlogLink } from "@/utils/links";
 import { formatFullDate } from "@/utils/date-util";
 
 export const revalidate = 3600;
@@ -11,7 +11,7 @@ const BlogPage = async () => {
   const t = await getTranslations("Blog");
 
   const posts = locale === "en" ? await getMediumPosts() : await getTistoryPosts();
-  const blogLink = locale === "en" ? socialInfo.medium.link : socialInfo.tistory.link;
+  const blogLink = getBlogLink(locale);
 
   return (
     <div className="w-full flex justify-center px-4 py-6">
