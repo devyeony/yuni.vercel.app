@@ -25,7 +25,7 @@ const BlogPage = async () => {
           <Link
             href={blogLink}
             target="_blank"
-            className="underline underline-offset-4 hover:text-white transition-colors duration-200"
+            className="underline underline-offset-4 text-purple-300 hover:text-purple-500 transition-colors duration-200"
           >
             {t("guide")}
           </Link>
