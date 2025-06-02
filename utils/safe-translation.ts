@@ -9,7 +9,7 @@ export function useSafeRawHtml(
   const t = useTranslations(namespace);
 
   const defaultOptions: sanitizeHtml.IOptions = {
-    allowedTags: ["i", "b", "em", "strong", "br"],
+    allowedTags: ["i", "b", "u", "em", "strong", "br"],
     allowedAttributes: {},
     ...options,
   };

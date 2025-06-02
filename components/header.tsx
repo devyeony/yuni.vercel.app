@@ -78,19 +78,39 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
         {menuOpen && (
           <div className="sm:hidden bg-zinc-900 border-t border-zinc-800">
             <div className="flex flex-col items-center gap-4 p-6 text-center">
-              <I18nLink href="/" className={linkClasses("/")}>
+              <I18nLink
+                href="/"
+                className={linkClasses("/")}
+                onClick={() => setMenuOpen(false)}
+              >
                 <Home size={20} />
               </I18nLink>
-              <I18nLink href="/about" className={linkClasses("/about")}>
+              <I18nLink
+                href="/about"
+                className={linkClasses("/about")}
+                onClick={() => setMenuOpen(false)}
+              >
                 {t("about")}
               </I18nLink>
-              <I18nLink href="/projects" className={linkClasses("/projects")}>
+              <I18nLink
+                href="/projects"
+                className={linkClasses("/projects")}
+                onClick={() => setMenuOpen(false)}
+              >
                 {t("projects")}
               </I18nLink>
-              <I18nLink href="/blog" className={linkClasses("/blog")}>
+              <I18nLink
+                href="/blog"
+                className={linkClasses("/blog")}
+                onClick={() => setMenuOpen(false)}
+              >
                 {t("blog")}
               </I18nLink>
-              <I18nLink href="/contact" className={linkClasses("/contact")}>
+              <I18nLink
+                href="/contact"
+                className={linkClasses("/contact")}
+                onClick={() => setMenuOpen(false)}
+              >
                 {t("contact")}
               </I18nLink>
               <LocaleSwitcher />
