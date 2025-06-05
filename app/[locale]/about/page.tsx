@@ -85,11 +85,16 @@ export default function About() {
                   __html: useSafeRawHtml("About", "body.line4"),
                 }}
               />
+              <li
+                dangerouslySetInnerHTML={{
+                  __html: useSafeRawHtml("About", "body.line5"),
+                }}
+              />
             </ul>
           </div>
 
           <div className="flex flex-col items-center rounded bg-purple-100/80 text-xl leading-8 text-gray-800 px-10 py-6 mt-12 mx-auto">
-            <h2 className="font-mono font-bold text-2xl underline">
+            <h2 className="font-mono font-bold text-2xl">
               {t("publications.title")}
             </h2>
             <ul className="list-disc list-inside space-y-1 mt-2">
@@ -133,7 +138,7 @@ export default function About() {
           </div>
 
           <div className="flex flex-col items-center rounded bg-purple-100/80 text-xl leading-8 text-gray-800 px-10 py-6 mt-6 mx-auto">
-            <h2 className="font-mono font-bold text-2xl underline">
+            <h2 className="font-mono font-bold text-2xl">
               {t("presentations.title")}
             </h2>
             <ul className="list-disc list-inside space-y-1 mt-2">
@@ -177,7 +182,7 @@ export default function About() {
           </div>
 
           <div className="flex flex-col items-center rounded bg-purple-100/80 text-xl leading-8 text-gray-800 px-10 py-6 mt-6 mx-auto">
-            <h2 className="font-mono font-bold text-2xl underline">
+            <h2 className="font-mono font-bold text-2xl">
               {t("community.title")}
             </h2>
             <ul className="list-disc list-inside space-y-1 mt-2">

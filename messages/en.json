@@ -29,22 +29,23 @@
       "blog": "Blog"
     },
     "body": {
-      "line1": "<b>Primarily focused on backend development</b> using <b>Java</b> and <b>Spring</b>, I have specialised in <b>API design</b>, <b>system architecture</b>, and <b>developing internal tools</b>.",
-      "line2": "I also have a strong interest in <b>frontend development</b>, having participated in <b>UI projects</b> using <b>TypeScript</b> and <b>React.js</b>, leading <b>full-stack initiatives</b>.",
-      "line3": "Working within <b>cross-functional teams</b>, I have collaborated closely with <b>developers, PMs, designers, and marketers</b>—<b>leading planning meetings</b>, <b>proposing improvements</b>, and actively <b>sharing service feedback</b>. I also contributed to <b>continuous post-launch monitoring</b> to enhance <b>service quality</b>.",
-      "line4": "<b>For one year from March 2024</b>, I lived in <b>Dublin, Ireland</b> for language studies, where I gained valuable experience <b>communicating and collaborating with people from diverse cultural backgrounds</b>, fostering <b>an open mindset</b> and <b>strong communication skills</b>."
+      "line1": "I have hands-on experience in <b>pet healthcare</b> and <b>fintech (insurtech)</b> start-ups, where I developed <b>scalable back-end systems</b> and collaborated with <b>cross-functional teams</b> to deliver <b>user-centred solutions</b>.",
+      "line2": "Before becoming a developer, I worked as a <b>primary school teacher</b>, which provided me with strong domain expertise in <b>edtech</b> and a deep understanding of learner needs.",
+      "line3": "My main focus is back-end development using <b>Java</b> and <b>Spring</b>, with a particular interest in <b>API design</b>, <b>system architecture</b>, and building <b>internal tools</b>. I also enjoy front-end development and have contributed to projects using <b>TypeScript</b> and <b>React.js</b>, often taking on <b>full-stack responsibilities</b>.",
+      "line4": "Within <b>agile teams</b>, I’ve worked closely with engineers, product managers, designers, and marketers—<b>facilitating planning meetings</b>, <b>proposing improvements</b>, and <b>sharing ongoing feedback</b> to enhance product quality. I also supported <b>post-launch monitoring and iteration</b>.",
+      "line5": "From March 2024, I spent a year in <b>Dublin, Ireland</b> studying English. This experience strengthened my <b>communication skills</b> and fostered an <b>open mindset</b> through working with individuals from <b>diverse cultural backgrounds</b>."
     },
     "publications": {
-      "title": "Publications",
+      "title": "📚 Publications",
       "line1": {
-        "content": "<b>Co-translator</b> of <i>“How to Learn to Code and Get a Developer Job”</i> (2023) – Volunteered with freeCodeCamp Korea alongside 12 team members",
+        "content": "<b>Co-translator</b> of <i>“How to Learn to Code and Get a Developer Job”</i> (2023) – Volunteered with <b>freeCodeCamp Korea</b> to help translate the book as part of a 12-member team",
         "link": {
           "url": "https://www.freecodecamp.org/korean/news/learn-to-code-book/",
           "text": "View Book"
         }
       },
       "line2": {
-        "content": "<b>Volunteer translator</b> (2022) – Translated Python articles for freeCodeCamp to make learning accessible to Korean learners",
+        "content": "<b>Volunteer translator</b> at <b>freeCodeCamp</b> (2022) – Translated Python tutorials to support Korean-speaking learners",
         "link": {
           "url": "https://www.freecodecamp.org/korean/news/author/yeonhee",
           "text": "Read Articles"
@@ -52,7 +53,7 @@
       }
     },
     "presentations": {
-      "title": "Presentations",
+      "title": "🎤 Presentations",
       "line1": {
         "content": "<b>Speaker</b> at <b>GDG (Google Developers Group) Songdo DevFest</b> (2023) – Presented on <i>“Improving Server Log Management for Junior Developers”</i>",
         "link": {
@@ -69,11 +70,11 @@
       }
     },
     "community": {
-      "title": "Community Involvement",
-      "line1": "<b>Board Member</b> at <b>Girls in Tech Korea</b> (2023–2024) – Led tech seminars and training programmes, including mentoring and interactive sessions, in partnership with AWS Korea, EA Korea, and Trend Micro",
-      "line2": "<b>Evaluator</b> at <b>the SW Gifted Creation Competition</b> (2023), hosted by <b>the Ministry of Science and ICT</b> – Assessed primary school division projects",
+      "title": "🤝 Community Involvement & External Engagement",
+      "line1": "<b>Board Member</b> at <b>Girls in Tech Korea</b> (2023–2024) – Led tech seminars and mentorship programs in partnership with AWS Korea, EA Korea, and Trend Micro",
+      "line2": "<b>Evaluator</b> at <b>SW Gifted Creation Competition</b> (2023), hosted by <b>the Ministry of Science and ICT</b> – Assessed primary school division projects",
       "line3": "<b>Candidate Assessor</b> at <b>DAY 1 COMPANY</b> (2022–2023) – Reviewed bootcamp applications and interviews as an external assessor",
-      "line4": "<b>Bootcamp Mentor</b> at <b>Code States</b> (2022) – Guided mentees with projects and career coaching"
+      "line4": "<b>Bootcamp Mentor</b> at <b>Code States</b> (2022) – Guided mentees with technical projects and career coaching"
     }
   },
   "Projects": {
