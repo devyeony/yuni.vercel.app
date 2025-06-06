@@ -63,7 +63,7 @@ export const Header: React.FC<Props> = ({ project }) => {
 
   const backgroundStyle = project.thumbnail
     ? {
-        backgroundImage: `url(/images/projects/thumbnail/${project.thumbnail})`,
+        backgroundImage: `url(/images/projects/${project.thumbnail})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }
