@@ -2,13 +2,21 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useMDXComponent } from "next-contentlayer/hooks";
-import ImageSlider from "@/components/image-slider";
-import YouTubeEmbed from "@/components/youtube-embed";
+
+const ImageSlider = dynamic(() => import("@/components/image-slider"), {
+  ssr: false,
+});
+
+const YouTubeEmbed = dynamic(() => import("@/components/youtube-embed"), {
+  ssr: false,
+});
 
 function clsx(...args: any) {
 	return args.filter(Boolean).join(" ");
 }
+
 const components = {
 	h1: ({ className, ...props }) => (
 		<h1
