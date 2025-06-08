@@ -40,6 +40,10 @@ export const Project = defineDocumentType(() => ({
     thumbnail: {
       type: "string",
     },
+    weight : {
+      type: "number",
+      required: true,
+    },
     startDate: {
       type: "date",
       required: true,

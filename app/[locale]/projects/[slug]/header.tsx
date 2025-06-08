@@ -26,28 +26,28 @@ export const Header: React.FC<Props> = ({ project }) => {
   const [isIntersecting, setIntersecting] = useState(true);
 
   const links: { label: string; href: string }[] = [];
-  if (project.repository) {
-    links.push({
-      label: "GitHub",
-      href: `https://github.com/${project.repository}`,
-    });
-  }
   if (project.url) {
     links.push({
       label: "Website",
       href: project.url,
     });
   }
-  if (project.demo) {
+  if (project.repository) {
     links.push({
-      label: "Demo",
-      href: project.demo,
+      label: "GitHub",
+      href: `https://github.com/${project.repository}`,
     });
   }
   if (project.presentation) {
     links.push({
       label: "Presentation",
       href: project.presentation,
+    });
+  }
+  if (project.demo) {
+    links.push({
+      label: "Demo",
+      href: project.demo,
     });
   }
 
@@ -63,7 +63,7 @@ export const Header: React.FC<Props> = ({ project }) => {
 
   const backgroundStyle = project.thumbnail
     ? {
-        backgroundImage: `url(/images/projects/thumbnail/${project.thumbnail})`,
+        backgroundImage: `url(/images/projects/${project.thumbnail})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }
@@ -79,7 +79,7 @@ export const Header: React.FC<Props> = ({ project }) => {
       className="relative isolate overflow-hidden"
       style={backgroundStyle}
     >
-      <div className="absolute top-6 left-6 z-10">
+      <div className="absolute top-6 left-6 z-10 rounded-full bg-green-300/80">
         <I18nLink
           href="/projects"
           className={`flex items-center justify-center rounded-full border-2 border-white p-2 duration-200 hover:scale-110 ${
@@ -115,20 +115,22 @@ export const Header: React.FC<Props> = ({ project }) => {
             </p>
           </div>
 
-          <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
-            <div className="grid grid-cols-1 gap-y-6 gap-x-8 text-base font-semibold leading-7 sm:grid-cols-2 md:flex lg:gap-x-10">
-              {links.map((link) => (
-                <div
-                  key={link.label}
-                  className="font-mono bg-black text-white border-2 px-2 hover:bg-purple-200 hover:text-black hover:border-black rounded-sm"
-                >
-                  <Link target="_blank" href={link.href}>
-                    {link.label} <span aria-hidden="true">&rarr;</span>
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
+          {links.length > 0 && (
+  <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
+    <div className="grid grid-cols-1 gap-y-6 gap-x-8 text-base font-semibold leading-7 sm:grid-cols-2 md:flex lg:gap-x-10">
+      {links.map((link) => (
+        <div
+          key={link.label}
+          className="font-mono bg-black text-white border-2 px-2 hover:bg-purple-200 hover:text-black hover:border-black rounded-sm"
+        >
+          <Link target="_blank" href={link.href}>
+            {link.label} <span aria-hidden="true">&rarr;</span>
+          </Link>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
         </div>
       </div>
     </header>

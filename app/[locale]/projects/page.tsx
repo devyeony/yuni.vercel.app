@@ -18,6 +18,10 @@ export default function ProjectsPage() {
   const sorted = allProjects
     .filter((p) => p.locale === currentLocale && p.published)
     .sort((a, b) => {
+      const weightA = a.weight ?? 0;
+      const weightB = b.weight ?? 0;
+      if (weightA !== weightB) return weightB - weightA;
+
       if (!a.endDate || !b.endDate) {
         return !a.endDate
           ? -1

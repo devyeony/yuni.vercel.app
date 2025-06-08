@@ -39,6 +39,10 @@ export const formatDateRange = (
   const startDate = formatMonthYear(startDateString, locale);
   const endDate = endDateString ? formatMonthYear(endDateString, locale) : getNowText(locale);
 
+  if (startDate === endDate) {
+    return startDate;
+  }
+
   return `${startDate} - ${endDate}`;
 };
 

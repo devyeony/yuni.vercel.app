@@ -3,6 +3,8 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useMDXComponent } from "next-contentlayer/hooks";
+import ImageSlider from "@/components/image-slider";
+import YouTubeEmbed from "@/components/youtube-embed";
 
 function clsx(...args: any) {
 	return args.filter(Boolean).join(" ");
@@ -161,6 +163,8 @@ const components = {
 		/>
 	),
 	Image,
+	ImageSlider,
+	YouTubeEmbed,
 };
 
 interface MdxProps {

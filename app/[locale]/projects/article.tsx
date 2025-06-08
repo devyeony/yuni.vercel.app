@@ -23,7 +23,7 @@ export const ProjectArticle: React.FC<Props> = ({ project }) => {
         <div className="max-w-4xl mx-3">
           {project.thumbnail ? (
             <Image
-              src={`/images/projects/thumbnail/${project.thumbnail}`}
+              src={`/images/projects/${project.thumbnail}`}
               alt="Project Thumbnail Image"
               className="w-full h-72 object-cover"
               width={600}
