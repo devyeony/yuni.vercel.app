@@ -39,7 +39,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "out/types/**/*.ts"
-, "utils"  ],
+, "utils", "components/mdx/image-slder-wrapper"  ],
   "exclude": [
     "node_modules"
   ]
