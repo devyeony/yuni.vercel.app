@@ -79,7 +79,7 @@ export const Header: React.FC<Props> = ({ project }) => {
       className="relative isolate overflow-hidden"
       style={backgroundStyle}
     >
-      <div className="absolute top-6 left-6 z-10">
+      <div className="absolute top-6 left-6 z-10 rounded-full bg-green-300/80">
         <I18nLink
           href="/projects"
           className={`flex items-center justify-center rounded-full border-2 border-white p-2 duration-200 hover:scale-110 ${
