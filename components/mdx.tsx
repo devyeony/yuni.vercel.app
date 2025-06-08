@@ -1,19 +1,9 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import { useMDXComponent } from "next-contentlayer/hooks";
-
-const ImageSliderWrapper = dynamic(() => import("@/components/image-slider-wrapper"), {
-  ssr: false,
-});
-
-const YoutubeEmbedWrapper = dynamic(
-  () => import("@/components/youtube-embed-wrapper"),
-  {
-    ssr: false,
-  }
-);
+import ImageSlider from "@/components/image-slider";
+import YoutubeEmbed from "@/components/youtube-embed";
 
 function clsx(...args: any) {
   return args.filter(Boolean).join(" ");
@@ -199,8 +189,8 @@ const components = {
     />
   ),
   Image,
-  ImageSlider: ImageSliderWrapper,
-  YoutubeEmbed: YoutubeEmbedWrapper,
+  ImageSlider,
+  YoutubeEmbed,
 };
 
 interface MdxProps {
