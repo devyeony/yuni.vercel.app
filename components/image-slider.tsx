@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
-interface ImageSliderProps {
+export interface ImageSliderProps {
   images: string[];
   alt?: string;
   autoPlayInterval?: number;

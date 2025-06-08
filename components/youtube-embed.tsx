@@ -2,11 +2,11 @@
 
 import React from 'react'
 
-interface YouTubeEmbedProps {
+export interface YoutubeEmbedProps {
   videoId: string
 }
 
-const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({ videoId }) => {
+const YoutubeEmbed: React.FC<YoutubeEmbedProps> = ({ videoId }) => {
   return (
     <div className="relative w-full pb-[56.25%] h-0">
       <iframe
@@ -21,4 +21,4 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({ videoId }) => {
   )
 }
 
-export default YouTubeEmbed
+export default YoutubeEmbed

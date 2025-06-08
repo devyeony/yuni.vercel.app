@@ -1,17 +1,15 @@
-"use client";
-
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useMDXComponent } from "next-contentlayer/hooks";
 
-const ImageSlider = dynamic(() => import("@/components/image-slider"), {
+const ImageSliderWrapper = dynamic(() => import("@/components/image-slider-wrapper"), {
   ssr: false,
 });
 
-const YouTubeEmbed = dynamic(
-  () => import("@/components/youtube-embed"),
+const YoutubeEmbedWrapper = dynamic(
+  () => import("@/components/youtube-embed-wrapper"),
   {
     ssr: false,
   }
@@ -201,8 +199,8 @@ const components = {
     />
   ),
   Image,
-  ImageSlider,
-  YouTubeEmbed,
+  ImageSlider: ImageSliderWrapper,
+  YoutubeEmbed: YoutubeEmbedWrapper,
 };
 
 interface MdxProps {
