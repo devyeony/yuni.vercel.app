@@ -38,7 +38,7 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
         className={`fixed inset-x-0 top-0 z-50 backdrop-blur duration-200 border-b ${
           isIntersecting
             ? "bg-zinc-900/0 border-transparent"
-            : "bg-zinc-900/500 border-zinc-800"
+            : "bg-black/60 border-zinc-800"
         }`}
       >
         <div className="container mx-auto flex items-center justify-between p-4 max-w-screen-lg">
@@ -76,7 +76,7 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
 
         {/* Mobile */}
         {menuOpen && (
-          <div className="sm:hidden bg-zinc-900 border-t border-zinc-800">
+          <div className="sm:hidden bg-black/40 border-t border-zinc-800">
             <div className="flex flex-col items-center gap-4 p-6 text-center">
               <I18nLink
                 href="/"

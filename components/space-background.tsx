@@ -67,19 +67,18 @@ export default function SpaceBackground({
         star.opacityDirection *= -1;
       }
 
-      ctx.save(); // 상태 저장
+      ctx.save();
 
       ctx.beginPath();
       ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
 
-      // 별의 광채 효과
       ctx.shadowBlur = 8;
       ctx.shadowColor = `rgba(255, 255, 180, ${star.baseOpacity})`;
 
       ctx.fillStyle = `rgba(255, 255, 180, ${star.baseOpacity})`;
       ctx.fill();
 
-      ctx.restore(); // 상태 복원
+      ctx.restore();
     });
   };
 
