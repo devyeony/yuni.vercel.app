@@ -72,7 +72,7 @@ const components = {
     href ? (
       <Link
         className={clsx(
-          "font-medium text-zinc-900 underline underline-offset-4",
+          "text-xl font-medium text-zinc-900 underline underline-offset-4",
           className
         )}
         href={href}
@@ -81,7 +81,7 @@ const components = {
     ) : (
       <span
         className={clsx(
-          "font-medium text-zinc-900 underline underline-offset-4",
+          "text-xl font-medium text-zinc-900 underline underline-offset-4",
           className
         )}
         {...props}
@@ -89,18 +89,18 @@ const components = {
     ),
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p
-      className={clsx("leading-7 [&:not(:first-child)]:mt-6", className)}
+      className={clsx("text-xl leading-7 [&:not(:first-child)]:mt-6", className)}
       {...props}
     />
   ),
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className={clsx("my-6 ml-6 list-disc", className)} {...props} />
+    <ul className={clsx("text-xl my-6 ml-6 list-disc", className)} {...props} />
   ),
   ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className={clsx("my-6 ml-6 list-decimal", className)} {...props} />
+    <ol className={clsx("text-xl my-6 ml-6 list-decimal", className)} {...props} />
   ),
   li: ({ className, ...props }: React.LiHTMLAttributes<HTMLLIElement>) => (
-    <li className={clsx("mt-2", className)} {...props} />
+    <li className={clsx("text-xl mt-2", className)} {...props} />
   ),
   blockquote: ({
     className,
@@ -108,7 +108,7 @@ const components = {
   }: React.BlockquoteHTMLAttributes<HTMLElement>) => (
     <blockquote
       className={clsx(
-        "mt-6 border-l-2 border-zinc-300 pl-6 italic text-zinc-800 [&>*]:text-zinc-600",
+        "text-xl mt-6 border-l-2 border-zinc-300 pl-6 italic text-zinc-800 [&>*]:text-zinc-600",
         className
       )}
       {...props}
