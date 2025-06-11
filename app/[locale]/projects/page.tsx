@@ -41,7 +41,7 @@ export default function ProjectsPage() {
     });
 
   return (
-    <div className="p-6">
+    <div className="mt-10 p-6">
       <h1 className="text-4xl text-zinc-100 font-mono font-bold inline-flex items-center gap-2">
         {t("title")}
       </h1>

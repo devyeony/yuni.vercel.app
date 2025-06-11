@@ -19,9 +19,10 @@ type Props = {
     repository?: string;
     thumbnail?: string;
   };
+  className?: string;
 };
 
-export const Header: React.FC<Props> = ({ project }) => {
+export const Header: React.FC<Props> = ({ project, className }) => {
   const ref = useRef<HTMLElement>(null);
   const [isIntersecting, setIntersecting] = useState(true);
 
@@ -76,7 +77,7 @@ export const Header: React.FC<Props> = ({ project }) => {
   return (
     <header
       ref={ref}
-      className="relative isolate overflow-hidden"
+      className={`relative isolate overflow-hidden ${className ?? ""}`}
       style={backgroundStyle}
     >
       <div className="absolute w-10 h-10 sm:w-14 sm:h-14 top-6 left-6 z-10 rounded-full bg-black/80">
@@ -99,12 +100,12 @@ export const Header: React.FC<Props> = ({ project }) => {
                 {project.title}
               </span>
             </h1>
-            <div className="text-xl font-bold mt-6">
+            <div className="text-xl font-bold mt-4">
               <span className="bg-white/70 px-1">
                 {formatDateRange(project.startDate, project.endDate, locale)}
               </span>
             </div>
-            <p className="mt-4 text-lg leading-8 text-zinc-300 break-words text-center px-6">
+            <p className="mt-3 text-lg leading-8 text-zinc-300 break-words text-center px-6">
               <span
                 style={{
                   textShadow: `2px 2px 0 rgba(0, 0, 0, 0.7), -1px -1px 0 rgba(0, 0, 0, 0.7), 1px -1px 0 rgba(0, 0, 0, 0.7), -1px 1px 0 rgba(0, 0, 0, 0.7), 1px 1px 0 rgba(0, 0, 0, 0.7)`,
@@ -116,8 +117,8 @@ export const Header: React.FC<Props> = ({ project }) => {
           </div>
 
           {links.length > 0 && (
-            <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
-              <div className="grid grid-cols-1 gap-y-6 gap-x-8 text-base font-semibold leading-7 sm:grid-cols-2 md:flex lg:gap-x-10">
+            <div className="mx-auto mt-5 max-w-2xl lg:mx-0 lg:max-w-none">
+              <div className="grid grid-cols-1 gap-y-3 gap-x-8 text-base font-semibold leading-7 sm:grid-cols-2 md:flex lg:gap-x-10">
                 {links.map((link) => (
                   <div
                     key={link.label}

@@ -94,13 +94,13 @@ const components = {
     />
   ),
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className={clsx("text-xl my-6 ml-6 list-disc", className)} {...props} />
+    <ul className={clsx("text-xl my-6 ml-2 list-disc", className)} {...props} />
   ),
   ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className={clsx("text-xl my-6 ml-6 list-decimal", className)} {...props} />
+    <ol className={clsx("text-xl my-6 ml-2 list-decimal", className)} {...props} />
   ),
   li: ({ className, ...props }: React.LiHTMLAttributes<HTMLLIElement>) => (
-    <li className={clsx("text-xl mt-2", className)} {...props} />
+    <li className={clsx("text-xl mt-2 -ml-2", className)} {...props} />
   ),
   blockquote: ({
     className,
