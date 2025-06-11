@@ -1,7 +1,7 @@
 ---
 published: true
 title: Personal Website
-description: Unkey is an open source API Key management solution. It allows you to create, manage and validate API Keys for your users. It’s built with security and speed in mind.
+description: A personal developer portfolio website with multilingual support, presenting my development philosophy, career experience, and key projects
 thumbnail: personal-website/logo.png
 weight: 4
 startDate: 2025-04
@@ -20,30 +20,60 @@ tags:
 ---
 
 ## 📌 Project Name
-- Personal Website
+- **Personal Website**
 
 ## 📋 Project Summary
-- 
+- A **multilingual portfolio website** that presents my **philosophy as a developer**, showcases **key projects**, and supports both **English** and **Korean**.
+- A **full-stack project** solely undertaken from planning and design to frontend/backend development, content structuring, and deployment.
 
 ## 📅 Duration
-- April 2025 – Jun 2025
+- April 2025 – June 2025
 
 ## 🛠 Tech Stack
-- TypeScript
-- React
-- Next.js
-- Tailwind CSS
-- Contentlayer
-- next-intl
+- **Frontend**: React, Next.js, TypeScript  
+- **Backend (Serverless)**: Next.js API Routes  
+- **Styling**: Tailwind CSS  
+- **Content Management**: Contentlayer (MDX-based)  
+- **Internationalisation (i18n)**: next-intl  
+- **Deployment & Hosting**: Vercel
 
 ## 👤 Role & Contributions
-- 
+- Solely responsible for the **planning**, **design**, **development**, and **deployment** of the **personal website**  
+- Designed the **project and blog content structure** and implemented **automated content generation**  
+- Developed **multilingual support** and **secure contact form features**, with a focus on **user experience**
 
 ## ✨ Key Features
-- 
+- **Home**: A landing page with an introductory quote and description  
+- **About**: Overview of my developer philosophy, experience, and career journey  
+- **Projects**: Project listings and details, managed using MDX and Contentlayer  
+- **Blog**: Displays latest posts automatically synced from Medium (English) and Tistory (Korean) depending on language  
+- **Contact**: Secure and user-friendly contact form powered by Google reCAPTCHA v3, Rate Limiting, and EmailJS
 
 ## 🚀 Technical Highlights
-- 
+- **Multilingual & SEO Optimisation**  
+  - Managed UI strings with next-intl JSON files per language  
+  - Integrated with Next.js i18n routing to enable SEO-friendly multilingual URLs  
+
+- **Multilingual MDX Content Management**  
+  - Created separate MDX files for English and Korean versions of each content  
+  - Connected Contentlayer with Next.js i18n routing for automatic static page generation based on user language  
+  - Separated UI text and content for better maintainability and scalability
+
+- **Multilingual Blog Feed Integration**  
+  - Enhanced content update convenience by automatically fetching latest posts via RSS feeds  
+  - Parsed and formatted different RSS formats from Medium (English) and Tistory (Korean) to accurately display language-appropriate blog entries
+
+- **Static Content Automation**  
+  - Managed content statically with MDX and Contentlayer, optimised for build-time reflection and better performance
+
+- **Contact Form Security & UX**  
+  - Applied Google reCAPTCHA v3 and Rate Limiting to prevent spam and bot abuse  
+  - Integrated EmailJS to enable real-time email delivery for improved user experience and security
+
+- **Deployment Environment Optimisation**  
+  - Deployed seamlessly using Vercel with stable support for serverless APIs and static pages  
+  - Set up CI/CD pipeline for automated deployment and streamlined development workflow
 
 ## 🔗 Links
 - <a href="https://yuni.vercel.app" target="_blank">Visit Website</a>
+- <a href="https://github.com/devyeony/yuni.vercel.app" target="_blank">View GitHub Repository</a>
