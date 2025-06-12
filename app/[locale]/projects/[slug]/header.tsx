@@ -95,24 +95,18 @@ export const Header: React.FC<Props> = ({ project, className }) => {
       <div className="container mx-auto relative isolate overflow-hidden py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center flex flex-col items-center">
           <div className="mx-auto max-w-2xl lg:mx-0">
-            <h1 className="mx-auto sm:max-w-xl text-2xl font-bold text-white sm:text-6xl font-display text-shadow-md leading-snug break-words">
-              <span className="inline-block bg-black/70 border-8 px-4 py-2">
+            <h1 className="mx-auto sm:max-w-xl text-4xl font-bold text-white sm:text-6xl font-display text-shadow-md leading-snug break-words">
+              <span className="inline-block bg-black/70 border-8 px-4 pt-4 pb-6">
                 {project.title}
               </span>
             </h1>
             <div className="text-xl font-bold mt-4">
-              <span className="bg-white/70 px-1">
+              <span className="bg-white/70 px-2 py-1">
                 {formatDateRange(project.startDate, project.endDate, locale)}
               </span>
             </div>
-            <p className="mt-3 text-lg leading-8 text-zinc-300 break-words text-center px-6">
-              <span
-                style={{
-                  textShadow: `2px 2px 0 rgba(0, 0, 0, 0.7), -1px -1px 0 rgba(0, 0, 0, 0.7), 1px -1px 0 rgba(0, 0, 0, 0.7), -1px 1px 0 rgba(0, 0, 0, 0.7), 1px 1px 0 rgba(0, 0, 0, 0.7)`,
-                }}
-              >
-                {project.description}
-              </span>
+            <p className="mx-8 mt-4 px-2 py-2 text-xl leading-8 font-semibold bg-gray-800/90 text-zinc-300 break-words text-center">
+              {project.description}
             </p>
           </div>
 
