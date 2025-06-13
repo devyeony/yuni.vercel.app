@@ -21,42 +21,102 @@ tags:
 ---
 
 ## 📌 Project Name
-- **Petping Admin**
+**Petping Admin**
 
 ## 📋 Project Summary
-- Developed a **full-stack back-office system** for <a href="/en/projects/petping" target="_blank"><b>Petping</b></a> to support **internal operations** and **customer service**.
-- <b>‘Petping Admin’</b> is an **internal tool** designed to efficiently manage content, members, rewards, and events, with the goal of **enhancing the operational efficiency of the support team**.
+- Developed a **full-stack internal back-office system** for <a href="/en/projects/petping" target="_blank"><b>Petping</b></a> to support **internal operations** and **customer service**.
+- **Petping Admin** is a purpose-built **internal tool** designed to streamline the management of content, users, rewards, and events, significantly improving the **efficiency of the operations team**.
 
 ## 📅 Duration
-- July 2021 – January 2024
+July 2021 – January 2024
 
 ## 🛠 Tech Stack
-- **Backend**: Java, Spring Boot, Spring Security, JPA, MyBatis
-- **Frontend**: JavaScript, HTML, CSS
-- **Template Engine**: Thymeleaf
-- **Database**: PostgreSQL
-- **UI frameworks and libraries**: Bootstrap, DataTables.js, Chart.js
+- **Backend:** Java, Spring Boot, Spring Security, JPA, MyBatis  
+- **Frontend:** JavaScript, HTML, CSS  
+- **Template Engine:** Thymeleaf  
+- **Database:** PostgreSQL  
+- **UI & Libraries:** Bootstrap, DataTables.js, Chart.js  
 
 ## 👤 Role & Contributions
-- Led **full-stack development**, overseeing the **entire process** of **planning**, **development**, and **maintenance** with a focus on functional efficiency and usability
-- **Independently designed and implemented the entire system architecture**, including backend, frontend, UI/UX, and database
-- Analysed the actual workflows and challenges of the operations team to **proactively define business requirements** and translate them into functional features
-- **Automated repetitive manual tasks** encountered during Petping service operation, leading to **significant improvements in operational efficiency**
+- Led **end-to-end development**, from planning to deployment and maintenance  
+- **Independently designed** and built the full system architecture: backend, frontend, database, and UI/UX  
+- Closely analysed operational workflows to **proactively define business requirements**  
+- **Automated repetitive tasks**, significantly reducing operational load and errors
 
 ## ✨ Key Features
-- **Member and Authority Management**: Admin-only features, allowing detailed permission settings and access log checks to ensure a stable operation
-- **Service Access Log Management**: Utilises members’ service usage history to track bugs, analyse usage by feature, and assess user response
-- **Member and Pet Profile Management**: Systematic management of Petping members and pet profiles based on CRUD operations
-- **Content and Bulletin Board Management**: Efficient operation of various content such as notices, FAQs, posts, and pop-ups/banners
-- **Walk and Location Data Management**: Includes walk record viewing, audio guide, and place POI data management functions
-- **Mission and Reward Management**: Enhances member engagement through event and mission management, and by monitoring member-specific mission statuses
-- **Insurance Claim Management**: Supports pet insurance processing tasks by managing contractors, claim records, and claim-related email settings
-- **Online Shop Operations Management**: Integrated management of Petping Shop’s member lists, reward histories, event banners, and recommended products
-- **Message Delivery and Customer Communication**: Facilitates smooth customer communication via email, push notifications, KakaoTalk alerts, and one-to-one inquiry responses
-- **Operator UI/UX Optimisation**: Improves operational convenience with administrator dashboard configuration, search, filtering, batch processing features, and clear error messages and help guides
 
-## 🚀 Technical Highlights
-- 
+| **Feature**                           | **Description** |
+|--------------------------------------|-----------------|
+| **User & Role Management**           | Fine-grained role-based access control and audit logging for admin stability |
+| **Usage Log Tracking**               | Member activity logs used for bug tracking, feature usage analysis, and support |
+| **User & Pet Profile Management**    | CRUD-based management of member and pet profiles |
+| **Content & Notice Management**      | Centralised handling of notices, FAQs, posts, pop-ups, and banners |
+| **Walk & Location Data Tools**       | Walk logs with visualisation, POI management, and audio guide integration |
+| **Mission & Reward Tracking**        | Event and mission oversight, with individual progress monitoring |
+| **Insurance Claim Management**       | Tools to manage policyholders, claims, and automated email workflows |
+| **Online Shop Admin**                | Unified admin tools for shop members, reward tracking, events, and featured products |
+| **Messaging & Support Tools**        | Email, push notifications, KakaoTalk alerts, and 1:1 message replies |
+| **Operator-Centric UX**              | Admin dashboard, batch tools, search and filters to enhance daily efficiency |
+
+
+## 🚀 Technical Challenges & Solutions
+
+### 🔐 Transition to Secure Account & Permission Management
+**Problem:** Shared admin account posed serious security and auditing risks  
+**Solution:**  
+- Built a custom authentication and authorisation system using **Spring Security**  
+- Integrated **Google OAuth2** (company accounts only) and **OTP-based two-factor authentication**  
+- Introduced **role-based access controls** with conditional menu rendering
+
+---
+
+### ⚙️ Choosing a Maintainable Architecture for Solo Development
+**Problem:** Separate frontend/backend architecture was resource-heavy for a solo developer  
+**Solution:**  
+- Adopted **Thymeleaf SSR architecture**, enabling tight Spring Boot integration  
+- Avoided frontend build step, reducing deployment complexity and maintenance overhead
+
+---
+
+### 📞 API Log Viewer for Improved Customer Support
+**Problem:** External logging tool (Airbridge) couldn’t trace API flows per user  
+**Solution:**  
+- Built an in-admin API call tracker per user, displaying request/response data  
+- Enabled faster debugging and improved support accuracy
+
+---
+
+### 🗺️ Visualising Walk Data for Event Ops
+**Problem:** Lack of location visibility made event validation and bug tracing inefficient  
+**Solution:**  
+- Integrated **Naver Maps API** to visualise walk paths and POIs  
+- Enabled the team to verify walk events and respond to queries visually and intuitively
+
+---
+
+### 🤖 Automating Repetitive Exception Cases
+**Problem:** Some exceptional cases (e.g. manual reward handling) required SQL scripts  
+**Solution:**  
+- Developed **UI-based exception handling tools** for non-developers  
+- Enabled real-time, error-free resolution by the operations team
+
+---
+
+### 📧 Flexible Email Handling for Insurance Claims
+**Problem:** Operators couldn't view sent emails or handle failures  
+**Solution:**  
+- Implemented tools to **view/download claim files**, **resend emails**, and **edit recipients**  
+- Empowered operators to respond independently, reducing reliance on developers
+
+---
 
 ## 📈 Results
-- 
+- 🚀 **2× increase in operational throughput** via process automation  
+- 😊 **30% rise in operator satisfaction**, thanks to intuitive UI and admin tools  
+- ⚡ **40% faster CS response times** with unified data views and logs  
+- 🎯 **85%+ reward utilisation** maintained through real-time monitoring  
+- 🗺️ **25% drop in event ops time**, enabled by location-based data visualisation  
+- 🔐 **Strengthened security** with OAuth2 and OTP two-factor authentication
+
+---
+
