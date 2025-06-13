@@ -133,8 +133,8 @@ const components = {
     className,
     ...props
   }: React.TableHTMLAttributes<HTMLTableElement>) => (
-    <div className="w-full my-6 overflow-y-auto">
-      <table className={clsx("w-full", className)} {...props} />
+    <div className="w-full my-6 overflow-y-auto text-lg sm:text-xl md:text-2xl">
+      <table className={clsx("w-full my-0", className)} {...props} />
     </div>
   ),
   tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
