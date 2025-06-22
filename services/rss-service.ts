@@ -43,23 +43,18 @@ export const getTistoryPosts = async (limit = 5): Promise<Post[]> => {
   }) || [];
 
   return (
-    feed.filteredItems?.slice(0, limit).map((item: {
-      title: string;
-      link: string;
-      pubDate: string;
-      content: string;
-    }) => {
-      const dom = new JSDOM(item.content);
-      const imgElement = dom.window.document.querySelector("img");
-      const thumbnail = imgElement ? imgElement.src : "";
+    filteredItems.slice(0, limit).map((item) => {
+    const dom = new JSDOM(item.content);
+    const imgElement = dom.window.document.querySelector("img");
+    const thumbnail = imgElement ? imgElement.src : "";
 
-      return {
-        title: item.title ?? "",
-        link: item.link ?? "",
-        subtitle: "",
-        pubDate: item.pubDate ?? "",
-        thumbnail: thumbnail ?? "",
-      };
-    }) || []
+    return {
+      title: item.title ?? "",
+      link: item.link ?? "",
+      subtitle: "",
+      pubDate: item.pubDate ?? "",
+      thumbnail: thumbnail ?? "",
+    };
+  }) || []
   );
 };
