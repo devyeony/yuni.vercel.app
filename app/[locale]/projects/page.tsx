@@ -9,36 +9,25 @@ export default function ProjectsPage() {
   const currentLocale = useLocale();
   const t = useTranslations("Projects");
 
-  const compareDates = (dateA?: string, dateB?: string): number => {
-    const aDate = dateA ? new Date(dateA) : new Date(0);
-    const bDate = dateB ? new Date(dateB) : new Date(0);
-    return bDate.getTime() - aDate.getTime();
+  const parseDate = (date?: string): Date => date ? new Date(date) : new Date(0);
+
+  const sortProjects = (a: typeof allProjects[number], b: typeof allProjects[number]): number => {
+    const weightA = a.weight ?? 0;
+    const weightB = b.weight ?? 0;
+    if (weightA !== weightB) return weightB - weightA;
+
+    const endDateDiff = parseDate(b.endDate).getTime() - parseDate(a.endDate).getTime();
+    if (endDateDiff !== 0) return endDateDiff;
+
+    const startDateDiff = parseDate(b.startDate).getTime() - parseDate(a.startDate).getTime();
+    if (startDateDiff !== 0) return startDateDiff;
+
+    return b.title.localeCompare(a.title);
   };
 
-  const sorted = allProjects
+  const sortedProjects = allProjects
     .filter((p) => p.locale === currentLocale && p.published)
-    .sort((a, b) => {
-      const weightA = a.weight ?? 0;
-      const weightB = b.weight ?? 0;
-      if (weightA !== weightB) return weightB - weightA;
-
-      if (!a.endDate || !b.endDate) {
-        return !a.endDate
-          ? -1
-          : !b.endDate
-          ? 1
-          : compareDates(a.startDate, b.startDate) ||
-            b.title.localeCompare(a.title);
-      }
-
-      const endDateComparison = compareDates(a.endDate, b.endDate);
-      if (endDateComparison !== 0) return endDateComparison;
-
-      const startDateComparison = compareDates(a.startDate, b.startDate);
-      return startDateComparison !== 0
-        ? startDateComparison
-        : b.title.localeCompare(a.title);
-    });
+    .sort(sortProjects);
 
   return (
     <div className="mt-10 p-6">
@@ -49,8 +38,8 @@ export default function ProjectsPage() {
         {t("description")}
       </p>
       <article className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-2 justify-items-center justify-center gap-y-10 gap-x-10 mt-10 mb-5">
-        {sorted.map((project, index) => (
-          <ProjectArticle key={index} project={project} />
+        {sortedProjects.map((project) => (
+          <ProjectArticle key={project.slug ?? project.title} project={project} />
         ))}
       </article>
     </div>
