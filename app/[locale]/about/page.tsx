@@ -183,27 +183,35 @@ export default function About() {
 
           <div className="flex flex-col items-center rounded bg-purple-100/80 text-xl leading-8 text-gray-800 px-10 py-6 mt-6 mx-auto">
             <h2 className="font-mono font-bold text-2xl">
+              {t("education.title")}
+            </h2>
+            <ul className="list-disc list-inside space-y-1 mt-2">
+              <li
+                dangerouslySetInnerHTML={{
+                  __html: useSafeRawHtml("About", "education.line1"),
+                }}
+              />
+              <li
+                dangerouslySetInnerHTML={{
+                  __html: useSafeRawHtml("About", "education.line2"),
+                }}
+              />
+              <li
+                dangerouslySetInnerHTML={{
+                  __html: useSafeRawHtml("About", "education.line3"),
+                }}
+              />
+            </ul>
+          </div>
+
+          <div className="flex flex-col items-center rounded bg-purple-100/80 text-xl leading-8 text-gray-800 px-10 py-6 mt-6 mx-auto">
+            <h2 className="font-mono font-bold text-2xl">
               {t("community.title")}
             </h2>
             <ul className="list-disc list-inside space-y-1 mt-2">
               <li
                 dangerouslySetInnerHTML={{
                   __html: useSafeRawHtml("About", "community.line1"),
-                }}
-              />
-              <li
-                dangerouslySetInnerHTML={{
-                  __html: useSafeRawHtml("About", "community.line2"),
-                }}
-              />
-              <li
-                dangerouslySetInnerHTML={{
-                  __html: useSafeRawHtml("About", "community.line3"),
-                }}
-              />
-              <li
-                dangerouslySetInnerHTML={{
-                  __html: useSafeRawHtml("About", "community.line4"),
                 }}
               />
             </ul>

@@ -33,7 +33,7 @@
       "line2": "Before becoming a developer, I worked as a <b>primary school teacher</b>, which provided me with strong domain expertise in <b>edtech</b> and a deep understanding of learner needs.",
       "line3": "My main focus is backend development using <b>Java</b> and <b>Spring</b>, with a particular interest in <b>API design</b>, <b>system architecture</b>, and building <b>internal tools</b>. I also enjoy frontend development and have contributed to projects using <b>TypeScript</b> and <b>React.js</b>, often taking on <b>full-stack responsibilities</b>.",
       "line4": "Within <b>agile teams</b>, I’ve worked closely with engineers, product managers, designers, and marketers—<b>facilitating planning meetings</b>, <b>proposing improvements</b>, and <b>sharing ongoing feedback</b> to enhance product quality. I also supported <b>post-launch monitoring and iteration</b>.",
-      "line5": "From March 2024, I spent a year in <b>Dublin, Ireland</b> studying English. This experience strengthened my <b>communication skills</b> and fostered an <b>open mindset</b> through working with individuals from <b>diverse cultural backgrounds</b>."
+      "line5": "From March 2024, I spent <b>a year living in Dublin, Ireland</b>, where I developed my <b>communication skills</b> in an <b>English-speaking environment</b> and broadened my understanding of <b>cultural diversity</b>. I participated in <b>local IT community events</b>, strengthening my <b>professional network</b>, and also formed a team to take part in a <b>local AI hackathon</b>."
     },
     "publications": {
       "title": "📚 Publications",
@@ -69,12 +69,15 @@
         }
       }
     },
+    "education": {
+      "title": "👩‍🏫 Education",
+      "line1": "<b>Evaluator</b> at <b>SW Gifted Creation Competition</b> (2023), hosted by <b>the Ministry of Science and ICT</b> – Assessed primary school division projects",
+      "line2": "<b>Candidate Assessor</b> at <b>DAY 1 COMPANY</b> (2022–2023) – Reviewed bootcamp applications and interviews as an external assessor",
+      "line3": "<b>Bootcamp Mentor</b> at <b>Code States</b> (2022) – Guided mentees with technical projects and career coaching"
+    },
     "community": {
       "title": "🤝 Community Involvement & External Engagement",
-      "line1": "<b>Board Member</b> at <b>Girls in Tech Korea</b> (2023–2024) – Led tech seminars and mentorship programs in partnership with AWS Korea, EA Korea, and Trend Micro",
-      "line2": "<b>Evaluator</b> at <b>SW Gifted Creation Competition</b> (2023), hosted by <b>the Ministry of Science and ICT</b> – Assessed primary school division projects",
-      "line3": "<b>Candidate Assessor</b> at <b>DAY 1 COMPANY</b> (2022–2023) – Reviewed bootcamp applications and interviews as an external assessor",
-      "line4": "<b>Bootcamp Mentor</b> at <b>Code States</b> (2022) – Guided mentees with technical projects and career coaching"
+      "line1": "<b>Board Member</b> at <b>Girls in Tech Korea</b> (2023–2024) – Led tech seminars and mentorship programs in partnership with AWS Korea, EA Korea, and Trend Micro"
     }
   },
   "Projects": {
