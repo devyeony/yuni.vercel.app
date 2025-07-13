@@ -4,9 +4,16 @@ export const verifyHuman = async (
 ): Promise<{ success: boolean; message: string }> => {
   const res = await fetch(`/${locale}/api/v1/verifications/human`, {
     method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ token }),
   });
+
+  if (!res.ok) {
+    return {
+      success: false,
+      message: "Server error",
+    };
+  }
 
   const result = await res.json();
 
