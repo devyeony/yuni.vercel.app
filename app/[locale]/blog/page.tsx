@@ -10,7 +10,21 @@ const BlogPage = async () => {
   const locale = await getLocale();
   const t = await getTranslations("Blog");
 
-  const posts = locale === "en" ? await getMediumPosts() : await getTistoryPosts();
+  const feedMap: Record<string, () => Promise<any>> = {
+    en: getMediumPosts,
+    ko: getTistoryPosts,
+  };
+
+  const getPosts = feedMap[locale] ?? getMediumPosts;
+  
+  let posts = [];
+  try {
+    posts = await getPosts();
+  } catch (error) {
+    console.error("Failed to fetch blog posts:", error);
+    posts = [];
+  }
+
   const blogLink = getBlogLink(locale);
 
   return (
@@ -32,8 +46,8 @@ const BlogPage = async () => {
         </p>
 
         <div className="grid gap-10">
-          {posts.map((post, idx) => (
-            <Link key={idx} href={post.link} target="_blank" className="block">
+          {posts.map((post) => (
+            <Link key={post.link} href={post.link} target="_blank" className="block">
               <div className="bg-zinc-100 border-2 border-zinc-300 rounded-lg shadow-sm transition-all duration-200 hover:border-zinc-100 hover:bg-cyan-100 hover:scale-105">
                 <div className="mx-3 mb-0 border-b border-slate-300 pt-3 pb-2 px-1">
                   <span className="px-2 py-1 text-sm font-medium bg-purple-200">
