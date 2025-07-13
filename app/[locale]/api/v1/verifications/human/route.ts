@@ -19,14 +19,14 @@ const ratelimit = new Ratelimit({
 });
 
 async function verifyCaptcha(token: string): Promise<any> {
-  const secret = process.env.GOOGLE_RECAPTCHA_SECRET_KEY;
+  const params = new URLSearchParams();
+  params.append("secret", process.env.GOOGLE_RECAPTCHA_SECRET_KEY || "");
+  params.append("response", token);
 
   const res = await fetch(externalApiInfo.googleRecaptcha.verifyUrl, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: `secret=${secret}&response=${token}`,
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: params.toString(),
   });
 
   const data = await res.json();
