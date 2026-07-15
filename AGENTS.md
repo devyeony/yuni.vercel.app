@@ -32,10 +32,12 @@ architecture, design system, and process are all on display.
 
 ## Verification loop
 
-After any change, verify your own work before finishing:
+After any change, verify your own work before finishing (full rules: `agents/harness.md`):
 
-- `pnpm check` — static: Biome + tsc (+ knip, i18n key symmetry) — seconds
+- `pnpm check` — static: Biome + tsc + i18n key symmetry — seconds (knip joins with CI)
 - `pnpm test` — unit/component tests (Vitest)
-- `pnpm verify` — build + Playwright smoke (+ axe a11y, visual regression on /design)
+- `pnpm verify` — build + Playwright smoke at 360/768/1280 viewports
+  (axe a11y and visual regression on /design join in Phase 1)
 
-(Scripts land in Phase 0 — until then, this section is forward-looking.)
+Vendor adapters (`CLAUDE.md`, `.claude/`, `.cursor/`, `GEMINI.md`) are regenerated
+with `pnpm setup:agents`.
