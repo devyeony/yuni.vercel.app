@@ -3,6 +3,8 @@ import { Fraunces, Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { routing } from "@/i18n/routing";
 import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
@@ -58,7 +60,11 @@ export default async function LocaleLayout({
     >
       <body className="flex min-h-full flex-col">
         <ThemeProvider>
-          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+          <NextIntlClientProvider>
+            <SiteHeader />
+            {children}
+            <SiteFooter />
+          </NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>

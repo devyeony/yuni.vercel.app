@@ -3,6 +3,17 @@
     "title": "yuni — under construction"
   },
   "ui": {
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "design": "Design",
+      "primary": "Primary",
+      "skipToContent": "Skip to content"
+    },
+    "footer": {
+      "label": "Elsewhere",
+      "source": "Source"
+    },
     "themeToggle": {
       "toLight": "Switch to light theme",
       "toDark": "Switch to dark theme"

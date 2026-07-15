@@ -129,7 +129,7 @@ export default function DesignPage({
   const t = useTranslations("design");
 
   return (
-    <main>
+    <main id="main">
       <Section className="pb-0">
         <div className="flex items-start justify-between gap-6">
           <div className="max-w-2xl">

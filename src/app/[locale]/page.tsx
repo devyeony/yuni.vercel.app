@@ -10,7 +10,7 @@ export default function Home({
   const t = useTranslations("home");
 
   return (
-    <main className="flex flex-1 items-center justify-center">
+    <main id="main" className="flex flex-1 items-center justify-center">
       <h1 className="font-mono text-sm text-text-muted">{t("title")}</h1>
     </main>
   );
