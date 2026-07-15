@@ -29,9 +29,30 @@ all Chromium — against `next start` on port 3100.
 - **First run on a new platform**: the test writes baselines and fails once;
   re-run to confirm green, then commit the PNGs. In CI, missing platform
   baselines skip (annotated) instead of failing.
-- Linux (CI) baselines are generated inside the Playwright Docker image:
-  `docker run --rm -v $PWD:/work -w /work mcr.microsoft.com/playwright:v<version>-jammy pnpm exec playwright test --update-snapshots`
-  (match `<version>` to the installed `@playwright/test`).
+- Linux (CI) baselines are generated inside the Playwright Docker image.
+  Do NOT reuse host `node_modules` in the container — native binaries
+  (SWC, oxide) are platform-specific; copy the repo and install fresh.
+  Use `--platform linux/amd64` to match GitHub Actions runners:
+
+  ```sh
+  docker run --rm --platform linux/amd64 -v "$PWD:/host" \
+    mcr.microsoft.com/playwright:v<version>-jammy bash -c '
+    set -e
+    corepack enable >/dev/null 2>&1
+    mkdir -p /tmp/app
+    tar -C /host --exclude=node_modules --exclude=.next --exclude=test-results \
+      --exclude=.git --exclude=archive -cf - . | tar -C /tmp/app -xf -
+    cd /tmp/app
+    pnpm install --frozen-lockfile --ignore-scripts >/dev/null 2>&1
+    pnpm build >/dev/null 2>&1
+    npx playwright test design-visual --update-snapshots
+    cp -f e2e/design-visual.spec.ts-snapshots/*-linux.png \
+      /host/e2e/design-visual.spec.ts-snapshots/
+  '
+  ```
+
+  (match `<version>` to the installed `@playwright/test`; `--ignore-scripts`
+  is required because `prepare` runs lefthook, which needs `.git`).
 
 ## Common failures
 
