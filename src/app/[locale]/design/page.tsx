@@ -35,6 +35,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import type { Locale } from "@/i18n/routing";
+import { localeAlternates } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -43,7 +45,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "design" });
-  return { title: t("title") };
+  return {
+    title: t("title"),
+    alternates: localeAlternates(locale as Locale, "/design"),
+  };
 }
 
 /*

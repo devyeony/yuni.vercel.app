@@ -49,3 +49,5 @@ next-env.d.ts
 /CLAUDE.md
 /.cursor/
 /GEMINI.md
+# Lighthouse CI artifacts
+.lighthouseci/

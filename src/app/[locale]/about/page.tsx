@@ -10,6 +10,7 @@ import { Text } from "@/components/ui/text";
 import { RoleGrid } from "@/features/about/components/role-grid";
 import { narrative } from "@/features/about/lib/profile";
 import type { Locale } from "@/i18n/routing";
+import { localeAlternates } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export async function generateMetadata({
@@ -19,7 +20,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "about" });
-  return { title: t("title") };
+  return {
+    title: t("title"),
+    alternates: localeAlternates(locale as Locale, "/about"),
+  };
 }
 
 export default function AboutPage({
