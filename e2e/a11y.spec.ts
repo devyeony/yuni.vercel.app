@@ -1,7 +1,14 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-const pages = ["/en", "/ko", "/en/design", "/ko/design"];
+const pages = [
+  "/en",
+  "/ko",
+  "/en/about",
+  "/ko/about",
+  "/en/design",
+  "/ko/design",
+];
 
 async function scan(page: import("@playwright/test").Page) {
   const results = await new AxeBuilder({ page })
