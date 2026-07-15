@@ -1,17 +1,16 @@
-import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { use } from "react";
+import { Hero } from "@/features/home/components/hero";
 
 export default function Home({
   params,
 }: Readonly<{ params: Promise<{ locale: string }> }>) {
   const { locale } = use(params);
   setRequestLocale(locale);
-  const t = useTranslations("home");
 
   return (
-    <main id="main" className="flex flex-1 items-center justify-center">
-      <h1 className="font-mono text-sm text-text-muted">{t("title")}</h1>
+    <main id="main" className="flex flex-1 flex-col">
+      <Hero />
     </main>
   );
 }

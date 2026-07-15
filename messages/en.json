@@ -1,6 +1,11 @@
 {
   "home": {
-    "title": "yuni — under construction"
+    "hero": {
+      "headline": "Software engineer who ships the whole product.",
+      "sub": "Backend depth across Java/Spring and TypeScript/NestJS — carried through planning, design, frontend, and AI.",
+      "tagline": "Building software with a love for cats and the cosmos",
+      "aboutCta": "More about me"
+    }
   },
   "ui": {
     "nav": {
