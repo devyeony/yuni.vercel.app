@@ -7,6 +7,14 @@
       "aboutCta": "More about me"
     }
   },
+  "about": {
+    "title": "About",
+    "rolesTitle": "Four roles, one product",
+    "rolesIntro": "Breadth only sells on top of depth — backend is the anchor; the other three are how the whole product gets shipped.",
+    "proofLabel": "Proof",
+    "ctaTitle": "Sound like someone you'd build with?",
+    "ctaEmail": "Say hello"
+  },
   "ui": {
     "nav": {
       "home": "Home",
