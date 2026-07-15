@@ -1,5 +1,71 @@
 {
   "home": {
     "title": "yuni — under construction"
+  },
+  "ui": {
+    "themeToggle": {
+      "toLight": "Switch to light theme",
+      "toDark": "Switch to dark theme"
+    },
+    "localeSwitcher": {
+      "label": "Language"
+    }
+  },
+  "design": {
+    "title": "Design system",
+    "intro": "Tokens, typography, and components of this site — rendered live from the same code that ships every page.",
+    "colors": {
+      "title": "Color",
+      "primitives": "Primitive palette",
+      "semantic": "Semantic tokens"
+    },
+    "typography": {
+      "title": "Typography",
+      "sample": "Cats, cosmos, and clean code"
+    },
+    "motion": {
+      "title": "Motion",
+      "note": "Duration and easing are tokens; prefers-reduced-motion collapses them globally."
+    },
+    "components": {
+      "title": "Components",
+      "buttons": "Button",
+      "links": "Link",
+      "tags": "Tag",
+      "card": "Card",
+      "form": "Form",
+      "dialog": "Dialog",
+      "tooltip": "Tooltip",
+      "controls": "Controls"
+    },
+    "demo": {
+      "solid": "Solid",
+      "outline": "Outline",
+      "ghost": "Ghost",
+      "small": "Small",
+      "medium": "Medium",
+      "large": "Large",
+      "disabled": "Disabled",
+      "internalLink": "Internal link",
+      "accentLink": "Accent link",
+      "mutedLink": "Muted link",
+      "externalLink": "External link",
+      "cardTitle": "Signal from deep space",
+      "cardBody": "Cards are quiet containers: raised surface, hairline border, no glass, no glow.",
+      "fieldLabel": "Email",
+      "fieldPlaceholder": "you@example.com",
+      "fieldDescription": "Used only to reply — never shared.",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Say hello…",
+      "errorLabel": "Call sign",
+      "errorValue": "laika",
+      "errorMessage": "This call sign is already taken.",
+      "openDialog": "Open dialog",
+      "dialogTitle": "A focused moment",
+      "dialogBody": "Dialogs trap focus, restore it on close, and dismiss with Escape.",
+      "close": "Close",
+      "tooltipTrigger": "Hover or focus me",
+      "tooltipContent": "Tooltips work with keyboard focus too."
+    }
   }
 }
