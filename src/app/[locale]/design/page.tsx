@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { use } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { ConstellationCat } from "@/components/ui/constellation-cat";
 import {
   Dialog,
   DialogClose,
@@ -213,6 +214,19 @@ export default function DesignPage({
             </code>
           </div>
         </div>
+      </Section>
+
+      <Separator className="mx-auto max-w-6xl" />
+
+      {/* ---------- Motif ---------- */}
+      <Section>
+        <Heading as="h2" variant="title">
+          {t("motif.title")}
+        </Heading>
+        <Text variant="muted" className="mt-4 max-w-2xl">
+          {t("motif.note")}
+        </Text>
+        <ConstellationCat className="mt-8 w-56 sm:w-72" />
       </Section>
 
       <Separator className="mx-auto max-w-6xl" />

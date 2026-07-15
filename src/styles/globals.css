@@ -25,6 +25,32 @@
 }
 
 /*
+ * Constellation twinkle. Infinite animations can't rely on the token-collapse
+ * reduced-motion strategy (a collapsed infinite loop strobes instead of
+ * stopping), so this one gets an explicit media-query kill switch.
+ */
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.twinkle {
+  animation: twinkle calc(var(--duration-slow) * 7) var(--ease-in-out-soft)
+    infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .twinkle {
+    animation: none;
+  }
+}
+
+/*
  * Film grain: a fixed, non-interactive noise overlay (deterministic SVG
  * turbulence, so visual-regression snapshots stay stable). Kills the flat
  * "AI-generated" look; opacity is a semantic token so themes can tune it.
