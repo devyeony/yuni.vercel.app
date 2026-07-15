@@ -4,10 +4,10 @@
  * Three tiers:
  *   1. Primitive — raw palette (void / starlight / nebula scales)
  *   2. Semantic  — meaning layer (surface, text, accent); light/dark switches here only
- *   3. Component — added only when a component genuinely needs one
+ *   3. Component — added only when a component genuinely needs one (none yet)
  *
  * Components must reference semantic tokens only, never primitives.
- * Phase 0 skeleton: scales are provisional and will be refined in Phase 1.
+ * Raw hex/oklch values outside this file are a review violation.
  */
 
 @theme {
@@ -16,23 +16,44 @@
   --color-void-900: oklch(0.17 0.02 285);
   --color-void-800: oklch(0.22 0.025 285);
   --color-void-700: oklch(0.3 0.03 285);
+  --color-void-600: oklch(0.38 0.03 285);
+  --color-void-500: oklch(0.45 0.025 285);
 
+  --color-starlight-50: oklch(0.985 0.006 90);
   --color-starlight-100: oklch(0.96 0.01 90);
   --color-starlight-200: oklch(0.9 0.015 90);
+  --color-starlight-300: oklch(0.84 0.018 90);
   --color-starlight-400: oklch(0.75 0.02 90);
   --color-starlight-600: oklch(0.55 0.02 90);
 
+  --color-flare-400: oklch(0.7 0.17 25);
+  --color-flare-600: oklch(0.52 0.19 25);
+
+  --color-nebula-200: oklch(0.88 0.05 310);
   --color-nebula-300: oklch(0.82 0.08 310);
   --color-nebula-400: oklch(0.72 0.12 310);
   --color-nebula-500: oklch(0.62 0.15 310);
+  --color-nebula-600: oklch(0.5 0.16 310);
+  --color-nebula-700: oklch(0.42 0.14 310);
 
   /* ---------- Typography: fluid scale (no per-viewport hardcoding) ---------- */
   --text-display: clamp(2.75rem, 1.6rem + 5vw, 6rem);
   --text-display--line-height: 1.05;
   --text-title: clamp(1.75rem, 1.3rem + 2vw, 3rem);
   --text-title--line-height: 1.15;
+  --text-subtitle: clamp(1.25rem, 1.1rem + 0.75vw, 1.625rem);
+  --text-subtitle--line-height: 1.3;
   --text-lead: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
   --text-lead--line-height: 1.6;
+
+  /* ---------- Spacing rhythm ---------- */
+  --spacing-section: clamp(4rem, 3rem + 5vw, 7rem);
+
+  /* ---------- Radii ---------- */
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
 
   /* ---------- Motion ---------- */
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
@@ -43,28 +64,59 @@
 }
 
 /*
- * Semantic layer. Dark (deep space) is the primary theme; the light variant
- * lands in Phase 1 — flipping these values is the only change it will need.
+ * Semantic layer. Dark (deep space) is the brand-primary theme and the
+ * default; `.light` on <html> (set by next-themes) flips values here — and
+ * only here. Components never branch on theme themselves.
  */
 :root {
+  color-scheme: dark;
+
   --surface: var(--color-void-950);
   --surface-raised: var(--color-void-900);
+  --surface-overlay: oklch(0.08 0.01 285 / 0.65);
   --border: var(--color-void-700);
+  --border-muted: var(--color-void-800);
   --text: var(--color-starlight-100);
   --text-muted: var(--color-starlight-400);
   --accent: var(--color-nebula-400);
-  --accent-muted: var(--color-nebula-500);
+  --accent-muted: var(--color-nebula-300);
+  --accent-contrast: var(--color-void-950);
+  --danger: var(--color-flare-400);
+
+  --grain-opacity: 0.05;
+}
+
+:root.light {
+  color-scheme: light;
+
+  --surface: var(--color-starlight-50);
+  --surface-raised: var(--color-white);
+  --surface-overlay: oklch(0.13 0.015 285 / 0.4);
+  --border: var(--color-starlight-300);
+  --border-muted: var(--color-starlight-200);
+  --text: var(--color-void-950);
+  --text-muted: var(--color-void-500);
+  --accent: var(--color-nebula-600);
+  --accent-muted: var(--color-nebula-700);
+  --accent-contrast: var(--color-starlight-50);
+  --danger: var(--color-flare-600);
+
+  --grain-opacity: 0.03;
 }
 
 @theme inline {
   /* ---------- Semantic: components reference these only ---------- */
   --color-surface: var(--surface);
   --color-surface-raised: var(--surface-raised);
+  --color-surface-overlay: var(--surface-overlay);
   --color-border: var(--border);
+  --color-border-muted: var(--border-muted);
   --color-text: var(--text);
   --color-text-muted: var(--text-muted);
   --color-accent: var(--accent);
   --color-accent-muted: var(--accent-muted);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-danger: var(--danger);
 
   /*
    * Font stacks. The next/font variables are set on <html> in the locale
@@ -76,4 +128,18 @@
     system-ui, sans-serif;
   --font-display: var(--font-fraunces), "Pretendard Variable", ui-serif, serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, "SF Mono", monospace;
+}
+
+/*
+ * Reduced motion, handled at the token level: every transition/animation in
+ * the system reads these duration tokens, so collapsing them here disables
+ * motion everywhere at once. 0.01ms (not 0) keeps transitionend events firing
+ * for logic that awaits them.
+ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0.01ms;
+    --duration-base: 0.01ms;
+    --duration-slow: 0.01ms;
+  }
 }
