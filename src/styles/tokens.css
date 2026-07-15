@@ -1,0 +1,79 @@
+/*
+ * Design tokens — single source of truth (Tailwind v4 @theme).
+ *
+ * Three tiers:
+ *   1. Primitive — raw palette (void / starlight / nebula scales)
+ *   2. Semantic  — meaning layer (surface, text, accent); light/dark switches here only
+ *   3. Component — added only when a component genuinely needs one
+ *
+ * Components must reference semantic tokens only, never primitives.
+ * Phase 0 skeleton: scales are provisional and will be refined in Phase 1.
+ */
+
+@theme {
+  /* ---------- Primitive: deep-space palette ---------- */
+  --color-void-950: oklch(0.13 0.015 285);
+  --color-void-900: oklch(0.17 0.02 285);
+  --color-void-800: oklch(0.22 0.025 285);
+  --color-void-700: oklch(0.3 0.03 285);
+
+  --color-starlight-100: oklch(0.96 0.01 90);
+  --color-starlight-200: oklch(0.9 0.015 90);
+  --color-starlight-400: oklch(0.75 0.02 90);
+  --color-starlight-600: oklch(0.55 0.02 90);
+
+  --color-nebula-300: oklch(0.82 0.08 310);
+  --color-nebula-400: oklch(0.72 0.12 310);
+  --color-nebula-500: oklch(0.62 0.15 310);
+
+  /* ---------- Typography: fluid scale (no per-viewport hardcoding) ---------- */
+  --text-display: clamp(2.75rem, 1.6rem + 5vw, 6rem);
+  --text-display--line-height: 1.05;
+  --text-title: clamp(1.75rem, 1.3rem + 2vw, 3rem);
+  --text-title--line-height: 1.15;
+  --text-lead: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  --text-lead--line-height: 1.6;
+
+  /* ---------- Motion ---------- */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 500ms;
+}
+
+/*
+ * Semantic layer. Dark (deep space) is the primary theme; the light variant
+ * lands in Phase 1 — flipping these values is the only change it will need.
+ */
+:root {
+  --surface: var(--color-void-950);
+  --surface-raised: var(--color-void-900);
+  --border: var(--color-void-700);
+  --text: var(--color-starlight-100);
+  --text-muted: var(--color-starlight-400);
+  --accent: var(--color-nebula-400);
+  --accent-muted: var(--color-nebula-500);
+}
+
+@theme inline {
+  /* ---------- Semantic: components reference these only ---------- */
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-muted: var(--accent-muted);
+
+  /*
+   * Font stacks. The next/font variables are set on <html> in the locale
+   * layout; "Pretendard Variable" (dynamic subset, unicode-range) covers
+   * Korean glyphs — its binaries download only when Korean text renders.
+   */
+  --font-sans:
+    var(--font-instrument-sans), "Pretendard Variable", ui-sans-serif, system-ui,
+    sans-serif;
+  --font-display: var(--font-fraunces), "Pretendard Variable", ui-serif, serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SF Mono", monospace;
+}
