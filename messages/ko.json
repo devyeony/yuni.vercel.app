@@ -7,6 +7,14 @@
       "aboutCta": "더 알아보기"
     }
   },
+  "about": {
+    "title": "소개",
+    "rolesTitle": "네 가지 역할, 하나의 제품",
+    "rolesIntro": "폭은 깊이 위에서만 팔립니다 — 백엔드가 앵커이고, 나머지 셋은 제품 전체를 완성하는 방법입니다.",
+    "proofLabel": "증거",
+    "ctaTitle": "함께 만들고 싶은 사람인가요?",
+    "ctaEmail": "인사 건네기"
+  },
   "ui": {
     "nav": {
       "home": "홈",
