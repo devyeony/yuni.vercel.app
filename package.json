@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "check": "biome check . && tsc --noEmit && node scripts/check-i18n.mjs",
+    "check": "biome check . && tsc --noEmit && node scripts/check-i18n.mjs && knip",
+    "prepare": "lefthook install",
     "test": "vitest run",
     "verify": "next build && playwright test",
     "lint": "biome check",
@@ -22,13 +23,26 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
+    "@commitlint/cli": "^21.2.1",
+    "@commitlint/config-conventional": "^21.2.0",
     "@playwright/test": "^1.61.1",
+    "@size-limit/file": "^12.1.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "knip": "^6.26.0",
+    "lefthook": "^2.1.10",
+    "size-limit": "^12.1.0",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^4.1.10"
-  }
+  },
+  "size-limit": [
+    {
+      "name": "client JS (all chunks, brotli)",
+      "path": ".next/static/chunks/**/*.js",
+      "limit": "250 kB"
+    }
+  ]
 }

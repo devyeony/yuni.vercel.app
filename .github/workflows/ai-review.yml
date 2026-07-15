@@ -1,0 +1,44 @@
+name: AI Review
+
+# Layer 2 of the review process (AGENTS.md / PLAN §10): an AI pass focused on
+# judgment the machines in layer 1 can't make. The executor is a replaceable
+# adapter; review criteria stay vendor-neutral in agents/skills/code-review/
+# (Phase 1 — until then, AGENTS.md rules apply). Skips cleanly when the
+# ANTHROPIC_API_KEY secret is not configured.
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
+
+jobs:
+  review:
+    if: ${{ !github.event.pull_request.draft }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: read
+    steps:
+      - name: Check reviewer credentials
+        id: key
+        env:
+          HAS_KEY: ${{ secrets.ANTHROPIC_API_KEY != '' }}
+        run: echo "present=$HAS_KEY" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        if: steps.key.outputs.present == 'true'
+        with:
+          fetch-depth: 0
+      - uses: anthropics/claude-code-action@v1
+        if: steps.key.outputs.present == 'true'
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Review this pull request against the repository's review criteria:
+            agents/skills/code-review/SKILL.md if it exists, otherwise the
+            rules in AGENTS.md. Focus only on judgment that lint, types, and
+            tests cannot catch: dependency direction (app -> features -> ui ->
+            tokens), semantic-token-only styling, RSC/client boundaries,
+            content architecture (no career content in messages/), i18n
+            symmetry, a11y, security surfaces, performance (unnecessary client
+            components, bundle impact), device adaptiveness, and scope creep
+            against the stated non-goals. Leave concise, actionable PR
+            comments; do not restate what CI already checks.

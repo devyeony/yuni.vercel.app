@@ -34,7 +34,7 @@ architecture, design system, and process are all on display.
 
 After any change, verify your own work before finishing (full rules: `agents/harness.md`):
 
-- `pnpm check` — static: Biome + tsc + i18n key symmetry — seconds (knip joins with CI)
+- `pnpm check` — static: Biome + tsc + i18n key symmetry + knip — seconds
 - `pnpm test` — unit/component tests (Vitest)
 - `pnpm verify` — build + Playwright smoke at 360/768/1280 viewports
   (axe a11y and visual regression on /design join in Phase 1)
