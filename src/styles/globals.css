@@ -25,6 +25,28 @@
 }
 
 /*
+ * Staggered entrance reveal. One-shot, so both duration and delay ride the
+ * duration tokens — prefers-reduced-motion collapses everything to ~0ms via
+ * the token layer, no extra media query needed. Stagger with
+ * `[--reveal-order:N]` in the className.
+ */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.reveal {
+  animation: reveal-up var(--duration-slow) var(--ease-out-soft) both;
+  animation-delay: calc(var(--duration-base) * var(--reveal-order, 0));
+}
+
+/*
  * Constellation twinkle. Infinite animations can't rely on the token-collapse
  * reduced-motion strategy (a collapsed infinite loop strobes instead of
  * stopping), so this one gets an explicit media-query kill switch.

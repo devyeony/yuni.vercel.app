@@ -1,6 +1,11 @@
 {
   "home": {
-    "title": "yuni — 공사 중"
+    "hero": {
+      "headline": "제품 전체를 만들어 내는 소프트웨어 엔지니어.",
+      "sub": "Java/Spring과 TypeScript/NestJS를 아우르는 백엔드 깊이 — 기획과 디자인, 프론트엔드, AI까지 이어집니다.",
+      "tagline": "고양이와 우주를 사랑하며 소프트웨어를 만듭니다",
+      "aboutCta": "더 알아보기"
+    }
   },
   "ui": {
     "nav": {
