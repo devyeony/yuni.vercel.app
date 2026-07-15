@@ -72,8 +72,8 @@
    * Korean glyphs — its binaries download only when Korean text renders.
    */
   --font-sans:
-    var(--font-instrument-sans), "Pretendard Variable", ui-sans-serif, system-ui,
-    sans-serif;
+    var(--font-instrument-sans), "Pretendard Variable", ui-sans-serif,
+    system-ui, sans-serif;
   --font-display: var(--font-fraunces), "Pretendard Variable", ui-serif, serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, "SF Mono", monospace;
 }

@@ -23,7 +23,7 @@
     "react-dom": "19.2.4"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.2.0",
+    "@biomejs/biome": "2.5.4",
     "@commitlint/cli": "^21.2.1",
     "@commitlint/config-conventional": "^21.2.0",
     "@playwright/test": "^1.61.1",
