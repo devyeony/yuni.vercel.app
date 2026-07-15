@@ -34,6 +34,10 @@
       "title": "Typography",
       "sample": "Cats, cosmos, and clean code"
     },
+    "motif": {
+      "title": "Motif",
+      "note": "The brand mark: a cat drawn as a constellation. Vertex stars joined by hairlines; the ear and tail tips twinkle — unless you prefer reduced motion."
+    },
     "motion": {
       "title": "Motion",
       "note": "Duration and easing are tokens; prefers-reduced-motion collapses them globally."

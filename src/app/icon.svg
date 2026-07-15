@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="46 22 98 98">
+  <title>yuni — constellation cat</title>
+  <style>
+    .line { stroke: #7c5a99; stroke-width: 4; fill: none; stroke-linecap: round; stroke-linejoin: round; opacity: 0.85; }
+    .star { fill: #7c5a99; }
+    @media (prefers-color-scheme: dark) {
+      .line { stroke: #c4a6de; }
+      .star { fill: #f0e9f6; }
+    }
+  </style>
+  <polyline class="line" points="60,68 72,40 86,60 104,58 118,34 130,64 132,90 96,108 58,92 60,68"/>
+  <circle class="star" cx="72" cy="40" r="7"/>
+  <circle class="star" cx="118" cy="34" r="7"/>
+  <circle class="star" cx="96" cy="108" r="5"/>
+  <circle class="star" cx="86" cy="82" r="4"/>
+  <circle class="star" cx="110" cy="80" r="4"/>
+</svg>
