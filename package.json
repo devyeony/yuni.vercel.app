@@ -36,7 +36,7 @@
     "lefthook": "^2.1.10",
     "size-limit": "^12.1.0",
     "tailwindcss": "^4",
-    "typescript": "^5",
+    "typescript": "^7",
     "vitest": "^4.1.10"
   },
   "size-limit": [
