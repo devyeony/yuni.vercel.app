@@ -1,3 +1,4 @@
+import { getPathname } from "@/i18n/navigation";
 import { type Locale, routing } from "@/i18n/routing";
 
 /**
@@ -6,7 +7,8 @@ import { type Locale, routing } from "@/i18n/routing";
  * `metadataBase` set in the locale layout.
  */
 export function localeAlternates(locale: Locale, path = "") {
-  const href = (l: Locale) => `/${l}${path}`;
+  const href = (l: Locale) =>
+    getPathname({ locale: l, href: path === "" ? "/" : path });
   return {
     canonical: href(locale),
     languages: {

@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 // Asserts the security headers configured in next.config.ts are actually
 // served — the presence check required by AGENTS.md's security defaults.
 test("responses carry the security headers", async ({ request }) => {
-  const response = await request.get("/en");
+  const response = await request.get("/");
   expect(response.ok()).toBe(true);
 
   const headers = response.headers();
