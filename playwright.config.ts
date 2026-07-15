@@ -10,6 +10,10 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? "github" : "list",
+  expect: {
+    // Tolerate sub-pixel antialiasing drift between same-platform runs.
+    toHaveScreenshot: { maxDiffPixelRatio: 0.02 },
+  },
   use: {
     baseURL: `http://localhost:${PORT}`,
     trace: "on-first-retry",

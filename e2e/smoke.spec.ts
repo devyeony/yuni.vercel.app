@@ -15,13 +15,15 @@ for (const locale of locales) {
       await expect(page.locator("h1")).toBeVisible();
     });
 
-    test("has no horizontal overflow", async ({ page }) => {
-      await page.goto(`/${locale}`);
-      const overflow = await page.evaluate(() => {
-        const el = document.scrollingElement;
-        return el ? el.scrollWidth - el.clientWidth : 0;
+    for (const path of ["", "/design"]) {
+      test(`/${locale}${path} has no horizontal overflow`, async ({ page }) => {
+        await page.goto(`/${locale}${path}`);
+        const overflow = await page.evaluate(() => {
+          const el = document.scrollingElement;
+          return el ? el.scrollWidth - el.clientWidth : 0;
+        });
+        expect(overflow).toBe(0);
       });
-      expect(overflow).toBe(0);
-    });
+    }
   });
 }
