@@ -17,15 +17,18 @@ for (const theme of themes) {
       "no visual baseline committed for this platform",
     );
 
-    await page.goto("/en/design");
     if (theme === "light") {
-      await page
-        .getByRole("button", { name: "Switch to light theme" })
-        .first()
-        .click();
-      await expect(page.locator("html")).toHaveClass(/light/);
+      // Seed next-themes directly: clicking the toggle would race hydration
+      // on slow runners, and toggle behavior is covered elsewhere.
+      await page.addInitScript(() => localStorage.setItem("theme", "light"));
     }
+    await page.goto("/en/design");
+    await expect(page.locator("html")).toHaveClass(new RegExp(theme));
     await page.evaluate(() => document.fonts.ready);
-    await expect(page).toHaveScreenshot(snapshot, { fullPage: true });
+    await expect(page).toHaveScreenshot(snapshot, {
+      fullPage: true,
+      // Full-page capture can exceed the default 5s on emulated/slow CI.
+      timeout: 30_000,
+    });
   });
 }
