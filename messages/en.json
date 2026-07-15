@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "Yeonhee Kim — Software Engineer",
+    "description": "Software engineer who ships the whole product — backend depth across Java/Spring and TypeScript/NestJS, from planning and design to frontend and AI."
+  },
   "home": {
     "hero": {
       "headline": "Software engineer who ships the whole product.",

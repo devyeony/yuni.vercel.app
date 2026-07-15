@@ -1,0 +1,28 @@
+# Performance budget: Lighthouse 95+ on all four categories (see PLAN §11).
+# Runs against a local production build on the CI runner — deterministic and
+# secret-free, unlike Vercel preview URLs (SSO-protected on this project).
+# The `canonical` audit is skipped in lighthouserc.json: canonical/hreflang
+# point at the production origin (correct for SEO), which Lighthouse flags as
+# "another hreflang location" only because the audited page is on localhost.
+name: Lighthouse
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lhci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - name: Lighthouse budget (95+ all categories)
+        run: pnpm exec lhci autorun
