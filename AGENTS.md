@@ -22,6 +22,11 @@ architecture, design system, and process are all on display.
 - **Security & performance by default**: validate external input at boundaries (Zod),
   rate-limit API routes, never expose secrets to the client, prefer server components —
   adding `"use client"` is a reviewable decision.
+- **Device-adaptive responsive**: optimize for each device class (phone, tablet, desktop,
+  wide) — not one layout stretched. Mobile-first as technique; layouts genuinely recompose
+  per breakpoint; adapt to input modality (`pointer`/`hover` media queries, touch targets
+  ≥ 44px, no hover-only interactions); fluid type over per-viewport hardcoding; container
+  queries where component-level adaptation fits. Verify at 360/768/1280/1920 viewports.
 - Skills with detailed procedures live in `agents/skills/*/SKILL.md` (created in Phase 0/1):
   design-system, code-review, i18n, verify, content.
 
