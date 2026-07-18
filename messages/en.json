@@ -84,6 +84,25 @@
       "post": "Post"
     }
   },
+  "search": {
+    "open": "Search",
+    "title": "Search this site",
+    "placeholder": "Search projects, posts, activities…",
+    "hint": "Matches expand through embedding space — related content surfaces even without shared words.",
+    "loading": "Loading the search index…",
+    "error": "Couldn't load the search index.",
+    "empty": "Nothing found for “{query}”",
+    "matches": "Matches",
+    "nearby": "Nearby in embedding space",
+    "similarity": "similarity {score}",
+    "kind": {
+      "project": "Project",
+      "post": "Post",
+      "career": "Career",
+      "activity": "Activity",
+      "now": "Now"
+    }
+  },
   "ui": {
     "nav": {
       "home": "Home",

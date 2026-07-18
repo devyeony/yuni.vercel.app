@@ -25,7 +25,10 @@ all Chromium — against `next start` on port 3100.
   **per-platform** (`*-darwin.png`, `*-linux.png`) and committed next to the
   spec in `e2e/design-visual.spec.ts-snapshots/`.
 - **Intended visual change** → regenerate and commit:
-  `pnpm exec playwright test --update-snapshots`
+  `pnpm exec playwright test --update-snapshots=all`
+  (`=all` matters: the default `changed` mode skips diffs under the 2%
+  threshold, so small intended changes — a header icon, nav item — leave
+  stale baselines behind)
 - **First run on a new platform**: the test writes baselines and fails once;
   re-run to confirm green, then commit the PNGs. In CI, missing platform
   baselines skip (annotated) instead of failing.
@@ -45,7 +48,7 @@ all Chromium — against `next start` on port 3100.
     cd /tmp/app
     pnpm install --frozen-lockfile --ignore-scripts >/dev/null 2>&1
     pnpm build >/dev/null 2>&1
-    npx playwright test design-visual --update-snapshots
+    npx playwright test design-visual --update-snapshots=all
     cp -f e2e/design-visual.spec.ts-snapshots/*-linux.png \
       /host/e2e/design-visual.spec.ts-snapshots/
   '
