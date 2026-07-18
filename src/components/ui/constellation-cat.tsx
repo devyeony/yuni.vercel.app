@@ -51,6 +51,18 @@ const ACCENT_STARS: ReadonlyArray<readonly [number, number, number]> = [
   [204, 144, 5],
 ];
 
+/**
+ * Geometry shared with the OG image renderer (features/og), which redraws
+ * the motif without CSS classes — satori has no stylesheet cascade.
+ */
+export const catGeometry = {
+  viewBox: 240,
+  polylines: [HEAD, BODY, TAIL],
+  stars: STARS,
+  ambient: AMBIENT,
+  accents: ACCENT_STARS,
+} as const;
+
 export function ConstellationCat({
   className,
   ...props
