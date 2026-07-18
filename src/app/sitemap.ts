@@ -9,7 +9,6 @@ import { site } from "@/lib/site";
  * Locale-aware sitemap: every entry lists its language alternates, mirroring
  * the hreflang tags emitted by lib/seo. Content routes derive from the same
  * collections that render the pages, so new entries join without edits here.
- * TODO(after PR #31 lands): add "/colophon" to staticRoutes.
  */
 
 const staticRoutes = [
@@ -20,6 +19,7 @@ const staticRoutes = [
   "/design",
   "/embeddings",
   "/contact",
+  "/colophon",
 ];
 
 function absolute(locale: Locale, href: string): string {
