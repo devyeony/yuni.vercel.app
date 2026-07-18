@@ -20,6 +20,8 @@ const pages = [
   "/ko/embeddings",
   "/en/contact",
   "/ko/contact",
+  "/en/colophon",
+  "/ko/colophon",
 ];
 
 async function scan(page: import("@playwright/test").Page) {
