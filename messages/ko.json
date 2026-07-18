@@ -112,7 +112,8 @@
       "design": "디자인",
       "embeddings": "임베딩",
       "primary": "주 메뉴",
-      "skipToContent": "본문으로 건너뛰기"
+      "skipToContent": "본문으로 건너뛰기",
+      "menu": "메뉴"
     },
     "footer": {
       "label": "외부 링크",

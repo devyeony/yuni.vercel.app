@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import { MobileNav } from "@/components/mobile-nav";
 import { NavLink } from "@/components/nav-link";
 import { LocaleSwitcher } from "@/components/ui/locale-switcher";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
@@ -16,19 +17,19 @@ export function SiteHeader() {
       >
         {t("skipToContent")}
       </a>
-      {/* Phone recomposes into two rows (wordmark + controls, then nav);
-          sm and up collapses back to a single 14-unit bar. */}
-      <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center px-4 py-2 sm:h-14 sm:flex-nowrap sm:px-6 sm:py-0 md:px-10">
+      {/* Single bar on every device class; the phone nav recomposes into a
+          hamburger sheet (MobileNav) instead of an overflowing second row. */}
+      <div className="mx-auto flex h-14 w-full max-w-6xl items-center px-4 sm:px-6 md:px-10">
         <Link
           href="/"
           aria-label={t("home")}
-          className="order-1 rounded-xs font-display text-xl font-semibold tracking-tight text-text"
+          className="rounded-xs font-display text-xl font-semibold tracking-tight text-text"
         >
           yuni
         </Link>
         <nav
           aria-label={t("primary")}
-          className="order-3 -mx-2 flex w-full items-center sm:order-2 sm:mx-0 sm:ml-auto sm:w-auto"
+          className="ml-auto hidden items-center sm:flex"
         >
           <NavLink href="/projects">{t("projects")}</NavLink>
           <NavLink href="/blog">{t("blog")}</NavLink>
@@ -36,10 +37,11 @@ export function SiteHeader() {
           <NavLink href="/design">{t("design")}</NavLink>
           <NavLink href="/embeddings">{t("embeddings")}</NavLink>
         </nav>
-        <div className="order-2 ml-auto flex items-center gap-1 sm:order-3 sm:ml-3">
+        <div className="ml-auto flex items-center gap-1 sm:ml-3">
           <SearchDialog />
           <ThemeToggle />
           <LocaleSwitcher />
+          <MobileNav />
         </div>
       </div>
     </header>
