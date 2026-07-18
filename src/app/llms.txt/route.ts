@@ -36,6 +36,7 @@ export function GET() {
     `- [Blog](${url("/blog")}): notes from building software`,
     `- [Design system](${url("/design")}): tokens, components, and motion of this site`,
     `- [Embedding map](${url("/embeddings")}): all content projected from 384-dimensional embeddings to 2D`,
+    `- [Contact](${url("/contact")}): reach out about hiring, collaboration, or a coffee chat`,
     "",
     "## Projects",
     "",

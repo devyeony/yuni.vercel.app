@@ -26,7 +26,7 @@
       "community": "Community"
     },
     "ctaTitle": "Sound like someone you'd build with?",
-    "ctaEmail": "Say hello"
+    "ctaContact": "Say hello"
   },
   "projects": {
     "title": "Projects",
@@ -51,7 +51,7 @@
       "planning": "Planning"
     },
     "ctaTitle": "Want to untangle problems like these together?",
-    "ctaEmail": "Say hello"
+    "ctaContact": "Say hello"
   },
   "blog": {
     "title": "Blog",
@@ -103,6 +103,37 @@
       "now": "Now"
     }
   },
+  "contact": {
+    "title": "Contact",
+    "intro": "Hiring, a project to collaborate on, or just software talk over coffee — say a little about what's on your mind and I'll reply by email.",
+    "elsewhereTitle": "Elsewhere",
+    "elsewhereBody": "Prefer your own inbox or a DM? These work too.",
+    "emailLink": "Email me",
+    "form": {
+      "nameLabel": "Name",
+      "emailLabel": "Email",
+      "purposeLegend": "What is this about?",
+      "purpose": {
+        "hiring": "Hiring",
+        "collaboration": "Collaboration",
+        "coffee": "Coffee chat"
+      },
+      "messageLabel": "Message",
+      "submit": "Send message",
+      "sending": "Sending…",
+      "sentTitle": "Message sent",
+      "sentBody": "Thanks — I read everything and usually reply within a couple of days.",
+      "failed": "The form couldn't send your message right now.",
+      "failedFallback": "Email me directly",
+      "rateLimited": "Too many messages in a short time — give it a minute and try again.",
+      "errors": {
+        "name": "Please tell me your name.",
+        "email": "That email address doesn't look right.",
+        "purpose": "Pick what this is about.",
+        "message": "A little more detail helps — at least 10 characters."
+      }
+    }
+  },
   "ui": {
     "nav": {
       "home": "Home",
@@ -111,6 +142,7 @@
       "blog": "Blog",
       "design": "Design",
       "embeddings": "Embeddings",
+      "contact": "Contact",
       "primary": "Primary",
       "skipToContent": "Skip to content",
       "menu": "Menu"

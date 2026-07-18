@@ -26,7 +26,7 @@
       "community": "커뮤니티"
     },
     "ctaTitle": "함께 만들고 싶은 사람인가요?",
-    "ctaEmail": "인사 건네기"
+    "ctaContact": "인사 건네기"
   },
   "projects": {
     "title": "프로젝트",
@@ -51,7 +51,7 @@
       "planning": "기획"
     },
     "ctaTitle": "이런 문제를 함께 풀고 싶다면",
-    "ctaEmail": "인사 건네기"
+    "ctaContact": "인사 건네기"
   },
   "blog": {
     "title": "블로그",
@@ -103,6 +103,37 @@
       "now": "Now"
     }
   },
+  "contact": {
+    "title": "연락하기",
+    "intro": "채용 문의, 함께할 프로젝트, 혹은 커피 한잔하며 나누는 소프트웨어 이야기 — 어떤 내용인지 간단히 남겨 주시면 이메일로 답장드립니다.",
+    "elsewhereTitle": "다른 채널",
+    "elsewhereBody": "익숙한 채널이 더 편하시다면 이쪽도 열려 있습니다.",
+    "emailLink": "이메일 보내기",
+    "form": {
+      "nameLabel": "이름",
+      "emailLabel": "이메일",
+      "purposeLegend": "어떤 이야기인가요?",
+      "purpose": {
+        "hiring": "채용 문의",
+        "collaboration": "협업",
+        "coffee": "커피챗"
+      },
+      "messageLabel": "메시지",
+      "submit": "메시지 보내기",
+      "sending": "보내는 중…",
+      "sentTitle": "메시지를 보냈습니다",
+      "sentBody": "감사합니다 — 모든 메시지를 읽고, 보통 며칠 안에 답장드립니다.",
+      "failed": "지금은 폼으로 메시지를 보낼 수 없습니다.",
+      "failedFallback": "이메일로 직접 보내기",
+      "rateLimited": "짧은 시간에 너무 많이 보냈습니다 — 잠시 후 다시 시도해 주세요.",
+      "errors": {
+        "name": "이름을 알려 주세요.",
+        "email": "이메일 주소 형식이 맞지 않습니다.",
+        "purpose": "어떤 이야기인지 골라 주세요.",
+        "message": "조금 더 자세히 적어 주세요 — 최소 10자 이상."
+      }
+    }
+  },
   "ui": {
     "nav": {
       "home": "홈",
@@ -111,6 +142,7 @@
       "blog": "블로그",
       "design": "디자인",
       "embeddings": "임베딩",
+      "contact": "연락",
       "primary": "주 메뉴",
       "skipToContent": "본문으로 건너뛰기",
       "menu": "메뉴"

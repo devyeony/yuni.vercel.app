@@ -17,8 +17,10 @@ export function SiteHeader() {
       >
         {t("skipToContent")}
       </a>
-      {/* Single bar on every device class; the phone nav recomposes into a
-          hamburger sheet (MobileNav) instead of an overflowing second row. */}
+      {/* Single bar on every device class; below `md` the nav recomposes
+          into a hamburger sheet (MobileNav) instead of an overflowing row —
+          six inline items measure ~395 px, which no longer fits next to the
+          wordmark and controls at 640 px. */}
       <div className="mx-auto flex h-14 w-full max-w-6xl items-center px-4 sm:px-6 md:px-10">
         <Link
           href="/"
@@ -29,15 +31,16 @@ export function SiteHeader() {
         </Link>
         <nav
           aria-label={t("primary")}
-          className="ml-auto hidden items-center sm:flex"
+          className="ml-auto hidden items-center md:flex"
         >
           <NavLink href="/projects">{t("projects")}</NavLink>
           <NavLink href="/blog">{t("blog")}</NavLink>
           <NavLink href="/about">{t("about")}</NavLink>
           <NavLink href="/design">{t("design")}</NavLink>
           <NavLink href="/embeddings">{t("embeddings")}</NavLink>
+          <NavLink href="/contact">{t("contact")}</NavLink>
         </nav>
-        <div className="ml-auto flex items-center gap-1 sm:ml-3">
+        <div className="ml-auto flex items-center gap-1 md:ml-3">
           <SearchDialog />
           <ThemeToggle />
           <LocaleSwitcher />
