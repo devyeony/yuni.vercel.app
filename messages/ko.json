@@ -53,11 +53,20 @@
     "ctaTitle": "이런 문제를 함께 풀고 싶다면",
     "ctaEmail": "인사 건네기"
   },
+  "blog": {
+    "title": "블로그",
+    "intro": "소프트웨어를 만들며 — 그리고 이 사이트를 공개적으로 만들며 남기는 기록.",
+    "all": "전체 글",
+    "tags": "태그",
+    "taggedTitle": "“{tag}” 태그",
+    "readingTime": "{minutes}분 분량"
+  },
   "ui": {
     "nav": {
       "home": "홈",
       "about": "소개",
       "projects": "프로젝트",
+      "blog": "블로그",
       "design": "디자인",
       "primary": "주 메뉴",
       "skipToContent": "본문으로 건너뛰기"

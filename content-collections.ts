@@ -4,6 +4,9 @@ import {
   defineSingleton,
 } from "@content-collections/core";
 import { compileMDX } from "@content-collections/mdx";
+import rehypePrettyCode, {
+  type Options as PrettyCodeOptions,
+} from "rehype-pretty-code";
 import { z } from "zod";
 
 /*
@@ -87,6 +90,20 @@ const projects = defineCollection({
   },
 });
 
+/*
+ * Shiki dual-theme highlighting; backgrounds come from semantic tokens
+ * (keepBackground: false), the active theme is selected in CSS.
+ * Theme choice is a11y-constrained: axe scans posts, so every token color
+ * must hit WCAG AA against surface-raised (vesper's grays fail at 2.6:1).
+ */
+const prettyCode: PrettyCodeOptions = {
+  theme: {
+    dark: "github-dark-high-contrast",
+    light: "github-light-high-contrast",
+  },
+  keepBackground: false,
+};
+
 const posts = defineCollection({
   name: "posts",
   typeName: "Post",
@@ -102,8 +119,16 @@ const posts = defineCollection({
     content: z.string(),
   }),
   transform: async (document, context) => {
-    const body = await compileMDX(context, document);
-    return { ...document, ...localeAndSlug(document._meta.path), body };
+    const body = await compileMDX(context, document, {
+      rehypePlugins: [[rehypePrettyCode, prettyCode]],
+    });
+    const words = document.content.split(/\s+/).filter(Boolean).length;
+    return {
+      ...document,
+      ...localeAndSlug(document._meta.path),
+      body,
+      readingMinutes: Math.max(1, Math.round(words / 200)),
+    };
   },
 });
 

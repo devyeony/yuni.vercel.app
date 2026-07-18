@@ -30,6 +30,7 @@ export function SiteHeader() {
           className="order-3 -mx-2 flex w-full items-center sm:order-2 sm:mx-0 sm:ml-auto sm:w-auto"
         >
           <NavLink href="/projects">{t("projects")}</NavLink>
+          <NavLink href="/blog">{t("blog")}</NavLink>
           <NavLink href="/about">{t("about")}</NavLink>
           <NavLink href="/design">{t("design")}</NavLink>
         </nav>

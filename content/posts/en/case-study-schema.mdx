@@ -1,0 +1,43 @@
+---
+title: A schema that refuses vague case studies
+summary: >-
+  Portfolio case studies drift into feature lists. Mine can't — the content
+  pipeline rejects any project that doesn't state its problem, trade-offs,
+  and measured outcomes.
+date: "2026-07-18"
+tags:
+  - portfolio
+  - content
+  - zod
+---
+
+Every portfolio says "built X with Y." Almost none say what the problem was,
+what the alternatives cost, or what changed because the thing shipped. Not
+because people don't know — because nothing forces them to write it down.
+
+While rebuilding this site I made that forcing function structural. Case
+studies live in MDX, but the frontmatter is validated by Zod at build time,
+and the schema requires the three things a case study is actually for:
+
+```ts
+schema: z.object({
+  problem: z.string().min(1),
+  decisions: z
+    .array(z.object({ decision: z.string().min(1), tradeoff: z.string().min(1) }))
+    .min(1),
+  outcomes: z.array(z.string().min(1)).min(1),
+  // …title, period, per-role contributions, stack, links
+})
+```
+
+The interesting field is `decisions`. Each entry must carry a `tradeoff` —
+you cannot record a decision here without admitting what it cost. "We used
+JPA" doesn't compile. "We introduced JPA alongside MyBatis, accepting two
+persistence idioms to avoid freezing feature work on a rewrite" does.
+
+The pages just render this structure. Which means the discipline survives
+me: any future project I add — or any AI agent adds on my behalf — goes
+through the same gate. If the trade-offs aren't written, the build is red.
+
+Schemas are usually pitched as protection against bad data. This one is
+protection against bad writing.
