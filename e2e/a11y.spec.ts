@@ -34,6 +34,16 @@ for (const path of pages) {
   });
 }
 
+test("phone menu dialog has no violations", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "phone", "hamburger renders below sm");
+  await page.goto("/en");
+  await page.getByRole("button", { name: "Menu" }).click();
+  await expect(
+    page.getByRole("dialog").getByRole("link", { name: "Projects" }),
+  ).toBeVisible();
+  expect(await scan(page)).toEqual([]);
+});
+
 test("/en search dialog with results has no violations", async ({ page }) => {
   await page.goto("/en");
   await page.getByRole("button", { name: "Search" }).click();

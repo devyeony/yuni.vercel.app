@@ -25,6 +25,29 @@ for (const locale of locales) {
       await expect(page.locator("h1")).toBeVisible();
     });
 
+    test("nav recomposes per device class", async ({ page }, testInfo) => {
+      const menuLabel = locale === "en" ? "Menu" : "메뉴";
+      const projectsLabel = locale === "en" ? "Projects" : "프로젝트";
+      const primaryLabel = locale === "en" ? "Primary" : "주 메뉴";
+      await page.goto(prefix || "/");
+      const hamburger = page.getByRole("button", { name: menuLabel });
+      const inlineNav = page
+        .locator("header")
+        .getByRole("navigation", { name: primaryLabel });
+      if (testInfo.project.name === "phone") {
+        await expect(inlineNav).toBeHidden();
+        await hamburger.click();
+        await page
+          .getByRole("dialog")
+          .getByRole("link", { name: projectsLabel })
+          .click();
+        await expect(page).toHaveURL(new RegExp(`${prefix}/projects$`));
+      } else {
+        await expect(hamburger).toBeHidden();
+        await expect(inlineNav).toBeVisible();
+      }
+    });
+
     test("serves the RAG index with chunks for this locale", async ({
       request,
     }) => {
@@ -92,12 +115,35 @@ for (const locale of locales) {
     ]) {
       test(`${prefix}${path} has no horizontal overflow`, async ({ page }) => {
         await page.goto(`${prefix}${path}` || "/");
-        const overflow = await page.evaluate(() => {
-          const el = document.scrollingElement;
-          return el ? el.scrollWidth - el.clientWidth : 0;
-        });
-        expect(overflow).toBe(0);
+        expect(await horizontalOverflow(page)).toBe(0);
       });
     }
   });
 }
+
+/*
+ * Document-level scroll width plus header-internal clipping: the 5-item
+ * inline nav once overflowed its row at 360 px without widening the
+ * document, which the scrollingElement check alone cannot see.
+ */
+function horizontalOverflow(page: import("@playwright/test").Page) {
+  return page.evaluate(() => {
+    const el = document.scrollingElement;
+    const doc = el ? el.scrollWidth - el.clientWidth : 0;
+    const headerSpill = Math.max(
+      0,
+      ...[...document.querySelectorAll("header, header *")].map(
+        (node) => node.getBoundingClientRect().right - window.innerWidth,
+      ),
+    );
+    return doc + Math.round(headerSpill);
+  });
+}
+
+test("narrow phones (320 px) get no horizontal overflow", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 780 });
+  for (const path of ["/", "/ko"]) {
+    await page.goto(path);
+    expect(await horizontalOverflow(page)).toBe(0);
+  }
+});

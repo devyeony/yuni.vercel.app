@@ -112,7 +112,8 @@
       "design": "Design",
       "embeddings": "Embeddings",
       "primary": "Primary",
-      "skipToContent": "Skip to content"
+      "skipToContent": "Skip to content",
+      "menu": "Menu"
     },
     "footer": {
       "label": "Elsewhere",
