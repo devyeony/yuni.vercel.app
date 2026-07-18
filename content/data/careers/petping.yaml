@@ -1,0 +1,25 @@
+company:
+  en: Petping (pet-healthcare startup)
+  ko: 펫핑 (펫 헬스케어 스타트업)
+role:
+  en: Backend Engineer
+  ko: 백엔드 엔지니어
+summary:
+  en: >-
+    Led backend architecture and API development for an all-in-one pet
+    lifestyle app; built the AWS infrastructure, blue/green zero-downtime
+    deployment, and the Grafana/Loki observability stack.
+  ko: >-
+    올인원 반려동물 라이프스타일 앱의 백엔드 아키텍처와 API 개발을 주도.
+    AWS 인프라, 블루/그린 무중단 배포, Grafana/Loki 관측 스택을 구축.
+period:
+  start: "2021-07"
+  end: "2024-01"
+stack:
+  - Java
+  - Spring Boot
+  - JPA
+  - MyBatis
+  - MySQL
+  - Redis
+  - AWS

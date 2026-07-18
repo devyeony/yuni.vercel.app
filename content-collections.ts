@@ -1,4 +1,8 @@
-import { defineCollection, defineConfig } from "@content-collections/core";
+import {
+  defineCollection,
+  defineConfig,
+  defineSingleton,
+} from "@content-collections/core";
 import { compileMDX } from "@content-collections/mdx";
 import { z } from "zod";
 
@@ -24,6 +28,16 @@ const localeAndSlug = (path: string) => {
 
 /* "2021-07" — year-month keeps case-study periods honest without fake days. */
 const yearMonth = z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/);
+
+/* "2023" or "2023-11" — structured-data dates where only the year is certain. */
+const yearOrMonth = z.string().regex(/^\d{4}(-(0[1-9]|1[0-2]))?$/);
+
+/*
+ * Structured data (content/data/) is locale-keyed per entry rather than
+ * split per-locale file: one career/activity is one fact, and its two
+ * renderings must never drift apart.
+ */
+const localized = z.object({ en: z.string().min(1), ko: z.string().min(1) });
 
 const projects = defineCollection({
   name: "projects",
@@ -93,4 +107,50 @@ const posts = defineCollection({
   },
 });
 
-export default defineConfig({ content: [projects, posts] });
+const careers = defineCollection({
+  name: "careers",
+  typeName: "Career",
+  directory: "content/data/careers",
+  include: "**/*.yaml",
+  parser: "yaml",
+  schema: z.object({
+    company: localized,
+    role: localized,
+    summary: localized,
+    period: z.object({ start: yearOrMonth, end: yearOrMonth.optional() }),
+    stack: z.array(z.string().min(1)).default([]),
+  }),
+});
+
+const activities = defineCollection({
+  name: "activities",
+  typeName: "Activity",
+  directory: "content/data/activities",
+  include: "**/*.yaml",
+  parser: "yaml",
+  schema: z.object({
+    kind: z.enum(["opensource", "talk", "publication", "community"]),
+    title: localized,
+    org: localized.optional(),
+    date: yearOrMonth,
+    endDate: yearOrMonth.optional(),
+    note: localized.optional(),
+    link: z.url().optional(),
+  }),
+});
+
+/* The "living site" signal: hero availability badge + (later) home Now snippet. */
+const now = defineSingleton({
+  name: "now",
+  filePath: "content/data/now.yaml",
+  parser: "yaml",
+  schema: z.object({
+    updated: z.iso.date(),
+    availability: z.object({ open: z.boolean(), label: localized }),
+    focus: z.array(localized).min(1),
+  }),
+});
+
+export default defineConfig({
+  content: [projects, posts, careers, activities, now],
+});

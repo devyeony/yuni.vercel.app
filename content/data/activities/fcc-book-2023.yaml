@@ -1,0 +1,12 @@
+kind: publication
+title:
+  en: '"How to Learn to Code and Get a Developer Job" — Korean edition'
+  ko: 『코딩을 배우고 개발자가 되는 방법』 한국어판
+org:
+  en: freeCodeCamp Korea
+  ko: freeCodeCamp Korea
+date: "2023"
+note:
+  en: Co-translator on the 12-member volunteer team.
+  ko: 12인 자원봉사 번역팀의 공동 번역자.
+link: "https://www.freecodecamp.org/korean/news/learn-to-code-book/"
