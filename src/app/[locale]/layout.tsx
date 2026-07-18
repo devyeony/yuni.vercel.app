@@ -7,6 +7,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { routing } from "@/i18n/routing";
+import { jsonLdScript, profileJsonLd } from "@/lib/jsonld";
 import { site } from "@/lib/site";
 import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import "@/styles/globals.css";
@@ -52,7 +53,7 @@ export async function generateMetadata({
       locale: locale === "ko" ? "ko_KR" : "en_US",
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
     },
   };
 }
@@ -73,6 +74,7 @@ export default async function LocaleLayout({
     notFound();
   }
   setRequestLocale(locale);
+  const meta = await getTranslations({ locale, namespace: "meta" });
 
   return (
     <html
@@ -82,6 +84,13 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col">
+        <script
+          type="application/ld+json"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: static, escaped JSON-LD from our own constants
+          dangerouslySetInnerHTML={{
+            __html: jsonLdScript(profileJsonLd(meta("description"))),
+          }}
+        />
         <ThemeProvider>
           <NextIntlClientProvider>
             <SiteHeader />
