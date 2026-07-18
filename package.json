@@ -5,17 +5,19 @@
   "packageManager": "pnpm@10.8.0",
   "pnpm": {
     "onlyBuiltDependencies": [
-      "esbuild"
+      "esbuild",
+      "onnxruntime-node",
+      "protobufjs"
     ]
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/build-rag-index.mjs && next build",
     "start": "next start",
     "check": "biome check . && content-collections build && tsc --noEmit && node scripts/check-i18n.mjs && knip",
     "prepare": "lefthook install",
     "test": "vitest run",
-    "verify": "next build && playwright test",
+    "verify": "pnpm build && playwright test",
     "lint": "biome check",
     "format": "biome format --write",
     "setup:agents": "node scripts/setup-agents.mjs"
@@ -43,6 +45,7 @@
     "@content-collections/cli": "^0.1.9",
     "@content-collections/core": "^0.15.2",
     "@content-collections/next": "^0.2.11",
+    "@huggingface/transformers": "^4.2.0",
     "@lhci/cli": "^0.15.1",
     "@playwright/test": "^1.61.1",
     "@size-limit/file": "^12.1.0",
