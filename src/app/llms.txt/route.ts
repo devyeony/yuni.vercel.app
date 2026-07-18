@@ -37,6 +37,7 @@ export function GET() {
     `- [Design system](${url("/design")}): tokens, components, and motion of this site`,
     `- [Embedding map](${url("/embeddings")}): all content projected from 384-dimensional embeddings to 2D`,
     `- [Contact](${url("/contact")}): reach out about hiring, collaboration, or a coffee chat`,
+    `- [Colophon](${url("/colophon")}): how the site is made — the agent harness, the content pipeline, and the MCP server`,
     "",
     "## Projects",
     "",

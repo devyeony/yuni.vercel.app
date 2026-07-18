@@ -128,6 +128,29 @@
     "elsewhereBody": "No particular agenda, or prefer a DM? These work too.",
     "emailLink": "Email me"
   },
+  "colophon": {
+    "title": "Colophon",
+    "intro": "How this site is made: in the open, with coding agents doing much of the typing inside a harness that verifies every change. The process is as much the portfolio as the pages are — and every claim below is checkable in the public repo.",
+    "harnessTitle": "The harness",
+    "harnessIntro": "The interesting part is not that an AI wrote code — it's the harness that makes any coding agent produce work that holds up. Three principles carry it.",
+    "pipelineTitle": "One entry, four surfaces",
+    "pipelineIntro": "Content is written once — schema-validated YAML and MDX — and everything else derives at build time. Adding a single entry updates all four surfaces with zero component changes.",
+    "mcpTitle": "Connect this portfolio to your AI",
+    "mcpIntro": "This site is also an MCP server. Point Claude — or any MCP client — at it, and your AI can ask who I am, read the case studies, and search everything here through six read-only tools. They serve the same collections as the pages you're reading.",
+    "mcpClientLabel": "Any MCP client · Streamable HTTP",
+    "mcpToolsLabel": "Read-only tools",
+    "copy": "Copy",
+    "copied": "Copied",
+    "demoAlt": "Terminal recording: the yuni MCP server is added to Claude Code with a single command, then Claude answers a question about yuni by calling the portfolio's MCP tools.",
+    "demoCaption": "A real session, recorded against a local build of this site before launch — one command to connect, then Claude answers from its MCP tools.",
+    "restraintTitle": "Deliberately not built",
+    "restraintIntro": "The repo's decision records document what was built — and, more tellingly, what wasn't.",
+    "adrCta": "Read the decision records",
+    "stackTitle": "Stack",
+    "typeTitle": "Type",
+    "sourceBody": "Set in the typefaces above, shipped from a public repository — decision records, harness, and all.",
+    "sourceCta": "Read the source"
+  },
   "ui": {
     "nav": {
       "home": "Home",
@@ -143,7 +166,8 @@
     },
     "footer": {
       "label": "Elsewhere",
-      "source": "Source"
+      "source": "Source",
+      "colophon": "Colophon"
     },
     "themeToggle": {
       "toLight": "Switch to light theme",
