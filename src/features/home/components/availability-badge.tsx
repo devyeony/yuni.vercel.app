@@ -1,7 +1,7 @@
+import { now } from "content-collections";
 import { useLocale } from "next-intl";
 import type { Locale } from "@/i18n/routing";
 import { cn } from "@/lib/cn";
-import { now } from "../lib/now";
 
 export function AvailabilityBadge({ className }: { className?: string }) {
   const locale = useLocale() as Locale;

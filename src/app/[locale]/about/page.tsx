@@ -7,6 +7,8 @@ import { Link } from "@/components/ui/link";
 import { Section } from "@/components/ui/section";
 import { Separator } from "@/components/ui/separator";
 import { Text } from "@/components/ui/text";
+import { ActivityList } from "@/features/about/components/activity-list";
+import { CareerTimeline } from "@/features/about/components/career-timeline";
 import { RoleGrid } from "@/features/about/components/role-grid";
 import { narrative } from "@/features/about/lib/profile";
 import type { Locale } from "@/i18n/routing";
@@ -60,6 +62,28 @@ export default function AboutPage({
         </Text>
         <div className="mt-10">
           <RoleGrid />
+        </div>
+      </Section>
+
+      <Separator className="mx-auto max-w-6xl" />
+
+      <Section>
+        <Heading as="h2" variant="title">
+          {t("experienceTitle")}
+        </Heading>
+        <div className="mt-10">
+          <CareerTimeline />
+        </div>
+      </Section>
+
+      <Separator className="mx-auto max-w-6xl" />
+
+      <Section>
+        <Heading as="h2" variant="title">
+          {t("activitiesTitle")}
+        </Heading>
+        <div className="mt-10">
+          <ActivityList />
         </div>
       </Section>
 

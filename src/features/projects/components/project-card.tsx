@@ -3,9 +3,10 @@ import { Card } from "@/components/ui/card";
 import { Heading } from "@/components/ui/heading";
 import { Tag } from "@/components/ui/tag";
 import { Text } from "@/components/ui/text";
-import { formatPeriod, type Project } from "@/features/projects/lib/collection";
+import type { Project } from "@/features/projects/lib/collection";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
+import { formatRange } from "@/lib/dates";
 
 const STACK_PREVIEW = 5;
 
@@ -25,7 +26,12 @@ export function ProjectCard({ project }: { project: Project }) {
             {project.title}
           </Heading>
           <Text variant="caption">
-            {formatPeriod(locale, project.period, t("present"))}
+            {formatRange(
+              locale,
+              project.period.start,
+              project.period.end,
+              t("present"),
+            )}
           </Text>
         </div>
         <Text variant="muted" className="flex-1">
