@@ -46,6 +46,9 @@ export async function sendContactMessage(
   if (!apiKey) return { status: "failed", values };
 
   const { name, email, purpose, message } = parsed.data;
+  // Subject lines must stay single-line: collapse whitespace (including
+  // CR/LF) so a crafted name can't smuggle extra mail headers downstream.
+  const subjectName = name.replace(/\s+/g, " ");
   const response = await fetch(RESEND_ENDPOINT, {
     method: "POST",
     headers: {
@@ -59,7 +62,7 @@ export async function sendContactMessage(
           site.social.email.replace("mailto:", ""),
       ],
       reply_to: email,
-      subject: `[${purpose}] ${name} — via ${site.url.replace("https://", "")}`,
+      subject: `[${purpose}] ${subjectName} — via ${site.url.replace("https://", "")}`,
       text: `From: ${name} <${email}>\nPurpose: ${purpose}\n\n${message}`,
     }),
   }).catch(() => null);
