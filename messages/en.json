@@ -19,10 +19,36 @@
     "ctaTitle": "Sound like someone you'd build with?",
     "ctaEmail": "Say hello"
   },
+  "projects": {
+    "title": "Projects",
+    "intro": "Case studies, not feature lists — each one states the problem, the decisions with their trade-offs, and the measured outcome.",
+    "all": "All projects",
+    "problem": "Problem",
+    "decisions": "Decisions & trade-offs",
+    "outcomes": "Outcomes",
+    "myRole": "My role",
+    "stack": "Stack",
+    "links": "Links",
+    "present": "present",
+    "link": {
+      "site": "Website",
+      "demo": "Demo",
+      "repo": "Repository"
+    },
+    "role": {
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "design": "Design",
+      "planning": "Planning"
+    },
+    "ctaTitle": "Want to untangle problems like these together?",
+    "ctaEmail": "Say hello"
+  },
   "ui": {
     "nav": {
       "home": "Home",
       "about": "About",
+      "projects": "Projects",
       "design": "Design",
       "primary": "Primary",
       "skipToContent": "Skip to content"

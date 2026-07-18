@@ -30,6 +30,94 @@
 }
 
 /*
+ * Long-form MDX bodies (case studies, posts). Element selectors because the
+ * content is compiled markdown, not components; semantic tokens only.
+ */
+.prose {
+  color: var(--color-text-muted);
+  line-height: 1.75;
+}
+
+.prose > * + * {
+  margin-top: 1.25em;
+}
+
+.prose h2,
+.prose h3 {
+  font-family: var(--font-display);
+  color: var(--color-text);
+  font-weight: 500;
+  text-wrap: balance;
+}
+
+.prose h2 {
+  margin-top: 2em;
+  font-size: var(--text-subtitle);
+}
+
+.prose h3 {
+  margin-top: 1.6em;
+  font-size: var(--text-lead);
+}
+
+.prose strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.prose a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-color: color-mix(
+    in oklab,
+    var(--color-accent) 40%,
+    transparent
+  );
+  text-underline-offset: 4px;
+}
+
+.prose a:hover {
+  text-decoration-color: var(--color-accent);
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border-muted);
+  border-radius: var(--radius-xs);
+  padding: 0.125em 0.375em;
+}
+
+.prose ul {
+  list-style: disc;
+  padding-left: 1.25em;
+}
+
+.prose ol {
+  list-style: decimal;
+  padding-left: 1.25em;
+}
+
+.prose li + li {
+  margin-top: 0.5em;
+}
+
+.prose li::marker {
+  color: var(--color-accent);
+}
+
+.prose blockquote {
+  border-left: 2px solid var(--color-border);
+  padding-left: 1.25em;
+}
+
+.prose hr {
+  border-color: var(--color-border-muted);
+  margin-block: 2.5em;
+}
+
+/*
  * Staggered entrance reveal. One-shot, so both duration and delay ride the
  * duration tokens — prefers-reduced-motion collapses everything to ~0ms via
  * the token layer, no extra media query needed. Stagger with

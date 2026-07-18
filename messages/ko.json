@@ -19,10 +19,36 @@
     "ctaTitle": "함께 만들고 싶은 사람인가요?",
     "ctaEmail": "인사 건네기"
   },
+  "projects": {
+    "title": "프로젝트",
+    "intro": "기능 나열이 아닌 케이스 스터디 — 각 프로젝트는 문제, 트레이드오프가 담긴 결정, 측정된 결과를 기록합니다.",
+    "all": "전체 프로젝트",
+    "problem": "문제",
+    "decisions": "결정과 트레이드오프",
+    "outcomes": "결과",
+    "myRole": "맡은 역할",
+    "stack": "기술 스택",
+    "links": "링크",
+    "present": "현재",
+    "link": {
+      "site": "웹사이트",
+      "demo": "데모",
+      "repo": "저장소"
+    },
+    "role": {
+      "backend": "백엔드",
+      "frontend": "프론트엔드",
+      "design": "디자인",
+      "planning": "기획"
+    },
+    "ctaTitle": "이런 문제를 함께 풀고 싶다면",
+    "ctaEmail": "인사 건네기"
+  },
   "ui": {
     "nav": {
       "home": "홈",
       "about": "소개",
+      "projects": "프로젝트",
       "design": "디자인",
       "primary": "주 메뉴",
       "skipToContent": "본문으로 건너뛰기"
