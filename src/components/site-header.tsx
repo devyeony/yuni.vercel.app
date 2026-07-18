@@ -8,7 +8,7 @@ export function SiteHeader() {
   const t = useTranslations("ui.nav");
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border-muted bg-surface">
+    <header className="print-hidden sticky top-0 z-40 border-b border-border-muted bg-surface">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:top-2.5 focus:left-4 focus:z-50 focus:rounded-sm focus:bg-surface-raised focus:px-3 focus:py-2 focus:text-sm focus:text-text"

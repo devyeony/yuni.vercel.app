@@ -26,7 +26,8 @@
       "community": "Community"
     },
     "ctaTitle": "Sound like someone you'd build with?",
-    "ctaEmail": "Say hello"
+    "ctaEmail": "Say hello",
+    "resumeLink": "Résumé"
   },
   "projects": {
     "title": "Projects",
@@ -52,6 +53,16 @@
     },
     "ctaTitle": "Want to untangle problems like these together?",
     "ctaEmail": "Say hello"
+  },
+  "resume": {
+    "title": "Résumé",
+    "print": "Print / save as PDF",
+    "experience": "Experience",
+    "activities": "Open source & community",
+    "skills": "Skills",
+    "present": "present",
+    "updated": "Updated {date}",
+    "generatedNote": "Rendered from the same data that powers this site."
   },
   "blog": {
     "title": "Blog",

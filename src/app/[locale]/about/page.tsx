@@ -98,6 +98,9 @@ export default function AboutPage({
           <Link href={site.social.email} variant="accent">
             {t("ctaEmail")} →
           </Link>
+          <Link href="/resume" variant="muted">
+            {t("resumeLink")}
+          </Link>
           <Link href={site.social.linkedin} variant="muted">
             LinkedIn
           </Link>

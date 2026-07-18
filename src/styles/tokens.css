@@ -104,6 +104,32 @@
   --grain-opacity: 0.03;
 }
 
+/*
+ * Print theme — the third theme. Any page (the résumé foremost) prints
+ * black-on-white regardless of the active screen theme, at the same
+ * override point as .light: tokens only, components never branch.
+ */
+@media print {
+  :root,
+  :root.light {
+    color-scheme: light;
+
+    --surface: white;
+    --surface-raised: white;
+    --surface-overlay: transparent;
+    --border: oklch(0.75 0 0);
+    --border-muted: oklch(0.88 0 0);
+    --text: black;
+    --text-muted: oklch(0.35 0 0);
+    --accent: black;
+    --accent-muted: oklch(0.25 0 0);
+    --accent-contrast: white;
+    --danger: black;
+
+    --grain-opacity: 0;
+  }
+}
+
 @theme inline {
   /* ---------- Semantic: components reference these only ---------- */
   --color-surface: var(--surface);

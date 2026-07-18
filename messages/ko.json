@@ -26,7 +26,8 @@
       "community": "커뮤니티"
     },
     "ctaTitle": "함께 만들고 싶은 사람인가요?",
-    "ctaEmail": "인사 건네기"
+    "ctaEmail": "인사 건네기",
+    "resumeLink": "이력서"
   },
   "projects": {
     "title": "프로젝트",
@@ -52,6 +53,16 @@
     },
     "ctaTitle": "이런 문제를 함께 풀고 싶다면",
     "ctaEmail": "인사 건네기"
+  },
+  "resume": {
+    "title": "이력서",
+    "print": "인쇄 / PDF로 저장",
+    "experience": "경력",
+    "activities": "오픈소스 & 커뮤니티",
+    "skills": "기술 스택",
+    "present": "현재",
+    "updated": "{date} 갱신",
+    "generatedNote": "이 사이트를 만드는 데이터에서 그대로 렌더링됩니다."
   },
   "blog": {
     "title": "블로그",

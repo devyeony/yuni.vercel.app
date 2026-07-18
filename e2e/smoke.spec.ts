@@ -42,6 +42,7 @@ for (const locale of locales) {
       "/projects/petping",
       "/blog",
       "/blog/case-study-schema",
+      "/resume",
     ]) {
       test(`${prefix}${path} has no horizontal overflow`, async ({ page }) => {
         await page.goto(`${prefix}${path}` || "/");

@@ -30,6 +30,21 @@
 }
 
 /*
+ * Print: chrome (header, footer, buttons) and the grain overlay disappear;
+ * colors are handled at the token layer (tokens.css print theme).
+ */
+/* Unlayered, so it wins over Tailwind's layered display utilities. */
+@media print {
+  .print-hidden {
+    display: none;
+  }
+
+  body::after {
+    display: none;
+  }
+}
+
+/*
  * Long-form MDX bodies (case studies, posts). Element selectors because the
  * content is compiled markdown, not components; semantic tokens only.
  */

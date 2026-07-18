@@ -16,6 +16,8 @@ const pages = [
   "/ko/blog",
   "/en/blog/case-study-schema",
   "/ko/blog/case-study-schema",
+  "/en/resume",
+  "/ko/resume",
 ];
 
 async function scan(page: import("@playwright/test").Page) {
