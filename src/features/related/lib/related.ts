@@ -1,6 +1,5 @@
-import { readFileSync } from "node:fs";
-import path from "node:path";
 import type { Locale } from "@/i18n/routing";
+import { cosine, type RagChunk, ragChunks } from "@/lib/rag-index";
 
 /*
  * Similar-content recommendations (PLAN §7-1): rank documents by cosine
@@ -17,14 +16,6 @@ export type RelatedItem = {
   url: string;
   title: string;
   score: number;
-};
-
-export type RagChunk = {
-  id: string;
-  locale: string;
-  url: string;
-  title: string;
-  vec: number[];
 };
 
 type Spine = {
@@ -61,10 +52,6 @@ export function spinesFrom(chunks: RagChunk[]): Spine[] {
   });
 }
 
-/** Vectors are L2-normalized at index build time, so dot product = cosine. */
-const cosine = (a: number[], b: number[]) =>
-  a.reduce((sum, v, i) => sum + v * (b[i] ?? 0), 0);
-
 export function rankRelated(
   spines: Spine[],
   locale: Locale,
@@ -89,26 +76,10 @@ export function rankRelated(
     .slice(0, limit);
 }
 
-/* The index is a build artifact (generated before `next build`), so it is
- * read from disk lazily instead of imported — `tsc` must pass on a clean
- * checkout where public/rag-index.json does not exist yet. */
-let cached: Spine[] | undefined;
-
-function loadSpines(): Spine[] {
-  if (!cached) {
-    const raw = readFileSync(
-      path.join(process.cwd(), "public", "rag-index.json"),
-      "utf8",
-    );
-    cached = spinesFrom((JSON.parse(raw) as { chunks: RagChunk[] }).chunks);
-  }
-  return cached;
-}
-
 export function relatedFor(
   locale: Locale,
   kind: RelatedKind,
   slug: string,
 ): RelatedItem[] {
-  return rankRelated(loadSpines(), locale, kind, slug);
+  return rankRelated(spinesFrom(ragChunks()), locale, kind, slug);
 }

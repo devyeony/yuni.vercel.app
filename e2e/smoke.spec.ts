@@ -53,6 +53,24 @@ for (const locale of locales) {
       }
     });
 
+    test("renders the embedding map with interactive points", async ({
+      page,
+    }) => {
+      await page.goto(`${prefix}/embeddings`);
+      const plot = page.getByRole("list", {
+        name:
+          locale === "en"
+            ? "2D map of content embeddings"
+            : "콘텐츠 임베딩 2D 지도",
+      });
+      const points = plot.getByRole("button");
+      expect(await points.count()).toBeGreaterThanOrEqual(10);
+      await expect(plot.getByRole("button", { pressed: true })).toHaveCount(1);
+      const last = points.last();
+      await last.click();
+      await expect(last).toHaveAttribute("aria-pressed", "true");
+    });
+
     test("serves an RSS feed", async ({ request }) => {
       const response = await request.get(`/${locale}/feed.xml`);
       expect(response.status()).toBe(200);
@@ -70,6 +88,7 @@ for (const locale of locales) {
       "/projects/petping",
       "/blog",
       "/blog/case-study-schema",
+      "/embeddings",
     ]) {
       test(`${prefix}${path} has no horizontal overflow`, async ({ page }) => {
         await page.goto(`${prefix}${path}` || "/");
