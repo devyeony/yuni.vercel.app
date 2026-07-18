@@ -1,0 +1,61 @@
+---
+title: The AI layer is a build artifact
+summary: >-
+  Related content, an embedding map, site search, and an MCP server — all
+  served from one 125 kB JSON file computed at build time. No vector
+  database, no embedding API, no runtime model.
+date: "2026-07-19"
+tags:
+  - ai
+  - embeddings
+  - architecture
+---
+
+Every AI feature on this site — the "similar work" links under each
+project, the 2D embedding map, site search, the MCP tools — reads from a
+single static file: `public/rag-index.json`. It is regenerated at the head
+of every build and shipped like any other asset. There is no vector
+database, no embedding endpoint, and no model running anywhere at runtime.
+
+The pipeline is one script. It chunks every content collection — project
+case studies, posts, careers, activities — and embeds the chunks locally
+with Transformers.js and `multilingual-e5-small`, a free quantized model
+whose multilingual space lets one index serve both English and Korean.
+The output is currently 34 chunks of 384 dimensions each: about 125 kB.
+
+At that scale, the "database" is an array and the query engine is a fold:
+
+```ts
+const cosine = (a: number[], b: number[]) =>
+  a.reduce((sum, v, i) => sum + v * b[i], 0);
+```
+
+A vector database here would be operating infrastructure to avoid a
+one-liner. The index format isolates that choice — if the corpus ever
+outgrows in-memory search, only the search function changes — but a
+personal site reaching that scale is a problem I'd be glad to have.
+
+The part I care most about: the index verifies itself. After embedding,
+the build runs smoke retrievals in both locales — an English query about
+backend experience, a Korean query about open source — and fails if a
+relevant chunk doesn't rank in the top three. A broken index cannot ship,
+because shipping is the test.
+
+Everything downstream is derived. Add one project file and the case study
+page, the RSS feed, the related-content links, the map, search, and the
+MCP responses all update — with zero component edits. The recommendations
+even show their cosine scores, because the mechanism is the point.
+
+The honest limit: search is hybrid, not fully semantic. Lexical matches
+seed a pseudo query vector, which then ranks the whole corpus by cosine —
+so a query with no lexical foothold returns nothing. The alternatives were
+measured and rejected: running the model in the browser means a ~129 MB
+download for the visitor's first search, and a serverless embedding route
+means a 3–8 second cold start. Both bought marginal recall on a 34-chunk
+corpus at the cost of the property I value most — that the whole AI layer
+is static, free, and cannot fail at runtime.
+
+This site once had a RAG chatbot planned. It was cut when I noticed the
+retrieval was the demonstrable part and the generation was the risk. The R
+is still here, visibly doing its work on every page. The G never made the
+cut.
