@@ -44,6 +44,10 @@ next-env.d.ts
 # content-collections (generated)
 .content-collections
 
+# RAG index (generated at build) + local model cache
+/public/rag-index.json
+/.cache/
+
 # local planning doc (never commit)
 /PLAN.md
 

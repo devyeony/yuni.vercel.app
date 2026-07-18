@@ -25,6 +25,20 @@ for (const locale of locales) {
       await expect(page.locator("h1")).toBeVisible();
     });
 
+    test("serves the RAG index with chunks for this locale", async ({
+      request,
+    }) => {
+      const response = await request.get("/rag-index.json");
+      expect(response.status()).toBe(200);
+      const index = await response.json();
+      expect(index.model).toContain("e5");
+      expect(
+        index.chunks.filter(
+          (chunk: { locale: string }) => chunk.locale === locale,
+        ).length,
+      ).toBeGreaterThan(0);
+    });
+
     test("serves an RSS feed", async ({ request }) => {
       const response = await request.get(`/${locale}/feed.xml`);
       expect(response.status()).toBe(200);

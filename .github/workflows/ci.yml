@@ -17,6 +17,11 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - name: Cache the RAG embedding model
+        uses: actions/cache@v4
+        with:
+          path: .cache/transformers
+          key: transformers-multilingual-e5-small
       - run: pnpm check
       - run: pnpm test
       - run: pnpm exec playwright install --with-deps chromium
