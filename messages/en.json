@@ -61,6 +61,14 @@
     "taggedTitle": "Tagged “{tag}”",
     "readingTime": "{minutes} min read"
   },
+  "related": {
+    "title": "Similar work",
+    "similarity": "similarity {score}",
+    "kind": {
+      "project": "Project",
+      "post": "Post"
+    }
+  },
   "ui": {
     "nav": {
       "home": "Home",

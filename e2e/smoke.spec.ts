@@ -39,6 +39,20 @@ for (const locale of locales) {
       ).toBeGreaterThan(0);
     });
 
+    test("recommends similar content on detail pages", async ({ page }) => {
+      const heading = locale === "en" ? "Similar work" : "비슷한 작업";
+      for (const [path, target] of [
+        ["/projects/petping", `${prefix}/blog/case-study-schema`],
+        ["/blog/case-study-schema", `${prefix}/projects/petping`],
+      ] as const) {
+        await page.goto(`${prefix}${path}`);
+        await expect(
+          page.getByRole("heading", { name: heading }),
+        ).toBeVisible();
+        await expect(page.locator(`a[href="${target}"]`)).toBeVisible();
+      }
+    });
+
     test("serves an RSS feed", async ({ request }) => {
       const response = await request.get(`/${locale}/feed.xml`);
       expect(response.status()).toBe(200);

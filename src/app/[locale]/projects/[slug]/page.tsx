@@ -15,6 +15,8 @@ import {
   projectsForLocale,
   roleOrder,
 } from "@/features/projects/lib/collection";
+import { RelatedContent } from "@/features/related/components/related-content";
+import { relatedFor } from "@/features/related/lib/related";
 import type { Locale } from "@/i18n/routing";
 import { formatRange } from "@/lib/dates";
 import { localeAlternates } from "@/lib/seo";
@@ -61,6 +63,8 @@ export default function ProjectPage({
   const roles = roleOrder
     .map((role) => ({ role, contribution: project.roles[role] }))
     .filter((entry) => entry.contribution);
+
+  const related = relatedFor(activeLocale, "project", slug);
 
   return (
     <main id="main" className="flex-1">
@@ -196,6 +200,15 @@ export default function ProjectPage({
           </div>
         </div>
       </Section>
+
+      {related.length > 0 && (
+        <>
+          <Separator className="mx-auto max-w-6xl" />
+          <Section>
+            <RelatedContent items={related} />
+          </Section>
+        </>
+      )}
 
       <Separator className="mx-auto max-w-6xl" />
 
