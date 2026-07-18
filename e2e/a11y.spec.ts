@@ -18,6 +18,8 @@ const pages = [
   "/ko/blog/case-study-schema",
   "/en/embeddings",
   "/ko/embeddings",
+  "/en/contact",
+  "/ko/contact",
 ];
 
 async function scan(page: import("@playwright/test").Page) {
@@ -35,7 +37,7 @@ for (const path of pages) {
 }
 
 test("phone menu dialog has no violations", async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name !== "phone", "hamburger renders below sm");
+  test.skip(testInfo.project.name !== "phone", "hamburger renders below md");
   await page.goto("/en");
   await page.getByRole("button", { name: "Menu" }).click();
   await expect(

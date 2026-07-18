@@ -12,13 +12,21 @@ import {
 } from "@/components/ui/dialog";
 
 /*
- * Phone navigation ("use client": open state must close on navigate). Five
- * nav items overflow a 360 px row — measured 337 px of content in a 328 px
- * container, and 320 px viewports side-scroll — so below `sm` the nav lives
- * behind a hamburger in a top-sheet dialog; `sm` and up keeps the inline row.
+ * Phone/small-tablet navigation ("use client": open state must close on
+ * navigate). Six nav items measure ~395 px of content — overflowing both the
+ * 360 px row and the 640 px bar once wordmark and controls are counted — so
+ * below `md` the nav lives behind a hamburger in a top-sheet dialog; `md`
+ * and up keeps the inline row.
  */
 
-const items = ["projects", "blog", "about", "design", "embeddings"] as const;
+const items = [
+  "projects",
+  "blog",
+  "about",
+  "design",
+  "embeddings",
+  "contact",
+] as const;
 
 function MenuIcon() {
   return (
@@ -47,14 +55,14 @@ export function MobileNav() {
           <Button
             variant="ghost"
             size="icon"
-            className="sm:hidden"
+            className="md:hidden"
             aria-label={t("menu")}
           >
             <MenuIcon />
           </Button>
         }
       />
-      <DialogContent className="top-0 left-0 w-full max-w-none translate-x-0 translate-y-0 rounded-none border-x-0 border-t-0 p-4 data-[starting-style]:scale-100 data-[ending-style]:scale-100 sm:hidden">
+      <DialogContent className="top-0 left-0 w-full max-w-none translate-x-0 translate-y-0 rounded-none border-x-0 border-t-0 p-4 data-[starting-style]:scale-100 data-[ending-style]:scale-100 md:hidden">
         <DialogTitle className="sr-only">{t("menu")}</DialogTitle>
         <nav aria-label={t("primary")}>
           <ul className="flex flex-col">

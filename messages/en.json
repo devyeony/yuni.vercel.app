@@ -26,7 +26,7 @@
       "community": "Community"
     },
     "ctaTitle": "Sound like someone you'd build with?",
-    "ctaEmail": "Say hello"
+    "ctaContact": "Say hello"
   },
   "projects": {
     "title": "Projects",
@@ -51,7 +51,7 @@
       "planning": "Planning"
     },
     "ctaTitle": "Want to untangle problems like these together?",
-    "ctaEmail": "Say hello"
+    "ctaContact": "Say hello"
   },
   "blog": {
     "title": "Blog",
@@ -103,6 +103,31 @@
       "now": "Now"
     }
   },
+  "contact": {
+    "title": "Contact",
+    "intro": "No form, no ticket queue — email lands in my actual inbox, and I read everything. Pick what fits and the subject line is already written.",
+    "writeCta": "Write to me",
+    "purposes": {
+      "hiring": {
+        "title": "Hiring",
+        "body": "Backend-anchored software engineer, open to global remote and relocation. Happy to share a résumé and talk specifics.",
+        "subject": "Hiring — reaching out from yuni.vercel.app"
+      },
+      "collaboration": {
+        "title": "Collaboration",
+        "body": "Open source, side projects, writing or a talk — if you think we'd build something good together, tell me about it.",
+        "subject": "Collaboration — reaching out from yuni.vercel.app"
+      },
+      "coffee": {
+        "title": "Coffee chat",
+        "body": "Career paths, backend craft, AI-assisted workflows, or how this site is built — I enjoy talking shop.",
+        "subject": "Coffee chat — reaching out from yuni.vercel.app"
+      }
+    },
+    "elsewhereTitle": "Elsewhere",
+    "elsewhereBody": "No particular agenda, or prefer a DM? These work too.",
+    "emailLink": "Email me"
+  },
   "ui": {
     "nav": {
       "home": "Home",
@@ -111,6 +136,7 @@
       "blog": "Blog",
       "design": "Design",
       "embeddings": "Embeddings",
+      "contact": "Contact",
       "primary": "Primary",
       "skipToContent": "Skip to content",
       "menu": "Menu"

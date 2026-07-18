@@ -95,8 +95,8 @@ export default function AboutPage({
           {t("ctaTitle")}
         </Heading>
         <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
-          <Link href={site.social.email} variant="accent">
-            {t("ctaEmail")} →
+          <Link href="/contact" variant="accent">
+            {t("ctaContact")} →
           </Link>
           <Link href={site.social.linkedin} variant="muted">
             LinkedIn

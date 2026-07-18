@@ -26,7 +26,7 @@
       "community": "커뮤니티"
     },
     "ctaTitle": "함께 만들고 싶은 사람인가요?",
-    "ctaEmail": "인사 건네기"
+    "ctaContact": "인사 건네기"
   },
   "projects": {
     "title": "프로젝트",
@@ -51,7 +51,7 @@
       "planning": "기획"
     },
     "ctaTitle": "이런 문제를 함께 풀고 싶다면",
-    "ctaEmail": "인사 건네기"
+    "ctaContact": "인사 건네기"
   },
   "blog": {
     "title": "블로그",
@@ -103,6 +103,31 @@
       "now": "Now"
     }
   },
+  "contact": {
+    "title": "연락하기",
+    "intro": "폼도, 티켓 큐도 없습니다 — 이메일은 제 실제 받은편지함에 도착하고, 전부 읽습니다. 맞는 항목을 고르면 제목까지 채워져 있습니다.",
+    "writeCta": "메일 쓰기",
+    "purposes": {
+      "hiring": {
+        "title": "채용 문의",
+        "body": "백엔드가 앵커인 소프트웨어 엔지니어로, 글로벌 리모트와 이주 모두 열려 있습니다. 이력서 공유와 구체적인 이야기 환영합니다.",
+        "subject": "채용 문의 — yuni.vercel.app에서 보냅니다"
+      },
+      "collaboration": {
+        "title": "협업",
+        "body": "오픈소스, 사이드 프로젝트, 글이나 발표 — 함께 좋은 걸 만들 수 있겠다 싶으면 들려주세요.",
+        "subject": "협업 제안 — yuni.vercel.app에서 보냅니다"
+      },
+      "coffee": {
+        "title": "커피챗",
+        "body": "커리어, 백엔드 이야기, AI 협업 워크플로, 이 사이트가 만들어진 방식 — 이런 대화를 좋아합니다.",
+        "subject": "커피챗 — yuni.vercel.app에서 보냅니다"
+      }
+    },
+    "elsewhereTitle": "다른 채널",
+    "elsewhereBody": "특별한 용건이 없거나 DM이 편하시다면 이쪽도 열려 있습니다.",
+    "emailLink": "이메일 보내기"
+  },
   "ui": {
     "nav": {
       "home": "홈",
@@ -111,6 +136,7 @@
       "blog": "블로그",
       "design": "디자인",
       "embeddings": "임베딩",
+      "contact": "연락",
       "primary": "주 메뉴",
       "skipToContent": "본문으로 건너뛰기",
       "menu": "메뉴"
