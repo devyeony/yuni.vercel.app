@@ -84,6 +84,25 @@
       "post": "블로그 글"
     }
   },
+  "search": {
+    "open": "검색",
+    "title": "사이트 검색",
+    "placeholder": "프로젝트, 글, 활동 검색…",
+    "hint": "일치 결과가 임베딩 공간으로 확장됩니다 — 같은 단어가 없어도 의미가 가까운 콘텐츠가 함께 떠오릅니다.",
+    "loading": "검색 인덱스 불러오는 중…",
+    "error": "검색 인덱스를 불러오지 못했습니다.",
+    "empty": "“{query}” 검색 결과가 없습니다",
+    "matches": "일치 결과",
+    "nearby": "임베딩 공간의 이웃",
+    "similarity": "유사도 {score}",
+    "kind": {
+      "project": "프로젝트",
+      "post": "글",
+      "career": "경력",
+      "activity": "활동",
+      "now": "Now"
+    }
+  },
   "ui": {
     "nav": {
       "home": "홈",

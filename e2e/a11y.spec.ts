@@ -34,6 +34,18 @@ for (const path of pages) {
   });
 }
 
+test("/en search dialog with results has no violations", async ({ page }) => {
+  await page.goto("/en");
+  await page.getByRole("button", { name: "Search" }).click();
+  await page
+    .getByRole("searchbox", { name: "Search this site" })
+    .fill("insurance");
+  await expect(
+    page.getByRole("dialog").locator('a[href="/projects/petping"]').first(),
+  ).toBeVisible();
+  expect(await scan(page)).toEqual([]);
+});
+
 test("/en/design has no violations in the light theme", async ({ page }) => {
   await page.goto("/en/design");
   await page

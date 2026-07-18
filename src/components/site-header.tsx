@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { NavLink } from "@/components/nav-link";
 import { LocaleSwitcher } from "@/components/ui/locale-switcher";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { SearchDialog } from "@/features/search/components/search-dialog";
 import { Link } from "@/i18n/navigation";
 
 export function SiteHeader() {
@@ -36,6 +37,7 @@ export function SiteHeader() {
           <NavLink href="/embeddings">{t("embeddings")}</NavLink>
         </nav>
         <div className="order-2 ml-auto flex items-center gap-1 sm:order-3 sm:ml-3">
+          <SearchDialog />
           <ThemeToggle />
           <LocaleSwitcher />
         </div>
