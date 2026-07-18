@@ -1,0 +1,15 @@
+updated: "2026-07-18"
+availability:
+  open: true
+  label:
+    en: Open to opportunities
+    ko: 새로운 기회를 찾고 있어요
+focus:
+  - en: Mentoring at OSSCA 2026 after leading the Apache Zeppelin mentee team
+      to the 2025 grand prize.
+    ko: 2025년 Apache Zeppelin 멘티 팀의 대상 수상에 이어, OSSCA 2026 멘토로
+      활동 중.
+  - en: Rebuilding this site as a portfolio piece — design system, agent
+      harness, and AI layer included.
+    ko: 이 사이트를 포트폴리오 작품으로 리빌드 중 — 디자인 시스템, 에이전트
+      하네스, AI 레이어까지.

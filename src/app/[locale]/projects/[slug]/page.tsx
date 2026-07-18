@@ -11,12 +11,12 @@ import { Separator } from "@/components/ui/separator";
 import { Tag } from "@/components/ui/tag";
 import { Text } from "@/components/ui/text";
 import {
-  formatPeriod,
   projectBySlug,
   projectsForLocale,
   roleOrder,
 } from "@/features/projects/lib/collection";
 import type { Locale } from "@/i18n/routing";
+import { formatRange } from "@/lib/dates";
 import { localeAlternates } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -75,7 +75,12 @@ export default function ProjectPage({
           {project.summary}
         </Text>
         <Text variant="caption" className="mt-4">
-          {formatPeriod(activeLocale, project.period, t("present"))}
+          {formatRange(
+            activeLocale,
+            project.period.start,
+            project.period.end,
+            t("present"),
+          )}
         </Text>
       </Section>
 

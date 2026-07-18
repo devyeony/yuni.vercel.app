@@ -1,0 +1,12 @@
+kind: publication
+title:
+  en: Volunteer translator — Python tutorials
+  ko: 자원봉사 번역가 — 파이썬 튜토리얼
+org:
+  en: freeCodeCamp
+  ko: freeCodeCamp
+date: "2022"
+note:
+  en: Translated tutorials to support Korean-speaking learners.
+  ko: 한국어 학습자를 위해 튜토리얼을 번역.
+link: "https://www.freecodecamp.org/korean/news/author/yeonhee"

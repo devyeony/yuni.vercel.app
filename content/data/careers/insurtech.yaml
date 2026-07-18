@@ -1,0 +1,21 @@
+# TODO(owner input): company name and exact start month — Phase 3 "최신 이력 반영".
+company:
+  en: Insurtech startup
+  ko: 인슈어테크 스타트업
+role:
+  en: Backend Engineer
+  ko: 백엔드 엔지니어
+summary:
+  en: >-
+    Building backend systems for an insurance-tech product in TypeScript and
+    NestJS — extending a Java/Spring foundation into a polyglot backend
+    practice.
+  ko: >-
+    TypeScript와 NestJS로 보험 테크 프로덕트의 백엔드 시스템을 개발 —
+    Java/Spring 기반을 폴리글랏 백엔드 역량으로 확장.
+period:
+  start: "2025"
+stack:
+  - TypeScript
+  - NestJS
+  - PostgreSQL

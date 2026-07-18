@@ -21,18 +21,3 @@ export function projectBySlug(
       project.locale === locale && project.slug === slug && !project.draft,
   );
 }
-
-/** "2021-07" → "Jul 2021" (en) / "2021년 7월" (ko); open end renders `present`. */
-export function formatPeriod(
-  locale: Locale,
-  period: Project["period"],
-  present: string,
-): string {
-  const format = (yearMonth: string) =>
-    new Intl.DateTimeFormat(locale, {
-      year: "numeric",
-      month: "short",
-      timeZone: "UTC",
-    }).format(new Date(`${yearMonth}-01T00:00:00Z`));
-  return `${format(period.start)} – ${period.end ? format(period.end) : present}`;
-}

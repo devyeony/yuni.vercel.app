@@ -16,6 +16,15 @@
     "rolesTitle": "Four roles, one product",
     "rolesIntro": "Breadth only sells on top of depth — backend is the anchor; the other three are how the whole product gets shipped.",
     "proofLabel": "Proof",
+    "experienceTitle": "Experience",
+    "activitiesTitle": "Beyond the day job",
+    "present": "present",
+    "kind": {
+      "opensource": "Open source",
+      "talk": "Talks",
+      "publication": "Publications",
+      "community": "Community"
+    },
     "ctaTitle": "Sound like someone you'd build with?",
     "ctaEmail": "Say hello"
   },
