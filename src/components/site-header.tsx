@@ -33,6 +33,7 @@ export function SiteHeader() {
           <NavLink href="/blog">{t("blog")}</NavLink>
           <NavLink href="/about">{t("about")}</NavLink>
           <NavLink href="/design">{t("design")}</NavLink>
+          <NavLink href="/embeddings">{t("embeddings")}</NavLink>
         </nav>
         <div className="order-2 ml-auto flex items-center gap-1 sm:order-3 sm:ml-3">
           <ThemeToggle />

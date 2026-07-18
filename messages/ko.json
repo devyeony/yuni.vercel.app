@@ -61,6 +61,21 @@
     "taggedTitle": "“{tag}” 태그",
     "readingTime": "{minutes}분 분량"
   },
+  "embeddings": {
+    "title": "임베딩 지도",
+    "intro": "이 사이트의 모든 콘텐츠 — 프로젝트, 글, 경력·활동 — 를 벡터로 임베딩해 평면에 투영했습니다. 비슷한 주제일수록 가까이 놓입니다.",
+    "method": "빌드 시점에 계산됩니다: multilingual-e5-small 임베딩을 PCA로 2차원 축소. 런타임 AI 호출 없이 정적 산출물로 렌더링됩니다.",
+    "plotLabel": "콘텐츠 임베딩 2D 지도",
+    "visit": "페이지 보기",
+    "neighborsTitle": "임베딩 공간의 최근접 이웃",
+    "kind": {
+      "project": "프로젝트",
+      "post": "글",
+      "career": "경력",
+      "activity": "활동",
+      "now": "Now"
+    }
+  },
   "related": {
     "title": "비슷한 작업",
     "similarity": "유사도 {score}",
@@ -76,6 +91,7 @@
       "projects": "프로젝트",
       "blog": "블로그",
       "design": "디자인",
+      "embeddings": "임베딩",
       "primary": "주 메뉴",
       "skipToContent": "본문으로 건너뛰기"
     },

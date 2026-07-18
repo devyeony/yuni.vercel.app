@@ -61,6 +61,21 @@
     "taggedTitle": "Tagged “{tag}”",
     "readingTime": "{minutes} min read"
   },
+  "embeddings": {
+    "title": "Embedding map",
+    "intro": "Every piece of content on this site — projects, posts, career and community entries — embedded into vectors and projected onto a plane. Similar topics sit close together.",
+    "method": "Computed at build time: multilingual-e5-small embeddings reduced to two dimensions with PCA. No runtime AI calls — this page is a static artifact.",
+    "plotLabel": "2D map of content embeddings",
+    "visit": "View page",
+    "neighborsTitle": "Nearest in embedding space",
+    "kind": {
+      "project": "Project",
+      "post": "Post",
+      "career": "Career",
+      "activity": "Activity",
+      "now": "Now"
+    }
+  },
   "related": {
     "title": "Similar work",
     "similarity": "similarity {score}",
@@ -76,6 +91,7 @@
       "projects": "Projects",
       "blog": "Blog",
       "design": "Design",
+      "embeddings": "Embeddings",
       "primary": "Primary",
       "skipToContent": "Skip to content"
     },

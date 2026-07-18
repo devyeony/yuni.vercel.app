@@ -6,6 +6,7 @@
       "url": [
         "http://localhost:3300/en",
         "http://localhost:3300/en/about",
+        "http://localhost:3300/en/embeddings",
         "http://localhost:3300/ko"
       ],
       "numberOfRuns": 3,

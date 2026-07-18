@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { type RagChunk, rankRelated, spinesFrom } from "./related";
+import type { RagChunk } from "@/lib/rag-index";
+import { rankRelated, spinesFrom } from "./related";
 
 /* Hand-picked 2D unit vectors — angles make the expected ranking obvious. */
 const vec = (deg: number): number[] => {
