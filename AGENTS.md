@@ -27,7 +27,7 @@ architecture, design system, and process are all on display.
   per breakpoint; adapt to input modality (`pointer`/`hover` media queries, touch targets
   ≥ 44px, no hover-only interactions); fluid type over per-viewport hardcoding; container
   queries where component-level adaptation fits. Verify at 360/768/1280/1920 viewports.
-- Skills with detailed procedures live in `agents/skills/*/SKILL.md` (created in Phase 0/1):
+- Skills with detailed procedures live in `agents/skills/*/SKILL.md`:
   design-system, code-review, i18n, verify, content.
 
 ## Verification loop
