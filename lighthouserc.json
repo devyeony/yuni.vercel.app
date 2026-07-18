@@ -7,6 +7,8 @@
         "http://localhost:3300/en",
         "http://localhost:3300/en/about",
         "http://localhost:3300/en/embeddings",
+        "http://localhost:3300/en/blog/rag-without-a-vector-db",
+        "http://localhost:3300/en/colophon",
         "http://localhost:3300/ko"
       ],
       "numberOfRuns": 3,

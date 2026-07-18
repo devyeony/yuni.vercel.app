@@ -22,8 +22,8 @@ export const narrative: readonly Localized[] = [
     ko: "저는 교실에서 코드로 넘어온 소프트웨어 엔지니어 김연희(yuni)입니다. 초등학교 교사로 일하다 커리어를 전환했어요 — 어려운 문제를 따라올 수 있는 단계로 쪼개는 법을 가르치며 배웠고, 지금도 소프트웨어를 그렇게 만듭니다.",
   },
   {
-    en: 'Since then I\'ve shipped backend systems at pet-healthcare and insurtech startups — three years of Java/Spring, now a year and counting of TypeScript/NestJS. Backend is my depth; the rest of the product is my range. In between, a year of living in Dublin — working in English, joining local IT communities, hacking on AI projects — turned "global" from an ambition into a habit.',
-    ko: "그 뒤로 펫 헬스케어와 인슈어테크 스타트업에서 백엔드 시스템을 만들어 왔습니다 — Java/Spring 3년, 그리고 지금은 TypeScript/NestJS로 1년째. 백엔드가 저의 깊이라면, 제품의 나머지는 저의 폭입니다. 그 사이 더블린에서 보낸 1년 — 영어로 일하고, 현지 IT 커뮤니티에 참여하고, AI 해커톤을 하며 — '글로벌'은 목표가 아니라 습관이 되었습니다.",
+    en: 'Since then I\'ve shipped backend systems at pet-healthcare and insurtech startups — three years of Java/Spring, now a year and counting of TypeScript/NestJS. Backend is my depth; the rest of the product is my range. In between, a year of living in Dublin — working in English, joining local IT communities, teaming up for a local AI hackathon — turned "global" from an ambition into a habit.',
+    ko: "그 뒤로 펫 헬스케어와 인슈어테크 스타트업에서 백엔드 시스템을 만들어 왔습니다 — Java/Spring 3년, 그리고 지금은 TypeScript/NestJS로 1년째. 백엔드가 저의 깊이라면, 제품의 나머지는 저의 폭입니다. 그 사이 더블린에서 보낸 1년 — 영어로 일하고, 현지 IT 커뮤니티에 참여하고, 팀을 꾸려 현지 AI 해커톤에 참가하며 — '글로벌'은 목표가 아니라 습관이 되었습니다.",
   },
   {
     en: "Lately I've been in open source: lead mentee on the Apache Zeppelin team at OSSCA 2025, where our team took the grand prize (the Minister of Science and ICT award), and back in 2026 as a mentor. Open source, like teaching, is leverage — the work outlives the commit.",
