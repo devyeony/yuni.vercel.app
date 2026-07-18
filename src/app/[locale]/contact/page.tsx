@@ -7,10 +7,17 @@ import { Link } from "@/components/ui/link";
 import { Section } from "@/components/ui/section";
 import { Separator } from "@/components/ui/separator";
 import { Text } from "@/components/ui/text";
-import { ContactForm } from "@/features/contact/components/contact-form";
 import type { Locale } from "@/i18n/routing";
 import { localeAlternates } from "@/lib/seo";
 import { site } from "@/lib/site";
+
+/*
+ * Deliberately formless (ADR-0005): each purpose is a mailto link with a
+ * prefilled subject, so the conversation starts in the visitor's own mail
+ * client — no delivery service, no failure modes.
+ */
+
+const purposes = ["hiring", "collaboration", "coffee"] as const;
 
 export async function generateMetadata({
   params,
@@ -41,8 +48,32 @@ export default function ContactPage({
         <Text variant="muted" className="mt-6 max-w-prose">
           {t("intro")}
         </Text>
-        <div className="mt-12">
-          <ContactForm />
+
+        <div className="mt-14 flex max-w-2xl flex-col">
+          {purposes.map((purpose) => (
+            <div
+              key={purpose}
+              className="flex flex-col gap-3 border-t border-border-muted py-8 md:flex-row md:items-baseline md:justify-between md:gap-10"
+            >
+              <div className="max-w-md">
+                <Heading as="h2" variant="subtitle">
+                  {t(`purposes.${purpose}.title`)}
+                </Heading>
+                <Text variant="muted" className="mt-2">
+                  {t(`purposes.${purpose}.body`)}
+                </Text>
+              </div>
+              <Link
+                href={`${site.social.email}?subject=${encodeURIComponent(
+                  t(`purposes.${purpose}.subject`),
+                )}`}
+                variant="accent"
+                className="shrink-0"
+              >
+                {t("writeCta")} →
+              </Link>
+            </div>
+          ))}
         </div>
       </Section>
 

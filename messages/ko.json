@@ -105,34 +105,28 @@
   },
   "contact": {
     "title": "연락하기",
-    "intro": "채용 문의, 함께할 프로젝트, 혹은 커피 한잔하며 나누는 소프트웨어 이야기 — 어떤 내용인지 간단히 남겨 주시면 이메일로 답장드립니다.",
-    "elsewhereTitle": "다른 채널",
-    "elsewhereBody": "익숙한 채널이 더 편하시다면 이쪽도 열려 있습니다.",
-    "emailLink": "이메일 보내기",
-    "form": {
-      "nameLabel": "이름",
-      "emailLabel": "이메일",
-      "purposeLegend": "어떤 이야기인가요?",
-      "purpose": {
-        "hiring": "채용 문의",
-        "collaboration": "협업",
-        "coffee": "커피챗"
+    "intro": "폼도, 티켓 큐도 없습니다 — 이메일은 제 실제 받은편지함에 도착하고, 전부 읽습니다. 맞는 항목을 고르면 제목까지 채워져 있습니다.",
+    "writeCta": "메일 쓰기",
+    "purposes": {
+      "hiring": {
+        "title": "채용 문의",
+        "body": "백엔드가 앵커인 소프트웨어 엔지니어로, 글로벌 리모트와 이주 모두 열려 있습니다. 이력서 공유와 구체적인 이야기 환영합니다.",
+        "subject": "채용 문의 — yuni.vercel.app에서 보냅니다"
       },
-      "messageLabel": "메시지",
-      "submit": "메시지 보내기",
-      "sending": "보내는 중…",
-      "sentTitle": "메시지를 보냈습니다",
-      "sentBody": "감사합니다 — 모든 메시지를 읽고, 보통 며칠 안에 답장드립니다.",
-      "failed": "지금은 폼으로 메시지를 보낼 수 없습니다.",
-      "failedFallback": "이메일로 직접 보내기",
-      "rateLimited": "짧은 시간에 너무 많이 보냈습니다 — 잠시 후 다시 시도해 주세요.",
-      "errors": {
-        "name": "이름을 알려 주세요.",
-        "email": "이메일 주소 형식이 맞지 않습니다.",
-        "purpose": "어떤 이야기인지 골라 주세요.",
-        "message": "조금 더 자세히 적어 주세요 — 최소 10자 이상."
+      "collaboration": {
+        "title": "협업",
+        "body": "오픈소스, 사이드 프로젝트, 글이나 발표 — 함께 좋은 걸 만들 수 있겠다 싶으면 들려주세요.",
+        "subject": "협업 제안 — yuni.vercel.app에서 보냅니다"
+      },
+      "coffee": {
+        "title": "커피챗",
+        "body": "커리어, 백엔드 이야기, AI 협업 워크플로, 이 사이트가 만들어진 방식 — 이런 대화를 좋아합니다.",
+        "subject": "커피챗 — yuni.vercel.app에서 보냅니다"
       }
-    }
+    },
+    "elsewhereTitle": "다른 채널",
+    "elsewhereBody": "특별한 용건이 없거나 DM이 편하시다면 이쪽도 열려 있습니다.",
+    "emailLink": "이메일 보내기"
   },
   "ui": {
     "nav": {
