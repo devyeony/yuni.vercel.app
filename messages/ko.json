@@ -61,6 +61,14 @@
     "taggedTitle": "“{tag}” 태그",
     "readingTime": "{minutes}분 분량"
   },
+  "related": {
+    "title": "비슷한 작업",
+    "similarity": "유사도 {score}",
+    "kind": {
+      "project": "프로젝트",
+      "post": "블로그 글"
+    }
+  },
   "ui": {
     "nav": {
       "home": "홈",

@@ -11,6 +11,8 @@ import { Separator } from "@/components/ui/separator";
 import { Tag } from "@/components/ui/tag";
 import { Text } from "@/components/ui/text";
 import { postBySlug, postsForLocale } from "@/features/blog/lib/collection";
+import { RelatedContent } from "@/features/related/components/related-content";
+import { relatedFor } from "@/features/related/lib/related";
 import type { Locale } from "@/i18n/routing";
 import { formatDate } from "@/lib/dates";
 import { localeAlternates } from "@/lib/seo";
@@ -49,6 +51,8 @@ export default function PostPage({
   const post = postBySlug(activeLocale, slug);
   if (!post) notFound();
 
+  const related = relatedFor(activeLocale, "post", slug);
+
   return (
     <main id="main" className="flex-1">
       <Section>
@@ -76,6 +80,13 @@ export default function PostPage({
           <article className="prose">
             <MDXContent code={post.body} />
           </article>
+
+          {related.length > 0 && (
+            <>
+              <Separator className="my-10" />
+              <RelatedContent items={related} />
+            </>
+          )}
         </div>
       </Section>
     </main>
