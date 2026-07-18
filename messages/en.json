@@ -53,11 +53,20 @@
     "ctaTitle": "Want to untangle problems like these together?",
     "ctaEmail": "Say hello"
   },
+  "blog": {
+    "title": "Blog",
+    "intro": "Notes from building software — and from building this site in the open.",
+    "all": "All posts",
+    "tags": "Tags",
+    "taggedTitle": "Tagged “{tag}”",
+    "readingTime": "{minutes} min read"
+  },
   "ui": {
     "nav": {
       "home": "Home",
       "about": "About",
       "projects": "Projects",
+      "blog": "Blog",
       "design": "Design",
       "primary": "Primary",
       "skipToContent": "Skip to content"

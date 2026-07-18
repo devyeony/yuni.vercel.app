@@ -25,12 +25,23 @@ for (const locale of locales) {
       await expect(page.locator("h1")).toBeVisible();
     });
 
+    test("serves an RSS feed", async ({ request }) => {
+      const response = await request.get(`/${locale}/feed.xml`);
+      expect(response.status()).toBe(200);
+      expect(response.headers()["content-type"]).toContain(
+        "application/rss+xml",
+      );
+      expect(await response.text()).toContain("<rss");
+    });
+
     for (const path of [
       "",
       "/about",
       "/design",
       "/projects",
       "/projects/petping",
+      "/blog",
+      "/blog/case-study-schema",
     ]) {
       test(`${prefix}${path} has no horizontal overflow`, async ({ page }) => {
         await page.goto(`${prefix}${path}` || "/");
