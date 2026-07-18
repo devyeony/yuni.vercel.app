@@ -8,6 +8,10 @@ const pages = [
   "/ko/about",
   "/en/design",
   "/ko/design",
+  "/en/projects",
+  "/ko/projects",
+  "/en/projects/petping",
+  "/ko/projects/petping",
 ];
 
 async function scan(page: import("@playwright/test").Page) {

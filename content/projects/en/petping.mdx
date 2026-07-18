@@ -1,0 +1,92 @@
+---
+title: Petping
+summary: >-
+  All-in-one pet healthcare service — walks, meals, health records, insurance
+  claims, and commerce in a single app.
+period:
+  start: "2021-07"
+  end: "2024-01"
+roles:
+  backend: >-
+    Led backend architecture and API development across the product; designed
+    and operated the AWS infrastructure.
+  planning: >-
+    Shaped walk-event and insurance-automation features with PM, design, QA,
+    and data analysts; turned operational pain points into a feature roadmap.
+problem: >-
+  Pet owners juggled separate tools for walks, meals, health records,
+  insurance claims, and shopping. Petping had to unify them into one reliable
+  app — while a small backend team kept a growing service stable and shipped
+  fast enough to support marketing-driven event traffic spikes.
+decisions:
+  - decision: Introduced JPA alongside the existing MyBatis codebase as a hybrid persistence layer
+    tradeoff: >-
+      Two persistence idioms coexist and the team must know both — accepted
+      over a big-bang rewrite, so new domains gained JPA productivity while
+      proven MyBatis queries kept running untouched.
+  - decision: Blue/green zero-downtime deployment on AWS with CI/CD automation
+    tradeoff: >-
+      Doubled instance capacity during every rollout and a more complex
+      pipeline — accepted because release windows with user-visible downtime
+      were hurting an app people rely on daily.
+  - decision: Self-hosted observability with Grafana and Loki instead of a paid APM
+    tradeoff: >-
+      We operate the monitoring stack ourselves — accepted for cost control
+      and full ownership of log-based alerting tailored to our incidents.
+outcomes:
+  - Walk-event and push-notification automation grew MAU by 30% and DAU by 20%.
+  - Insurance-claim automation cut insurance-related CS inquiries by 20%.
+  - Zero-downtime deployment rate reached 95% after the blue/green rollout.
+  - Real-time log monitoring cut incident detection-to-response time by 60%.
+  - QA-dedicated test APIs raised test coverage by 40%.
+stack:
+  - Java
+  - Spring Boot
+  - JPA
+  - MyBatis
+  - MySQL
+  - PostgreSQL
+  - Redis
+  - AWS
+  - Docker
+  - Jenkins
+  - Grafana
+  - Loki
+links:
+  site: "https://www.petping.com"
+  demo: "https://youtube.com/shorts/40smY5TtYb4"
+featured: true
+order: 1
+---
+
+Petping is a pet-lifestyle app that manages walks, meals, health, insurance,
+and shopping in one place. I joined as a backend engineer and, over two and a
+half years, ended up owning most of the server side: API design, the AWS
+infrastructure it ran on, and the operational tooling that kept it healthy.
+
+## Building it
+
+The domain grew fast — walk tracking with real-time events, meal logging,
+insurance-claim submission against external insurers, and commerce
+integrations. The persistence layer was the first structural decision: the
+codebase was MyBatis-first, and rewriting it wholesale would have frozen
+feature work for months. Introducing JPA for new domains while keeping MyBatis
+for proven query-heavy paths gave us entity-level productivity where it paid
+off, without betting the product on a migration.
+
+Insurance claims were the deepest integration work: automating a previously
+manual claim flow against external insurer APIs, with commerce API
+integrations layered on top. The measure of success here wasn't a latency
+chart — it was the customer-service queue, where insurance-related inquiries
+dropped by a fifth.
+
+## Operating it
+
+A daily-use pet app can't take release downtime, so I built the CI/CD
+pipeline up to blue/green zero-downtime deployment on AWS (ECS, CodeDeploy).
+On the visibility side, a self-hosted Grafana + Loki stack streamed
+structured logs into dashboards and alerts we tuned to our actual incident
+patterns, cutting detection-to-response time by more than half. Redash views
+gave the operations team self-serve statistics, and QA got dedicated test
+APIs — both removed the backend team as a bottleneck from other people's
+workflows.

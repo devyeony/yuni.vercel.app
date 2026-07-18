@@ -15,23 +15,27 @@ export function SiteHeader() {
       >
         {t("skipToContent")}
       </a>
-      <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between px-6 md:px-10">
+      {/* Phone recomposes into two rows (wordmark + controls, then nav);
+          sm and up collapses back to a single 14-unit bar. */}
+      <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center px-4 py-2 sm:h-14 sm:flex-nowrap sm:px-6 sm:py-0 md:px-10">
         <Link
           href="/"
           aria-label={t("home")}
-          className="rounded-xs font-display text-xl font-semibold tracking-tight text-text"
+          className="order-1 rounded-xs font-display text-xl font-semibold tracking-tight text-text"
         >
           yuni
         </Link>
-        <div className="flex items-center gap-1 sm:gap-3">
-          <nav aria-label={t("primary")} className="flex items-center">
-            <NavLink href="/about">{t("about")}</NavLink>
-            <NavLink href="/design">{t("design")}</NavLink>
-          </nav>
-          <div className="flex items-center gap-1">
-            <ThemeToggle />
-            <LocaleSwitcher />
-          </div>
+        <nav
+          aria-label={t("primary")}
+          className="order-3 -mx-2 flex w-full items-center sm:order-2 sm:mx-0 sm:ml-auto sm:w-auto"
+        >
+          <NavLink href="/projects">{t("projects")}</NavLink>
+          <NavLink href="/about">{t("about")}</NavLink>
+          <NavLink href="/design">{t("design")}</NavLink>
+        </nav>
+        <div className="order-2 ml-auto flex items-center gap-1 sm:order-3 sm:ml-3">
+          <ThemeToggle />
+          <LocaleSwitcher />
         </div>
       </div>
     </header>

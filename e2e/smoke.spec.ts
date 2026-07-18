@@ -25,7 +25,13 @@ for (const locale of locales) {
       await expect(page.locator("h1")).toBeVisible();
     });
 
-    for (const path of ["", "/about", "/design"]) {
+    for (const path of [
+      "",
+      "/about",
+      "/design",
+      "/projects",
+      "/projects/petping",
+    ]) {
       test(`${prefix}${path} has no horizontal overflow`, async ({ page }) => {
         await page.goto(`${prefix}${path}` || "/");
         const overflow = await page.evaluate(() => {
