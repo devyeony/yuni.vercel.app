@@ -47,9 +47,13 @@ test("keyboard shortcut opens search and Escape closes it", async ({
   page,
 }) => {
   await page.goto("/");
-  await page.keyboard.press("ControlOrMeta+k");
   const box = page.getByRole("searchbox", { name: "Search this site" });
-  await expect(box).toBeVisible();
+  // The chord listener attaches on hydration, which load doesn't await —
+  // retry the press like a person would instead of racing it.
+  await expect(async () => {
+    await page.keyboard.press("ControlOrMeta+k");
+    await expect(box).toBeVisible({ timeout: 500 });
+  }).toPass({ timeout: 10_000 });
   await page.keyboard.press("Escape");
   await expect(box).not.toBeVisible();
 });
