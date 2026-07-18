@@ -1,41 +1,127 @@
-# yuni — personal site
+# yuni.vercel.app
 
-Personal site of **Yeonhee (yuni) Kim** — and a portfolio piece in itself: the
-architecture, design system, and AI-assisted process are all on display.
+Personal site of **Yeonhee (yuni) Kim** — software engineer who ships the
+whole product: backend depth across Java/Spring and TypeScript/NestJS,
+carried through planning, design, frontend, and AI.
 
-> Status: under construction (Phase 0 — foundation). This README is a draft that
-> grows into a full case study at launch.
+**Live: [yuni.vercel.app](https://yuni.vercel.app)** · *Building software
+with a love for cats and the cosmos.*
 
-*Building software with a love for cats and the cosmos.*
+The site is itself the case study. It's a small personal website on purpose
+— but every layer is built the way I'd build a product: decisions recorded,
+rules machine-enforced, and nothing added that the problem didn't ask for.
+This README is the map; every claim below is checkable in this repo.
 
-## Stack
+## What to look at
 
-| Area | Choice |
-|---|---|
-| Framework | Next.js 16 (App Router, React Server Components) |
-| Language | TypeScript, strict |
-| Styling | Tailwind CSS v4 — design tokens as CSS-first `@theme` |
-| UI primitives | Base UI (headless) + CVA variants |
-| i18n | next-intl v4 — `en` (default) / `ko` |
-| Typography | Fraunces · Instrument Sans · JetBrains Mono, Pretendard for Korean |
-| Quality | Biome, Vitest, Playwright, knip, commitlint, lefthook |
-| Deploy | Vercel |
+| Claim | See it live | Read the source |
+|---|---|---|
+| An AI layer with **zero runtime AI dependencies** | [search (⌘K)](https://yuni.vercel.app), [embedding map](https://yuni.vercel.app/embeddings), recommendations under any project | [`scripts/build-rag-index.mjs`](scripts/build-rag-index.mjs), [`src/features/search`](src/features/search) |
+| The portfolio as an **MCP server** | `claude mcp add --transport http yuni https://yuni.vercel.app/api/mcp` | [`src/features/mcp`](src/features/mcp) |
+| A hand-built **design system** | [/design](https://yuni.vercel.app/design) | [`src/styles/tokens.css`](src/styles/tokens.css), [`src/components/ui`](src/components/ui) |
+| **Case studies that can't be vague** — schema-enforced problem/trade-offs/outcomes | [/projects](https://yuni.vercel.app/projects) | [`content-collections.ts`](content-collections.ts) |
+| A **vendor-neutral agent harness** | [/colophon](https://yuni.vercel.app/colophon) | [`AGENTS.md`](AGENTS.md), [`agents/`](agents/) |
+| Decisions — including **what wasn't built** | [/colophon](https://yuni.vercel.app/colophon) | [`docs/adr/`](docs/adr/) |
 
-## Architecture in one breath
+## Architecture
 
-Server components by default; client code only in leaves. Dependencies flow one
-way: `app → features → components/ui → tokens`. Design tokens live in three
-tiers (primitive → semantic → component) in [`src/styles/tokens.css`](src/styles/tokens.css);
-components reference semantic tokens only. Decisions worth recording land in
-[`docs/adr/`](docs/adr/).
+Next.js 16 App Router, React Server Components by default — client code
+only in leaf components, and every `"use client"` is a reviewable decision.
+Dependencies flow one way:
+
+```
+app → features → components/ui → tokens
+```
+
+`components/ui` knows no domain; features are vertical slices
+(`projects`, `blog`, `search`, `mcp`, …); tokens are the only styling
+source of truth. There is no state-management library — server components
+and build-time content carry the state, the URL carries locale and
+filters, and the one global client concern (theme) is a single toggle.
+
+## Content architecture — one entry, four surfaces
+
+Content is data, never component code: structured entries (careers,
+activities, the Now status) are Zod-validated YAML with locale-keyed
+fields; long-form (case studies, posts) is MDX with schema-enforced
+frontmatter; UI microcopy lives in next-intl messages. Everything else
+derives at build time:
+
+| Add… | Touch | Component edits |
+|---|---|---|
+| a career or activity | 1 YAML file | 0 |
+| a project case study | 1 MDX file (+ ko twin) | 0 |
+| a blog post | 1 MDX file (+ ko twin) | 0 |
+
+One entry updates the pages, the RSS/Atom feeds and sitemap, the embedding
+index (and with it recommendations, the 2D map, and search), and the MCP
+tool responses — simultaneously. The case-study schema goes further: a
+project that doesn't state its problem, per-decision trade-offs, and
+measured outcomes **fails the build**.
+
+## The AI layer is a build artifact
+
+At the head of every build, one script chunks all content collections and
+embeds them locally (Transformers.js, `multilingual-e5-small`) into a
+static index — currently 46 chunks × 384 dims, ~175 kB — that serves both
+locales. The index **verifies itself**: smoke retrievals in en and ko must
+rank a relevant chunk top-3 or the build fails. From that one artifact:
+
+- **Similar-content recommendations** with cosine scores shown
+- **A 2D embedding map** (PCA implemented in-repo, deterministic)
+- **Hybrid site search** — lexical footholds expanded through embedding
+  space, limits documented in the UI rather than hidden
+- **Six read-only MCP tools** serving the same collections as the pages
+
+No vector database, no embedding API, no runtime model, no cold start.
+The reasoning — including what was measured and rejected (a browser-side
+model at ~129 MB, serverless embedding at 3–8 s cold start, and a RAG
+chatbot cut entirely) — is in [ADR-0003](docs/adr/0003-buildtime-rag-index.md),
+[ADR-0004](docs/adr/0004-static-hybrid-site-search.md), and the
+[launch posts](https://yuni.vercel.app/blog).
 
 ## AI-assisted, vendor-neutral
 
-This repo is built with coding agents — any of them. Instructions live in
-vendor-neutral files ([`AGENTS.md`](AGENTS.md), [`agents/`](agents/)); local
-adapters for specific tools are generated with `pnpm setup:agents` and never
-committed. Rules are enforced by machines, not prompts — see
-[ADR-0001](docs/adr/0001-vendor-neutral-agent-harness.md).
+The site is built with coding agents doing much of the typing — inside a
+harness that assumes they forget. Instructions are committed once,
+vendor-neutral ([`AGENTS.md`](AGENTS.md) + five portable skills under
+[`agents/`](agents/)); `CLAUDE.md`, `GEMINI.md`, and `.cursor/` are
+gitignored adapters regenerated by `pnpm setup:agents`. The rules that
+matter don't rely on prompts: token violations, dependency-direction
+breaks, asymmetric translations, and malformed commits are caught by
+machines before merge ([ADR-0001](docs/adr/0001-vendor-neutral-agent-harness.md)).
+
+## Quality gates
+
+Local loop and CI are the same commands — nothing "only breaks in CI":
+
+```sh
+pnpm check     # Biome + strict tsc + i18n key symmetry + knip — seconds
+pnpm test      # Vitest unit/component tests
+pnpm verify    # production build + Playwright: smoke at 360/768/1280,
+               # axe WCAG scans (both themes), visual regression
+```
+
+On top of that, per PR: Lighthouse CI with a **95+ budget** on all four
+categories (last full audit: performance 98–100, accessibility 100, SEO
+100 across 12 URLs), a **250 kB brotli** client-JS budget (size-limit),
+gitleaks, CodeQL, and Dependabot. Commits are Conventional, enforced by
+commitlint via lefthook.
+
+## Deliberately not built
+
+The decision records document restraint as much as construction: no RAG
+chatbot, no vector database, no runtime query embedding, no contact form
+(built completely, then removed — [ADR-0005](docs/adr/0005-formless-contact.md)),
+no state-management library, no Storybook, no CMS. Each entry in
+[`docs/adr/`](docs/adr/) states what it cost.
+
+## i18n
+
+`en` (default) and `ko` are full locales via next-intl v4 — locale-keyed
+data fields and MDX twins, `hreflang` + localized sitemap and OG images,
+and a CI check that fails on asymmetric message keys. Korean is written,
+not translated: one fact, two renderings.
 
 ## Development
 
@@ -43,16 +129,14 @@ committed. Rules are enforced by machines, not prompts — see
 pnpm install          # also installs git hooks (lefthook)
 pnpm dev              # start dev server
 
-pnpm check            # static: Biome + tsc + i18n key symmetry + knip
-pnpm test             # unit/component tests (Vitest)
-pnpm verify           # production build + Playwright smoke (360/768/1280 viewports)
+pnpm check            # static analysis (seconds)
+pnpm test             # unit/component tests
+pnpm verify           # production build + Playwright suite
 
 pnpm setup:agents     # regenerate local AI-agent adapter files
 ```
 
-CI runs the exact same loop, plus a client-JS size budget, gitleaks, and CodeQL.
-
 ## License
 
-Code is available to read as a portfolio; content (text, images, case studies)
-is © Yeonhee Kim. Formal license lands before launch.
+Code is available to read as a portfolio; content (text, images, case
+studies) is © Yeonhee Kim.
