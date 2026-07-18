@@ -1,0 +1,60 @@
+---
+title: A harness any coding agent can wear
+summary: >-
+  This site is built AI-assisted, yet the repository commits zero vendor
+  files. Instructions live in one neutral source, adapters are generated,
+  and the rules that matter are enforced by machines — not prompts.
+date: "2026-07-19"
+tags:
+  - ai
+  - agents
+  - process
+---
+
+Grep this repository for `CLAUDE.md`, `.cursor`, or `GEMINI.md` and you'll
+find them only in `.gitignore`. The site is built with heavy AI
+assistance, but no committed file names a vendor. That's not tidiness —
+it's the design.
+
+Coding agents each want their own instruction file. Committing them means
+duplicating the same rules per tool and letting the copies drift; it also
+quietly marries the repository to whichever agent was fashionable the
+month you set it up. So the instructions live once, vendor-neutral, and
+everything tool-specific is a generated adapter:
+
+```
+AGENTS.md                    # entry point (the cross-agent convention)
+agents/
+├── harness.md               # the loop: work → check → test → verify
+└── skills/                  # portable procedures, plain markdown
+    ├── design-system/       # token tiers, exact package names, CVA patterns
+    ├── code-review/         # what machines can't catch — judgment criteria
+    ├── content/             # how to add careers, projects, posts
+    ├── i18n/                # locale and message procedures
+    └── verify/              # how to run and read the loop
+scripts/setup-agents.mjs     # regenerates gitignored adapters, one command
+```
+
+Agents with a skill mechanism load these natively through the adapters.
+Agents without one read them as documents — `AGENTS.md` links the paths.
+Switching tools is a non-event, which is the property I wanted: the
+collaboration structure outlives any one agent.
+
+The deeper principle: instructions are the weakest layer of the system,
+so nothing important is allowed to live only there. An agent will
+eventually forget a rule mid-session — that's not a possibility, it's a
+base rate. The harness assumes it. `pnpm check` runs Biome, strict tsc,
+dead-code detection, and an en/ko message-symmetry check in seconds;
+`pnpm verify` builds for production and runs Playwright across three
+viewports with axe scans and visual regression. CI re-runs the identical
+commands, so "works locally" and "works in CI" are the same sentence.
+
+My favorite example of the pattern: the Open Graph image renderer can't
+read CSS variables, so it needs raw hex copies of the site palette — a
+textbook drift hazard, and a direct violation of the "semantic tokens
+only" rule. The exception was granted, then immediately mechanized: a
+unit test recomputes the hex values from `tokens.css` and fails the build
+if the copies ever diverge. The rule survives its own exception, and no
+one — human or agent — has to remember it.
+
+Prompts are wishes. The loop is the contract.
